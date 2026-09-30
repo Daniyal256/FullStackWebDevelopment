@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .search-bar input::placeholder { color: #65676b; }
+    .search-bar input:focus { outline: none; }
+    .nav-icon:hover { background: #f0f2f5; color: #1877f2 !important; }
+    .nav-icon.active { color: #1877f2 !important; border-bottom: 3px solid #1877f2; }
+    .nav-btn-icon:hover { background: #d8dadf !important; }
+    .sidebar-left::-webkit-scrollbar { width: 0; }
+    .sidebar-profile:hover, .sidebar-item:hover { background: #f0f2f5; }
+    .create-post-input:hover { background: #e4e6eb !important; }
+    .create-action:hover { background: #f0f2f5; }
+    .stories-row::-webkit-scrollbar { height: 4px; }
+    .stories-row::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+    .story-bg-img { filter: brightness(0.75); }
+    .story-create .story-bg-img { height: 65%; bottom: auto; }
+    .post-action-btn:hover { background: #f0f2f5 !important; }
+    .post-interact-btn:hover { background: #f0f2f5; color: #050505 !important; }
+    .post-reactions-right span:hover { text-decoration: underline; cursor: pointer; }
+    .sidebar-right::-webkit-scrollbar { width: 0; }
+    .sponsored-card:hover, .contact-item:hover { background: #f0f2f5; }
+    .float-msg-btn:hover { background: #166fe5 !important; }
+  </style>
+</head>
+<body style="background:#f0f2f5; color:#050505; font-size:15px;">
+
+  <!-- NAVBAR -->
+  <nav class="position-fixed top-0 start-0 end-0 bg-white shadow-sm d-flex align-items-center justify-content-between px-3" style="height:56px; z-index:100;">
+    <div class="nav-left d-flex align-items-center gap-2 flex-fill">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" style="width:40px;height:40px;" class="flex-shrink-0">
+        <path fill="#1877f2" d="M36 18C36 8.059 27.941 0 18 0S0 8.059 0 18c0 8.988 6.584 16.436 15.188 17.79V23.203h-4.57V18h4.57v-3.968c0-4.508 2.685-6.996 6.79-6.996 1.967 0 4.025.351 4.025.351v4.426h-2.267c-2.234 0-2.929 1.386-2.929 2.808V18h4.988l-.797 5.203h-4.19V35.79C29.416 34.436 36 26.988 36 18z"/>
+        <path fill="#fff" d="M25.008 23.203L25.805 18h-4.988v-3.379c0-1.422.695-2.808 2.93-2.808h2.266V7.387s-2.058-.351-4.026-.351c-4.105 0-6.79 2.488-6.79 6.996V18h-4.57v5.203h4.57V35.79a18.11 18.11 0 005.625 0V23.203h4.186z"/>
+      </svg>
+      <div class="search-bar d-flex align-items-center rounded-pill gap-2 px-3 py-2" style="background:#f0f2f5;width:240px;">
+        <svg viewBox="0 0 16 16" style="width:16px;height:16px;color:#65676b;" fill="currentColor" class="flex-shrink-0">
+          <path d="M6.5 0a6.5 6.5 0 014.914 10.793l4.146 4.147a.5.5 0 01-.707.707l-4.147-4.146A6.5 6.5 0 116.5 0zm0 1a5.5 5.5 0 100 11A5.5 5.5 0 006.5 1z"/>
+        </svg>
+        <input type="text" placeholder="Search Facebook" class="border-0 bg-transparent w-100" style="font-size:15px;color:#050505;">
+      </div>
+    </div>
+
+    <div class="nav-center d-flex align-items-center gap-1 flex-fill justify-content-center">
+      <a href="#" class="nav-icon active d-flex align-items-center justify-content-center rounded-2 text-decoration-none" style="width:112px;height:48px;color:#65676b;">
+        <svg viewBox="0 0 28 28" fill="currentColor" width="24" height="24"><path d="M27.5 11.757l-14-10.5a1 1 0 00-1.2 0l-14 10.5A1 1 0 00.5 13.5H2v12a2 2 0 002 2h7v-8h6v8h7a2 2 0 002-2v-12h1.5a1 1 0 00.8-1.6l-.8-.143z"/></svg>
+      </a>
+      <a href="#" class="nav-icon d-flex align-items-center justify-content-center rounded-2 text-decoration-none" style="width:112px;height:48px;color:#65676b;">
+        <svg viewBox="0 0 28 28" fill="currentColor" width="24" height="24"><path d="M14 2.5a11.5 11.5 0 100 23 11.5 11.5 0 000-23zM0 14a14 14 0 1128 0A14 14 0 010 14zm12.5-5.5l8 5.5-8 5.5v-11z"/></svg>
+      </a>
+      <a href="#" class="nav-icon d-flex align-items-center justify-content-center rounded-2 text-decoration-none" style="width:112px;height:48px;color:#65676b;">
+        <svg viewBox="0 0 28 28" fill="currentColor" width="24" height="24"><path d="M14 13a4 4 0 100-8 4 4 0 000 8zm-7 3.5c0-2.343 3.14-4.5 7-4.5s7 2.157 7 4.5V18H7v-1.5zM5.5 9a3 3 0 100-6 3 3 0 000 6zm-4 3c0-1.747 2-3 4-3h1a4.978 4.978 0 00-1 3v.5H1.5V12zm21 0a3 3 0 100-6 3 3 0 000 6zm2.5 3v-.5c0-1.19-.4-2.29-1-3h1c2 0 4 1.253 4 3V12H25z"/></svg>
+      </a>
+      <a href="#" class="nav-icon d-flex align-items-center justify-content-center rounded-2 text-decoration-none" style="width:112px;height:48px;color:#65676b;">
+        <svg viewBox="0 0 28 28" fill="currentColor" width="24" height="24"><path d="M26 8H2L3.5 4h21L26 8zm0 2H2v14h24V10zm-16 4h8v2h-8v-2z"/></svg>
+      </a>
+      <a href="#" class="nav-icon d-flex align-items-center justify-content-center rounded-2 text-decoration-none" style="width:112px;height:48px;color:#65676b;">
+        <svg viewBox="0 0 28 28" fill="currentColor" width="24" height="24"><path d="M23 10H5a5 5 0 00-5 5v2a5 5 0 005 5h18a5 5 0 005-5v-2a5 5 0 00-5-5zM11 18H9v-2H7v-2h2v-2h2v2h2v2h-2v2zm6-3a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm3 3a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>
+      </a>
+    </div>
+
+    <div class="nav-right d-flex align-items-center gap-2 flex-fill justify-content-end">
+      <button class="nav-btn-icon btn border-0 rounded-circle d-flex align-items-center justify-content-center" style="width:40px;height:40px;background:#e4e6eb;color:#050505;" title="Menu">
+        <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path d="M2 4.5A1.5 1.5 0 013.5 3h13a1.5 1.5 0 010 3h-13A1.5 1.5 0 012 4.5zm0 5A1.5 1.5 0 013.5 8h13a1.5 1.5 0 010 3h-13A1.5 1.5 0 012 9.5zm1.5 5a1.5 1.5 0 000 3h13a1.5 1.5 0 000-3h-13z"/></svg>
+      </button>
+      <button class="nav-btn-icon btn border-0 rounded-circle d-flex align-items-center justify-content-center" style="width:40px;height:40px;background:#e4e6eb;color:#050505;" title="Messenger">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 1C5.373 1 0 5.973 0 12c0 3.314 1.43 6.289 3.709 8.397V24l3.371-1.853C8.291 22.686 10.1 23 12 23c6.627 0 12-4.973 12-11S18.627 1 12 1zm1.244 14.817l-3.054-3.26-5.963 3.26 6.555-6.963 3.128 3.26 5.889-3.26-6.555 6.963z"/></svg>
+      </button>
+      <button class="nav-btn-icon btn border-0 rounded-circle d-flex align-items-center justify-content-center" style="width:40px;height:40px;background:#e4e6eb;color:#050505;" title="Notifications">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 22a2 2 0 002-2H10a2 2 0 002 2zm6-6V11a6 6 0 00-5-5.917V4a1 1 0 00-2 0v1.083A6 6 0 006 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+      </button>
+      <div><img src="daniyal.jpg" alt="Daniyal" class="rounded-circle object-fit-cover" style="width:40px;height:40px;cursor:pointer;"></div>
+    </div>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <div class="d-flex" style="margin-top:56px;min-height:calc(100vh - 56px);">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-left flex-shrink-0 overflow-auto position-sticky" style="width:280px;padding:8px 8px 80px;top:56px;height:calc(100vh - 56px);">
+      <div class="sidebar-profile d-flex align-items-center gap-2 p-2 rounded-2 text-decoration-none" style="color:#050505;cursor:pointer;margin-bottom:4px;">
+        <img src="daniyal.jpg" alt="Daniyal Haider" class="rounded-circle object-fit-cover" style="width:36px;height:36px;">
+        <span class="fw-semibold" style="font-size:15px;">Daniyal Haider</span>
+      </div>
+
+      <a href="#" class="sidebar-item d-flex align-items-center gap-2 p-2 rounded-2 text-decoration-none fw-medium" style="color:#050505;font-size:15px;">
+        <span class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0" style="width:36px;height:36px;background:#e7f3ff;">
+          <svg viewBox="0 0 24 24" fill="#1877f2" width="20" height="20"><path d="M17 2H7L2 7v10l5 5h10l5-5V7l-5-5zm-5 16a4 4 0 110-8 4 4 0 010 8z"/></svg>
+        </span>Friends
+      </a>
+      <a href="#" class="sidebar-item d-flex align-items-center gap-2 p-2 rounded-2 text-decoration-none fw-medium" style="color:#050505;font-size:15px;">
+        <span class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0" style="width:36px;height:36px;background:#ffe5e5;">
+          <svg viewBox="0 0 24 24" fill="#e41e3f" width="20" height="20"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402C1 3.518 3.218 1 6 1c2.455 0 4.29 1.863 6 3.853C13.71 2.863 15.545 1 18 1c2.782 0 5 2.518 5 6.191 0 4.105-5.37 8.863-11 14.402z"/></svg>
+        </span>Memories
+      </a>
+      <a href="#" class="sidebar-item d-flex align-items-center gap-2 p-2 rounded-2 text-decoration-none fw-medium" style="color:#050505;font-size:15px;">
+        <span class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0" style="width:36px;height:36px;background:#e7f3ff;">
+          <svg viewBox="0 0 24 24" fill="#1877f2" width="20" height="20"><path d="M17 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2zm-5 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+        </span>Saved
+      </a>
+      <a href="#" class="sidebar-item d-flex align-items-center gap-2 p-2 rounded-2 text-decoration-none fw-medium" style="color:#050505;font-size:15px;">
+        <span class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0" style="width:36px;height:36px;background:#f0e6ff;">
+          <svg viewBox="0 0 24 24" fill="#9b59b6" width="20" height="20"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93V18h2v1.93A8.01 8.01 0 014.07 13H6v-2H4.07A8.01 8.01 0 0111 4.07V6h2V4.07A8.01 8.01 0 0119.93 11H18v2h1.93A8.01 8.01 0 0113 19.93z"/></svg>
+        </span>Groups
+      </a>
+      <a href="#" class="sidebar-item d-flex align-items-center gap-2 p-2 rounded-2 text-decoration-none fw-medium" style="color:#050505;font-size:15px;">
+        <span class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0" style="width:36px;height:36px;background:#fff0e0;">
+          <svg viewBox="0 0 24 24" fill="#f5a623" width="20" height="20"><path d="M4 4h16v2H4zm2 4h12v2H6zm-2 4h16v2H4zm2 4h12v2H6z"/></svg>
+        </span>Feeds
+      </a>
+      <a href="#" class="sidebar-item d-flex align-items-center gap-2 p-2 rounded-2 text-decoration-none fw-medium" style="color:#050505;font-size:15px;">
+        <span class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0" style="width:36px;height:36px;background:#ffeaea;">
+          <svg viewBox="0 0 24 24" fill="#e74c3c" width="20" height="20"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+        </span>Events
+      </a>
+      <a href="#" class="sidebar-item d-flex align-items-center gap-2 p-2 rounded-2 text-decoration-none fw-medium" style="color:#050505;font-size:15px;">
+        <span class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0" style="width:36px;height:36px;background:#e5ffe5;">
+          <svg viewBox="0 0 24 24" fill="#27ae60" width="20" height="20"><path d="M2 3h20v2H2zm0 4h20v2H2zm0 4h14v2H2zm0 4h10v2H2z"/></svg>
+        </span>Marketplace
+      </a>
+      <a href="#" class="sidebar-item d-flex align-items-center gap-2 p-2 rounded-2 text-decoration-none fw-medium" style="color:#050505;font-size:15px;">
+        <span class="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0" style="width:36px;height:36px;background:#ffe5f5;">
+          <svg viewBox="0 0 24 24" fill="#e91e8c" width="20" height="20"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+        </span>Reels
+      </a>
+
+      <div class="my-2" style="height:1px;background:#e4e6eb;"></div>
+
+      <a href="#" class="sidebar-item d-flex align-items-center gap-2 p-2 rounded-2 text-decoration-none" style="color:#65676b;font-size:14px;">
+        <span class="d-flex align-items-center justify-content-center flex-shrink-0" style="width:36px;height:36px;background:#f0f0f0;border-radius:50%;">
+          <svg viewBox="0 0 24 24" fill="#606770" width="16" height="16"><path d="M4 6h16v2H4zm4 5h8v2H8zm-4 5h16v2H4z"/></svg>
+        </span>See more
+      </a>
+
+      <div class="my-2" style="height:1px;background:#e4e6eb;"></div>
+      <p class="fw-bold p-2" style="font-size:17px;color:#050505;">Your shortcuts</p>
+
+      <a href="#" class="sidebar-item d-flex align-items-center gap-2 p-2 rounded-2 text-decoration-none fw-medium" style="color:#050505;font-size:15px;">
+        <span class="overflow-hidden flex-shrink-0 rounded-2" style="width:36px;height:36px;">
+          <img src="sheikh.png" alt="Sheikh Abdullah" class="w-100 h-100 object-fit-cover">
+        </span>Sheikh Abdullah
+      </a>
+      <a href="#" class="sidebar-item d-flex align-items-center gap-2 p-2 rounded-2 text-decoration-none fw-medium" style="color:#050505;font-size:15px;">
+        <span class="overflow-hidden flex-shrink-0 rounded-2" style="width:36px;height:36px;">
+          <img src="wasif.jpg" alt="Wasif Mughal" class="w-100 h-100 object-fit-cover">
+        </span>Wasif Mughal
+      </a>
+
+      <div class="my-2" style="height:1px;background:#e4e6eb;"></div>
+      <p class="p-2" style="font-size:11px;color:#8a8d91;line-height:1.6;">Privacy · Terms · Advertising · Ad choices · Cookies · More · Meta © 2024</p>
+    </aside>
+
+    <main class="flex-fill d-flex flex-column gap-3 mx-auto py-3" style="max-width:590px;">
+
+      <!-- CREATE POST -->
+      <div class="bg-white rounded-2 p-3 shadow-sm">
+        <div class="d-flex align-items-center gap-2">
+          <img src="daniyal.jpg" alt="Daniyal" class="rounded-circle object-fit-cover flex-shrink-0" style="width:40px;height:40px;">
+          <div class="create-post-input flex-fill rounded-pill px-3 py-2" style="background:#f0f2f5;color:#65676b;cursor:pointer;font-size:15px;">What's on your mind, Daniyal?</div>
+        </div>
+        <div class="my-3" style="height:1px;background:#e4e6eb;"></div>
+        <div class="d-flex justify-content-around">
+          <div class="create-action d-flex align-items-center gap-1 px-3 py-1 rounded-2 fw-semibold" style="cursor:pointer;font-size:14px;color:#65676b;">
+            <svg viewBox="0 0 24 24" fill="#f3425f" width="22" height="22"><path d="M17 10.5V7a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1v-3.5l4 4v-11l-4 4z"/></svg>
+            <span>Live video</span>
+          </div>
+          <div class="create-action d-flex align-items-center gap-1 px-3 py-1 rounded-2 fw-semibold" style="cursor:pointer;font-size:14px;color:#65676b;">
+            <svg viewBox="0 0 24 24" fill="#45bd62" width="22" height="22"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            <span>Photo/video</span>
+          </div>
+          <div class="create-action d-flex align-items-center gap-1 px-3 py-1 rounded-2 fw-semibold" style="cursor:pointer;font-size:14px;color:#65676b;">
+            <svg viewBox="0 0 24 24" fill="#f7b928" width="22" height="22"><circle cx="12" cy="12" r="10"/><path fill="#fff" d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+            <span>Feeling/activity</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STORIES -->
+      <div class="stories-row d-flex gap-2 overflow-auto pb-1">
+        <div class="position-relative flex-shrink-0 rounded-3 overflow-hidden d-flex flex-column align-items-center" style="width:112px;height:196px;background:#e4e6eb;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.1);">
+          <img src="daniyal.jpg" alt="Daniyal" class="story-bg-img w-100 object-fit-cover position-absolute top-0 start-0" style="height:65%;">
+          <div class="position-absolute d-flex align-items-center justify-content-center bg-white rounded-circle" style="bottom:44px;width:36px;height:36px;border:3px solid #fff;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,.2);">
+            <svg viewBox="0 0 24 24" fill="#1877f2" width="20" height="20"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+          </div>
+          <span class="position-absolute w-100 text-center fw-semibold" style="bottom:10px;font-size:12px;color:#050505;z-index:2;">Create story</span>
+        </div>
+
+        <div class="position-relative flex-shrink-0 rounded-3 overflow-hidden" style="width:112px;height:196px;background:#e4e6eb;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.1);">
+          <img src="daniyal.jpg" alt="Daniyal Haider" class="story-bg-img w-100 h-100 object-fit-cover position-absolute top-0 start-0">
+          <div class="position-absolute rounded-circle overflow-hidden" style="top:10px;left:10px;width:40px;height:40px;border:3px solid #1877f2;z-index:2;">
+            <img src="daniyal.jpg" alt="Daniyal Haider" class="w-100 h-100 object-fit-cover">
+          </div>
+          <span class="position-absolute fw-semibold" style="bottom:10px;left:8px;right:8px;color:#fff;font-size:12px;z-index:2;text-shadow:0 1px 3px rgba(0,0,0,.6);">Daniyal Haider</span>
+        </div>
+
+        <div class="position-relative flex-shrink-0 rounded-3 overflow-hidden" style="width:112px;height:196px;background:#e4e6eb;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.1);">
+          <img src="sheikh.png" alt="Sheikh Abdullah" class="story-bg-img w-100 h-100 object-fit-cover position-absolute top-0 start-0">
+          <div class="position-absolute rounded-circle overflow-hidden" style="top:10px;left:10px;width:40px;height:40px;border:3px solid #1877f2;z-index:2;">
+            <img src="sheikh.png" alt="Sheikh Abdullah" class="w-100 h-100 object-fit-cover">
+          </div>
+          <span class="position-absolute fw-semibold" style="bottom:10px;left:8px;right:8px;color:#fff;font-size:12px;z-index:2;text-shadow:0 1px 3px rgba(0,0,0,.6);">Sheikh Abdullah</span>
+        </div>
+
+        <div class="position-relative flex-shrink-0 rounded-3 overflow-hidden" style="width:112px;height:196px;background:#e4e6eb;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.1);">
+          <img src="wasif.jpg" alt="Wasif Mughal" class="story-bg-img w-100 h-100 object-fit-cover position-absolute top-0 start-0">
+          <div class="position-absolute rounded-circle overflow-hidden" style="top:10px;left:10px;width:40px;height:40px;border:3px solid #1877f2;z-index:2;">
+            <img src="wasif.jpg" alt="Wasif Mughal" class="w-100 h-100 object-fit-cover">
+          </div>
+          <span class="position-absolute fw-semibold" style="bottom:10px;left:8px;right:8px;color:#fff;font-size:12px;z-index:2;text-shadow:0 1px 3px rgba(0,0,0,.6);">Wasif Mughal</span>
+        </div>
+
+        <div class="position-relative flex-shrink-0 rounded-3 overflow-hidden" style="width:112px;height:196px;background:#e4e6eb;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.1);">
+          <img src="moeed.jpg" alt="Moeed Raza" class="story-bg-img w-100 h-100 object-fit-cover position-absolute top-0 start-0">
+          <div class="position-absolute rounded-circle overflow-hidden" style="top:10px;left:10px;width:40px;height:40px;border:3px solid #1877f2;z-index:2;">
+            <img src="moeed.jpg" alt="Moeed Raza" class="w-100 h-100 object-fit-cover">
+          </div>
+          <span class="position-absolute fw-semibold" style="bottom:10px;left:8px;right:8px;color:#fff;font-size:12px;z-index:2;text-shadow:0 1px 3px rgba(0,0,0,.6);">Moeed Raza</span>
+        </div>
+
+        <div class="position-relative flex-shrink-0 rounded-3 overflow-hidden" style="width:112px;height:196px;background:#e4e6eb;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.1);">
+          <div class="w-100 h-100 position-absolute top-0 start-0" style="background:linear-gradient(180deg,#667eea,#764ba2);"></div>
+          <div class="position-absolute rounded-circle overflow-hidden" style="top:10px;left:10px;width:40px;height:40px;border:3px solid #1877f2;z-index:2;">
+            <div class="w-100 h-100 d-flex align-items-center justify-content-center text-white fw-bold" style="background:#667eea;font-size:18px;">Z</div>
+          </div>
+          <span class="position-absolute fw-semibold" style="bottom:10px;left:8px;right:8px;color:#fff;font-size:12px;z-index:2;text-shadow:0 1px 3px rgba(0,0,0,.6);">Zain Ali</span>
+        </div>
+      </div>
+
+      <!-- POST 1 -->
+      <div class="bg-white rounded-2 overflow-hidden shadow-sm">
+        <div class="d-flex align-items-center gap-2 px-3 pt-3">
+          <img src="daniyal.jpg" alt="Daniyal Haider" class="rounded-circle object-fit-cover flex-shrink-0" style="width:40px;height:40px;">
+          <div class="flex-fill">
+            <span class="fw-semibold d-block" style="font-size:15px;">Daniyal Haider</span>
+            <div class="d-flex align-items-center gap-1" style="font-size:13px;color:#65676b;">
+              <span>2 hours ago</span>
+              <span style="font-size:18px;line-height:1;">·</span>
+              <svg viewBox="0 0 16 16" fill="#65676b" width="12" height="12"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm4.5 7.5H8.5V3.5h-1v4H3.5v1h4v4h1v-4h4v-1z"/></svg>
+            </div>
+          </div>
+          <div class="d-flex gap-1 ms-auto">
+            <button class="post-action-btn btn border-0 rounded-circle d-flex align-items-center justify-content-center" style="width:36px;height:36px;background:transparent;font-size:18px;color:#65676b;">···</button>
+            <button class="post-action-btn btn border-0 rounded-circle d-flex align-items-center justify-content-center" style="width:36px;height:36px;background:transparent;font-size:18px;color:#65676b;">✕</button>
+          </div>
+        </div>
+        <div class="px-3 py-2" style="font-size:15px;line-height:1.5;color:#050505;">Just Chilling</div>
+        <img src="daniyal.jpg" alt="Post" class="w-100 d-block object-fit-cover" style="max-height:500px;">
+        <div class="d-flex justify-content-between align-items-center px-3 py-2" style="font-size:13px;color:#65676b;">
+          <div class="d-flex align-items-center gap-1">
+            <span style="font-size:16px;">👍❤️</span>
+            <span>Wasif Mughal and 47 others</span>
+          </div>
+          <div class="post-reactions-right d-flex gap-3">
+            <span>12 comments</span>
+            <span>3 shares</span>
+          </div>
+        </div>
+        <div class="d-flex px-2 py-1" style="border-top:1px solid #e4e6eb;border-bottom:1px solid #e4e6eb;">
+          <button class="post-interact-btn btn border-0 flex-fill d-flex align-items-center justify-content-center gap-1 py-2 rounded-1 fw-semibold" style="font-size:14px;color:#65676b;">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M1 8.5A6.5 6.5 0 0112 2.5a6.5 6.5 0 0111 4.5v.5c0 7-11 14-11 14S1 15.5 1 9v-.5z"/></svg>Like
+          </button>
+          <button class="post-interact-btn btn border-0 flex-fill d-flex align-items-center justify-content-center gap-1 py-2 rounded-1 fw-semibold" style="font-size:14px;color:#65676b;">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20 2H4a2 2 0 00-2 2v18l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2z"/></svg>Comment
+          </button>
+          <button class="post-interact-btn btn border-0 flex-fill d-flex align-items-center justify-content-center gap-1 py-2 rounded-1 fw-semibold" style="font-size:14px;color:#65676b;">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 000-6 3 3 0 00-2.96 3.49L8.91 9.39A3 3 0 006 8a3 3 0 000 6c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65a3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3z"/></svg>Share
+          </button>
+        </div>
+        <div class="d-flex align-items-center gap-2 px-3 py-2">
+          <img src="daniyal.jpg" alt="Daniyal" class="rounded-circle object-fit-cover flex-shrink-0" style="width:32px;height:32px;">
+          <div class="flex-fill rounded-pill px-3 py-2" style="background:#f0f2f5;font-size:14px;color:#65676b;">Write a comment...</div>
+        </div>
+      </div>
+
+      <!-- POST 2 -->
+      <div class="bg-white rounded-2 overflow-hidden shadow-sm">
+        <div class="d-flex align-items-center gap-2 px-3 pt-3">
+          <img src="sheikh.png" alt="Sheikh Abdullah" class="rounded-circle object-fit-cover flex-shrink-0" style="width:40px;height:40px;">
+          <div class="flex-fill">
+            <span class="fw-semibold d-block" style="font-size:15px;">Sheikh Abdullah</span>
+            <div class="d-flex align-items-center gap-1" style="font-size:13px;color:#65676b;">
+              <span>Yesterday at 6:30 PM</span>
+              <span style="font-size:18px;line-height:1;">·</span>
+              <svg viewBox="0 0 16 16" fill="#65676b" width="12" height="12"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm4.5 7.5H8.5V3.5h-1v4H3.5v1h4v4h1v-4h4v-1z"/></svg>
+            </div>
+          </div>
+          <div class="d-flex gap-1 ms-auto">
+            <button class="post-action-btn btn border-0 rounded-circle d-flex align-items-center justify-content-center" style="width:36px;height:36px;background:transparent;font-size:18px;color:#65676b;">···</button>
+            <button class="post-action-btn btn border-0 rounded-circle d-flex align-items-center justify-content-center" style="width:36px;height:36px;background:transparent;font-size:18px;color:#65676b;">✕</button>
+          </div>
+        </div>
+        <div class="px-3 py-2" style="font-size:15px;line-height:1.5;color:#050505;">
+          Mountains, fresh air, and good vibes 🏔️ Nothing beats a winter trip up north. Highly recommend everyone to visit Murree at least once. The views are absolutely breathtaking! ❄️
+        </div>
+        <img src="sheikh.png" alt="Post" class="w-100 d-block object-fit-cover" style="max-height:500px;">
+        <div class="d-flex justify-content-between align-items-center px-3 py-2" style="font-size:13px;color:#65676b;">
+          <div class="d-flex align-items-center gap-1">
+            <span style="font-size:16px;">👍😍🔥</span>
+            <span>Moeed Raza, Wasif Mughal and 93 others</span>
+          </div>
+          <div class="post-reactions-right d-flex gap-3">
+            <span>34 comments</span>
+            <span>8 shares</span>
+          </div>
+        </div>
+        <div class="d-flex px-2 py-1" style="border-top:1px solid #e4e6eb;border-bottom:1px solid #e4e6eb;">
+          <button class="post-interact-btn btn border-0 flex-fill d-flex align-items-center justify-content-center gap-1 py-2 rounded-1 fw-semibold" style="font-size:14px;color:#65676b;">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M1 8.5A6.5 6.5 0 0112 2.5a6.5 6.5 0 0111 4.5v.5c0 7-11 14-11 14S1 15.5 1 9v-.5z"/></svg>Like
+          </button>
+          <button class="post-interact-btn btn border-0 flex-fill d-flex align-items-center justify-content-center gap-1 py-2 rounded-1 fw-semibold" style="font-size:14px;color:#65676b;">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20 2H4a2 2 0 00-2 2v18l4-4h14a2 2 0 002-2V4a2 2 0 00-2-2z"/></svg>Comment
+          </button>
+          <button class="post-interact-btn btn border-0 flex-fill d-flex align-items-center justify-content-center gap-1 py-2 rounded-1 fw-semibold" style="font-size:14px;color:#65676b;">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 000-6 3 3 0 00-2.96 3.49L8.91 9.39A3 3 0 006 8a3 3 0 000 6c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65a3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3z"/></svg>Share
+          </button>
+        </div>
+        <div class="d-flex align-items-center gap-2 px-3 py-2">
+          <img src="daniyal.jpg" alt="Daniyal" class="rounded-circle object-fit-cover flex-shrink-0" style="width:32px;height:32px;">
+          <div class="flex-fill rounded-pill px-3 py-2" style="background:#f0f2f5;font-size:14px;color:#65676b;">Write a comment...</div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="sidebar-right flex-shrink-0 overflow-auto position-sticky" style="width:280px;padding:16px 8px;top:56px;height:calc(100vh - 56px);">
+
+      <p class="fw-bold px-2 pb-2" style="font-size:17px;color:#65676b;">Sponsored</p>
+      <div class="sponsored-card d-flex align-items-center gap-2 p-2 rounded-2 mb-1" style="cursor:pointer;">
+        <div class="flex-shrink-0 rounded-3" style="width:108px;height:108px;background:linear-gradient(135deg,#667eea,#764ba2);"></div>
+        <div class="d-flex flex-column gap-0">
+          <span class="fw-semibold" style="font-size:14px;">Air University CS Fest 2024</span>
+          <span style="font-size:13px;color:#65676b;">au.edu.pk</span>
+        </div>
+      </div>
+      <div class="sponsored-card d-flex align-items-center gap-2 p-2 rounded-2 mb-1" style="cursor:pointer;">
+        <div class="flex-shrink-0 rounded-3" style="width:108px;height:108px;background:linear-gradient(135deg,#f093fb,#f5576c);"></div>
+        <div class="d-flex flex-column gap-0">
+          <span class="fw-semibold" style="font-size:14px;">Daraz Sale is LIVE now!</span>
+          <span style="font-size:13px;color:#65676b;">daraz.pk</span>
+        </div>
+      </div>
+
+      <div class="mx-2 my-2" style="height:1px;background:#e4e6eb;"></div>
+
+      <p class="fw-bold px-2 pb-2" style="font-size:17px;color:#65676b;">Contacts</p>
+      <div class="contact-item d-flex align-items-center gap-2 p-2 rounded-2 mb-1" style="cursor:pointer;">
+        <div class="position-relative flex-shrink-0" style="width:36px;height:36px;">
+          <img src="sheikh.png" alt="Sheikh Abdullah" class="rounded-circle object-fit-cover" style="width:36px;height:36px;">
+          <span class="position-absolute rounded-circle" style="bottom:1px;right:1px;width:10px;height:10px;background:#31a24c;border:2px solid #fff;"></span>
+        </div>
+        <span class="fw-medium" style="font-size:14px;">Sheikh Abdullah</span>
+      </div>
+      <div class="contact-item d-flex align-items-center gap-2 p-2 rounded-2 mb-1" style="cursor:pointer;">
+        <div class="position-relative flex-shrink-0" style="width:36px;height:36px;">
+          <img src="wasif.jpg" alt="Wasif Mughal" class="rounded-circle object-fit-cover" style="width:36px;height:36px;">
+          <span class="position-absolute rounded-circle" style="bottom:1px;right:1px;width:10px;height:10px;background:#31a24c;border:2px solid #fff;"></span>
+        </div>
+        <span class="fw-medium" style="font-size:14px;">Wasif Mughal</span>
+      </div>
+      <div class="contact-item d-flex align-items-center gap-2 p-2 rounded-2 mb-1" style="cursor:pointer;">
+        <div class="position-relative flex-shrink-0" style="width:36px;height:36px;">
+          <img src="moeed.jpg" alt="Moeed Raza" class="rounded-circle object-fit-cover" style="width:36px;height:36px;">
+        </div>
+        <span class="fw-medium" style="font-size:14px;">Moeed Raza</span>
+      </div>
+      <div class="contact-item d-flex align-items-center gap-2 p-2 rounded-2 mb-1" style="cursor:pointer;">
+        <div class="position-relative flex-shrink-0" style="width:36px;height:36px;">
+          <div class="w-100 h-100 rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="background:#667eea;font-size:15px;">Z</div>
+        </div>
+        <span class="fw-medium" style="font-size:14px;">Zain Ali</span>
+      </div>
+
+      <div class="mx-2 my-2" style="height:1px;background:#e4e6eb;"></div>
+
+      <p class="fw-bold px-2 pb-2" style="font-size:17px;color:#65676b;">Group chats</p>
+      <a href="#" class="sidebar-item d-flex align-items-center gap-2 p-2 rounded-2 text-decoration-none" style="color:#050505;font-size:15px;">
+        <span class="rounded-circle d-flex align-items-center justify-content-center" style="width:36px;height:36px;background:#e4e6eb;font-size:22px;color:#050505;">+</span>
+        Create group chat
+      </a>
+
+    </aside>
+
+  </div>
+
+  <button class="float-msg-btn btn position-fixed d-flex align-items-center justify-content-center rounded-circle border-0" style="bottom:24px;right:24px;width:52px;height:52px;background:#1877f2;z-index:200;box-shadow:0 4px 12px rgba(0,0,0,.2);">
+    <svg viewBox="0 0 24 24" fill="white" width="22" height="22"><path d="M12 1C5.373 1 0 5.973 0 12c0 3.314 1.43 6.289 3.709 8.397V24l3.371-1.853C8.291 22.686 10.1 23 12 23c6.627 0 12-4.973 12-11S18.627 1 12 1zm1.244 14.817l-3.054-3.26-5.963 3.26 6.555-6.963 3.128 3.26 5.889-3.26-6.555 6.963z"/></svg>
+  </button>
+
+</body>
+</html>

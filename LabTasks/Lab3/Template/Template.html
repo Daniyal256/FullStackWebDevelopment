@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Human Pose Estimation and Kinematic Form Evaluation for Edge-Deployed Fitness Analytics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @page { size: Letter; margin: 0; }
+        body { font-family: "Times New Roman", Times, serif; }
+        p { text-indent: 1em; }
+        .abstract p, .table-footnote, .figure-placeholder figcaption { text-indent: 0; }
+        .references { list-style: none; counter-reset: ref; }
+        .references li { counter-increment: ref; padding-left: 25px; text-indent: 0; }
+        .references li::before { content: "[" counter(ref) "] "; margin-left: -25px; display: inline-block; width: 25px; }
+    </style>
+</head>
+<body style="margin:0;padding:0;background:#d9d9d9;color:#000;font-size:10pt;line-height:1.15;">
+    <main class="bg-white mx-auto shadow" style="width:8.5in;min-height:11in;margin-top:20px;margin-bottom:20px;padding:0.68in 0.68in 0.55in 0.68in;">
+
+        <div style="font-size:8pt;margin-bottom:8pt;">
+            979-8-3503-4567-8/24/$31.00 ©2024 IEEE
+        </div>
+
+        <header class="text-center">
+            <h1 class="fw-normal" style="font-size:24pt;line-height:1.1;margin:0 0 10pt;">Real-Time Human Pose Estimation and Kinematic Form Evaluation for Edge-Deployed Fitness Analytics</h1>
+
+            <section class="row g-0 mb-3" style="column-gap:0.16in;row-gap:12pt;">
+                <div class="col-4 d-flex flex-column align-items-center" style="font-size:9pt;line-height:1.1;">
+                    <strong class="fw-bold" style="margin-bottom:1pt;">Daniyal Haider</strong>
+                    <span>Dept. of Computer Science</span>
+                    <span>Air University</span>
+                    <span>Islamabad, Pakistan</span>
+                    <span>danihaider256@gmail.com</span>
+                </div>
+                <div class="col-4 d-flex flex-column align-items-center" style="font-size:9pt;line-height:1.1;">
+                    <strong class="fw-bold" style="margin-bottom:1pt;">Sheikh Abdullah</strong>
+                    <span>Dept. of Computer Science</span>
+                    <span>Air University</span>
+                    <span>Islamabad, Pakistan</span>
+                    <span>sheikh.abdullah@mail.au.edu.pk</span>
+                </div>
+                <div class="col-4 d-flex flex-column align-items-center" style="font-size:9pt;line-height:1.1;">
+                    <strong class="fw-bold" style="margin-bottom:1pt;">Wasif Mughal</strong>
+                    <span>Dept. of Computer Science</span>
+                    <span>Air University</span>
+                    <span>Islamabad, Pakistan</span>
+                    <span>wasif.mughal@mail.au.edu.pk</span>
+                </div>
+                <div class="col-4 d-flex flex-column align-items-center" style="font-size:9pt;line-height:1.1;">
+                    <strong class="fw-bold" style="margin-bottom:1pt;">Moeed Raza</strong>
+                    <span>Dept. of Computer Science</span>
+                    <span>Air University</span>
+                    <span>Islamabad, Pakistan</span>
+                    <span>moeed.raza@mail.au.edu.pk</span>
+                </div>
+                <div class="col-4 d-flex flex-column align-items-center" style="font-size:9pt;line-height:1.1;">
+                    <strong class="fw-bold" style="margin-bottom:1pt;">Maryam Wardah</strong>
+                    <span>Dept. of Computer Science</span>
+                    <span>Air University</span>
+                    <span>Islamabad, Pakistan</span>
+                    <span>maryam.wardah@mail.au.edu.pk</span>
+                </div>
+                <div class="col-4 d-flex flex-column align-items-center" style="font-size:9pt;line-height:1.1;">
+                    <strong class="fw-bold" style="margin-bottom:1pt;">Muhammad Junaid Nazar</strong>
+                    <span>Dept. of Computer Science</span>
+                    <span>Air University</span>
+                    <span>Islamabad, Pakistan</span>
+                    <span>junaid.nazar@mail.au.edu.pk</span>
+                </div>
+            </section>
+        </header>
+
+        <section class="abstract w-100 mb-2 text-justify">
+            <p class="mb-1"><strong>Abstract—</strong>Accurate automated assessment of physical exercise form is vital for preventing musculoskeletal injuries and ensuring progressive biomechanical adaptation. Although optical motion capture and wearable inertial sensors offer high measurement fidelity, their practical deployment remains severely hindered by prohibitive hardware expenses and user discomfort. Monocular vision alternatives executable on commodity mobile hardware offer an accessible alternative but face constrained compute, memory, and thermal envelopes. In this work, we propose a lightweight, end-to-end framework for real-time human pose tracking and biomechanical form evaluation on resource-constrained edge devices. The architecture combines an inverted residual backbone utilizing depthwise separable convolutions with a spatial-temporal kinematic evaluator to track anatomical joint vectors. Through 8-bit integer post-training quantization and hardware-delegated inference, our pipeline achieves 38.4 frames per second at an average latency of 23.6 ms on smartphone processors. Comprehensive evaluations across compound movements—squat, deadlift, and overhead press—reveal a 94.2% repetition identification accuracy and a mean joint angle error below 3.4 degrees relative to marker-based ground truth. The system provides an effective, non-invasive paradigm for autonomous physical conditioning and telehealth rehabilitation.</p>
+            <p class="mb-1"><strong>Keywords—</strong>Human Pose Estimation, Edge AI, Biomechanical Form Evaluation, Mobile Computing, Angular Kinematics, Lightweight Deep Learning</p>
+        </section>
+
+        <section class="row g-0" style="column-gap:0.25in;">
+            <div class="col text-justify" style="min-width:0;">
+
+                <h2 class="fw-bold text-center text-uppercase" style="font-size:10pt;margin:10pt 0 4pt;">I. INTRODUCTION</h2>
+                <p style="margin:0 0 5pt;">Musculoskeletal rehabilitation and resistance training rely fundamentally on consistent adherence to biomechanically sound movement patterns. Improper execution during compound resistance exercises places non-physiological sheer and torque loads upon spinal discs and connective joint structures, precipitating chronic orthopedic pathologies [1]. While certified personal trainers provide corrective real-time feedback, accessibility is constrained by financial expense and geographical availability. Recent computer vision advancements provide promising pathways toward democratizing exercise telemetry through standard mobile RGB cameras.</p>
+
+                <p style="margin:0 0 5pt;">Deploying computer vision on edge devices introduces distinct algorithmic hurdles. Top-performing multi-person pose estimators, such as OpenPose [2] and HRNet [3], incorporate heavy convolutional topologies that demand high-wattage desktop GPUs, rendering them incompatible with battery-powered mobile architectures. Conversely, heavily pruned mobile detectors frequently suffer from jitter, temporal instability, and boundary occlusion during rapid movement phases. Furthermore, converting raw Cartesian joint coordinates into actionable corrective feedback requires robust temporal segmenting capable of filtering out non-exercise motion.</p>
+
+                <p style="margin:0 0 5pt;">To overcome these challenges, this paper presents an optimized, edge-native framework that unifies real-time 2D skeletal tracking, kinematic joint angle calculation, and automated repetition segmentation. By incorporating inverted bottleneck operators, coordinate attention modules, and INT8 quantization, the proposed model achieves continuous real-time execution with negligible battery consumption and zero remote cloud dependence.</p>
+
+                <h2 class="fw-bold text-center text-uppercase" style="font-size:10pt;margin:10pt 0 4pt;">II. RELATED WORK</h2>
+
+                <h3 class="fw-bold fst-italic" style="font-size:10pt;margin:7pt 0 3pt;">A. Vision-Based Human Pose Estimation</h3>
+                <p style="margin:0 0 5pt;">Human pose estimation (HPE) has advanced from early pictorial structures to deep convolutional regression and heatmap architectures. Two-stage top-down approaches first isolate individual bounding boxes before inferring anatomical keypoints, whereas bottom-up architectures detect keypoints across the global frame prior to affinity grouping [2]. While bottom-up methods scale effectively with crowd density, top-down approaches offer superior localization precision for single-subject scenarios characteristic of personal fitness tracking.</p>
+
+                <p style="margin:0 0 5pt;">Recent mobile-targeted frameworks, such as BlazePose [4] and MobileNetV3 [5], demonstrate that depthwise separable convolutions combined with squeeze-and-excitation blocks substantially decrease parameter volume without catastrophic fidelity degradation. However, translating raw 2D coordinate streams into reliable clinical joint trajectories requires temporal filtering to mitigate inter-frame jitter caused by camera sensor noise.</p>
+
+                <h3 class="fw-bold fst-italic" style="font-size:10pt;margin:7pt 0 3pt;">B. Automated Exercise Assessment</h3>
+                <p style="margin:0 0 5pt;">Early automated form evaluation frameworks relied primarily on body-worn Inertial Measurement Units (IMUs). Despite their sampling rate, sensor drift and the burden of securing multiple straps impede everyday adoption. Recent vision-based systems employ Dynamic Time Warping (DTW) [6] or Spatial-Temporal Graph Convolutional Networks (ST-GCN) [7] to contrast user trajectories against golden reference repetitions. Nonetheless, prevailing literature primarily evaluates offline server-side processing rather than instantaneous on-device feedback pipelines.</p>
+
+                <h2 class="fw-bold text-center text-uppercase" style="font-size:10pt;margin:10pt 0 4pt;">III. METHODOLOGY</h2>
+
+                <h3 class="fw-bold fst-italic" style="font-size:10pt;margin:7pt 0 3pt;">A. Edge Backbone and Feature Extraction</h3>
+                <p style="margin:0 0 5pt;">Our keypoint detector employs an optimized inverted residual backbone with a width multiplier of 0.75. Given an input frame <i>I ∈ ℝ<sup>H×W×3</sup></i>, multi-scale features are extracted and routed through a coordinate attention mechanism that independently aggregates spatial representations along horizontal and vertical axes. This prevents localization dispersion when limbs occlude during sagittal plane viewing.</p>
+
+                <h3 class="fw-bold fst-italic" style="font-size:10pt;margin:7pt 0 3pt;">B. Biomechanical Angular Formulation</h3>
+                <p style="margin:0 0 5pt;">Exercise validity is determined via instantaneous articulation angles computed across adjacent anatomical links. For three contiguous keypoints <i>P<sub>j</sub></i>, <i>P<sub>k</sub></i>, and <i>P<sub>m</sub></i> (e.g., hip, knee, and ankle for knee flexion), directed displacement vectors are formed: <b>v</b><sub>jk</sub> = <i>P<sub>k</sub> - P<sub>j</sub></i> and <b>v</b><sub>jm</sub> = <i>P<sub>m</sub> - P<sub>j</sub></i>. The interior joint articulation angle <i>θ<sub>j</sub>(t)</i> at timestamp <i>t</i> is calculated as:</p>
+
+                <div class="d-flex justify-content-between align-items-center my-2 px-1" style="font-size:9.5pt;">
+                    <span class="flex-fill text-center"><i>θ<sub>j</sub>(t) = arccos((<b>v</b><sub>jk</sub> · <b>v</b><sub>jm</sub>) / (‖<b>v</b><sub>jk</sub>‖ ‖<b>v</b><sub>jm</sub>‖))</i></span>
+                    <span>(1)</span>
+                </div>
+
+                <p style="margin:0 0 5pt;">To eliminate high-frequency jitter, computed angular trajectories pass through an adaptive one-euro filter, which adjusts cutoff frequencies dynamically according to movement velocity.</p>
+
+            </div>
+
+            <div class="col text-justify" style="min-width:0;">
+
+                <h3 class="fw-bold fst-italic" style="font-size:10pt;margin:7pt 0 3pt;">C. Phase Segmentation and Repetition Logic</h3>
+                <p style="margin:0 0 5pt;">Exercise repetitions are partitioned into eccentric, inflection, and concentric phases using finite state machine (FSM) thresholding coupled with zero-crossing velocity analysis on the primary articulation angle. Form adherence is verified against kinematic boundaries established by the National Strength and Conditioning Association (NSCA), penalizing valgus knee collapse, excessive lumbar flexion, and asymmetrical bar displacement.</p>
+
+                <h2 class="fw-bold text-center text-uppercase" style="font-size:10pt;margin:10pt 0 4pt;">IV. EXPERIMENTAL EVALUATION</h2>
+
+                <h3 class="fw-bold fst-italic" style="font-size:10pt;margin:7pt 0 3pt;">A. Experimental Setup and Dataset</h3>
+                <p style="margin:0 0 5pt;">The system was evaluated on a curated benchmark dataset comprising 1,200 exercise repetitions across 24 human subjects performing squats, deadlifts, and overhead presses under varying illumination and viewing orientations. Ground-truth joint angles were captured synchronously via a 10-camera Vicon optical motion capture system operating at 100 Hz. Mobile inference was benchmarked across three hardware tiers: Qualcomm Snapdragon 8 Gen 2, MediaTek Dimensity 9200, and Apple A16 Bionic.</p>
+
+                <table class="table table-bordered text-center mx-auto my-2" style="font-size:8pt;border-color:#000;">
+                    <caption class="fw-bold text-center mb-1 text-dark" style="font-size:8pt;caption-side:top;">TABLE I. COMPARATIVE PERFORMANCE ON MOBILE HARDWARE</caption>
+                    <thead>
+                        <tr>
+                            <th class="border-dark" style="border-color:#000!important;padding:3pt 2pt;">Architecture</th>
+                            <th class="border-dark" style="border-color:#000!important;padding:3pt 2pt;">Params (M)</th>
+                            <th class="border-dark" style="border-color:#000!important;padding:3pt 2pt;">Latency (ms)</th>
+                            <th class="border-dark" style="border-color:#000!important;padding:3pt 2pt;">FPS</th>
+                            <th class="border-dark" style="border-color:#000!important;padding:3pt 2pt;">mAP (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="border-color:#000!important;padding:3pt 2pt;">OpenPose (Mobile)</td><td style="border-color:#000!important;padding:3pt 2pt;">6.3</td><td style="border-color:#000!important;padding:3pt 2pt;">78.4</td><td style="border-color:#000!important;padding:3pt 2pt;">12.7</td><td style="border-color:#000!important;padding:3pt 2pt;">65.3</td></tr>
+                        <tr><td style="border-color:#000!important;padding:3pt 2pt;">MoveNet Thunder</td><td style="border-color:#000!important;padding:3pt 2pt;">4.2</td><td style="border-color:#000!important;padding:3pt 2pt;">42.1</td><td style="border-color:#000!important;padding:3pt 2pt;">23.7</td><td style="border-color:#000!important;padding:3pt 2pt;">71.8</td></tr>
+                        <tr><td style="border-color:#000!important;padding:3pt 2pt;">BlazePose (Full)</td><td style="border-color:#000!important;padding:3pt 2pt;">3.5</td><td style="border-color:#000!important;padding:3pt 2pt;">31.2</td><td style="border-color:#000!important;padding:3pt 2pt;">32.0</td><td style="border-color:#000!important;padding:3pt 2pt;">73.4</td></tr>
+                        <tr><td style="border-color:#000!important;padding:3pt 2pt;">Proposed Edge-Fit</td><td style="border-color:#000!important;padding:3pt 2pt;">2.4</td><td style="border-color:#000!important;padding:3pt 2pt;">23.6</td><td style="border-color:#000!important;padding:3pt 2pt;">38.4</td><td style="border-color:#000!important;padding:3pt 2pt;">76.1</td></tr>
+                    </tbody>
+                </table>
+                <p class="table-footnote" style="font-size:7pt;margin-bottom:7pt;">a. Latency and frame rates measured on Snapdragon 8 Gen 2 NPU delegate at 256x256 resolution.</p>
+
+                <figure class="figure-placeholder text-center my-2">
+                    <div class="border d-flex align-items-center justify-content-center" style="height:60px;background:#fafafa;font-size:7pt;font-family:'Courier New',Courier,monospace;padding:4px 8px;border-color:#000!important;word-break:break-word;">[ INPUT FRAME ] → [ RESIDUAL BACKBONE ] → [ KEYPOINTS ] → [ KINEMATICS &amp; FSM ] → [ FEEDBACK ]</div>
+                    <figcaption style="font-size:8pt;margin-top:4pt;">Fig. 1. End-to-end processing pipeline for edge pose estimation and real-time form scoring.</figcaption>
+                </figure>
+
+                <p style="margin:0 0 5pt;">As documented in Table I, the proposed architecture delivers a 24.3% latency reduction compared to BlazePose while improving keypoint Mean Average Precision (mAP) on the exercise validation set by 2.7%. The model sustains over 38 FPS with an average device power draw under 1.8 Watts, precluding thermal throttling during prolonged 30-minute workout trials.</p>
+
+                <h3 class="fw-bold fst-italic" style="font-size:10pt;margin:7pt 0 3pt;">B. Kinematic Accuracy and Repetition Counting</h3>
+                <p style="margin:0 0 5pt;">Evaluation against the optical ground-truth baseline revealed a mean absolute angular error of 3.2° for knee flexion, 3.4° for hip angle, and 2.9° for elbow extension during overhead press movements. Across all evaluated sets, repetition counting accuracy reached 94.2%, with false positives occurring primarily during abrupt pauses between sets.</p>
+
+                <h2 class="fw-bold text-center text-uppercase" style="font-size:10pt;margin:10pt 0 4pt;">V. CONCLUSION</h2>
+                <p style="margin:0 0 5pt;">This paper presented a lightweight, edge-compatible deep learning pipeline for real-time human pose tracking and automated exercise form assessment. By pairing inverted bottleneck feature extractors with coordinate attention mechanisms, INT8 quantization, and continuous angular kinematics, the framework achieves sub-24 ms latencies and 94.2% repetition accuracy on commodity mobile chipsets without remote servers. Future efforts will extend this pipeline to multi-view 3D reconstruction and temporal transformers for complex Olympic lifting analysis.</p>
+
+                <h4 class="fw-bold text-center text-uppercase" style="font-size:10pt;margin:10pt 0 4pt;">ACKNOWLEDGMENT</h4>
+                <p style="margin:0 0 5pt;">The authors thank the faculty and laboratory staff of the Department of Computer Science at Air University, Islamabad, for facilitating access to high-performance computing resources and optical motion capture hardware throughout this investigation.</p>
+
+                <h4 class="fw-bold text-center text-uppercase" style="font-size:10pt;margin:10pt 0 4pt;">REFERENCES</h4>
+                <ol class="references ps-0 mt-1">
+                    <li class="text-start mb-1" style="margin-bottom:4pt;">D. G. Behm, A. J. Blazevich, A. D. Kay, and M. McHugh, "Acute effects of muscle stretching on physical performance, range of motion, and injury incidence," <i>Sports Med.</i>, vol. 46, no. 1, pp. 131–145, 2016.</li>
+                    <li class="text-start mb-1" style="margin-bottom:4pt;">Z. Cao, G. Hidalgo, T. Simon, S.-E. Wei, and Y. Sheikh, "OpenPose: Realtime multi-person 2D pose estimation using Part Affinity Fields," <i>IEEE Trans. Pattern Anal. Mach. Intell.</i>, vol. 43, no. 1, pp. 172–186, 2021.</li>
+                    <li class="text-start mb-1" style="margin-bottom:4pt;">K. Sun, B. Xiao, D. Liu, and J. Wang, "Deep high-resolution representation learning for human pose estimation," in <i>Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR)</i>, 2019, pp. 5693–5702.</li>
+                    <li class="text-start mb-1" style="margin-bottom:4pt;">V. Bazarevsky, I. Grishchenko, K. Raveendran, T. Zhu, F. Zhang, and M. Grundmann, "BlazePose: On-device real-time body pose tracking," <i>arXiv preprint arXiv:2006.10204</i>, 2020.</li>
+                    <li class="text-start mb-1" style="margin-bottom:4pt;">A. Howard et al., "Searching for MobileNetV3," in <i>Proc. IEEE/CVF Int. Conf. Comput. Vis. (ICCV)</i>, 2019, pp. 1314–1324.</li>
+                    <li class="text-start mb-1" style="margin-bottom:4pt;">S. Salvador and P. Chan, "Toward accurate dynamic time warping in linear time and space," <i>Intell. Data Anal.</i>, vol. 11, no. 5, pp. 561–580, 2007.</li>
+                    <li class="text-start mb-1" style="margin-bottom:4pt;">S. Yan, Y. Xiong, and D. Lin, "Spatial temporal graph convolutional networks for skeleton-based action recognition," in <i>Proc. AAAI Conf. Artif. Intell.</i>, vol. 32, no. 1, 2018.</li>
+                    <li class="text-start mb-1" style="margin-bottom:4pt;">B. Jacob et al., "Quantization and training of neural networks for efficient integer-arithmetic-only inference," in <i>Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR)</i>, 2018, pp. 2704–2713.</li>
+                    <li class="text-start mb-1" style="margin-bottom:4pt;">G. Casiez, N. Roussel, and D. Vogel, "1€ filter: A simple speed-and-lag-sensitive low-pass filter for noisy input," in <i>Proc. ACM Conf. Hum. Factors Comput. Syst. (CHI)</i>, 2012, pp. 2527–2530.</li>
+                    <li class="text-start mb-1" style="margin-bottom:4pt;">G. G. Haff and N. T. Triplett, <i>Essentials of Strength Training and Conditioning</i>, 4th ed. Champaign, IL: Human Kinetics, 2015.</li>
+                </ol>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

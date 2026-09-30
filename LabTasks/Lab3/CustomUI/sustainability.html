@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainability | ECOCITY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --green: #4CAF50; --green-dark: #2F7D46; --green-soft: #E7F4E8; --blue: #2E8FE3; --yellow: #F0B51B; --ink: #101820; --sky: #DCEAF6; --muted: #777D7D; --line: #E2E5E1; }
+        body { font-family: Arial, Helvetica, sans-serif; background: var(--sky); color: var(--ink); }
+        .background { position: fixed; top: -25px; left: -25px; width: calc(100% + 50px); height: calc(100% + 50px); z-index: -3; background: var(--sky) url("assets/background.jpg") center/cover no-repeat; filter: blur(5px); transform: scale(1.02); }
+        .page::before { content: ""; position: fixed; inset: 0; z-index: -2; background: rgba(238, 246, 241, 0.18); }
+        .dashboard-frame { background: rgba(255, 255, 255, 0.07); border: 2px solid rgba(255,255,255,0.92); border-radius: 42px; min-height: 850px; max-width: 1260px; z-index: 2; }
+        .brand-mark { width: 32px; height: 32px; border: 2px solid var(--ink); border-radius: 50%; }
+        .brand-mark span { width: 12px; height: 12px; background: var(--green); border-radius: 50%; }
+        .nav-link { color: var(--ink); font-weight: 600; font-size: 14px; text-decoration: none; padding: 8px 16px; border-radius: 20px; }
+        .nav-link.active { background: var(--ink); color: #fff; }
+        .status-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; display: inline-block; vertical-align: middle; }
+        .notification, .profile { width: 40px; height: 40px; border-radius: 50%; text-decoration: none; font-weight: bold; }
+        .notification { background: #fff; color: var(--ink); border: 1px solid rgba(0,0,0,0.1); }
+        .profile { background: var(--ink); color: #fff; font-size: 14px; }
+        .card-custom { background: #fff; border-radius: 28px; box-shadow: 0 10px 30px rgba(16,24,32,0.08); padding: 32px; }
+        .card-label { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 1px; }
+        .floating-dock { position: fixed; right: 2%; top: 50%; transform: translateY(-50%); background: #fff; padding: 12px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 100; }
+        .dock-item { width: 48px; height: 48px; border-radius: 50%; text-decoration: none; color: var(--ink); font-size: 20px; }
+        .dock-active { background: var(--green-soft); color: var(--green-dark); }
+        .info-list-item { border-bottom: 1px solid #E2E5E1; padding: 16px 0; }
+        .info-list-item:last-child { border-bottom: none; }
+        .stat-box { border-radius: 20px; padding: 24px; text-align: center; }
+        .green-stat { background: var(--green-soft); color: var(--green-dark); }
+        .blue-stat { background: #EAF4FC; color: #1665A8; }
+        .yellow-stat { background: var(--yellow-soft); color: #9A7100; }
+        .eyebrow { font-size: 12px; font-weight: 700; color: var(--ink); letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+<div class="page position-relative min-vh-100 overflow-hidden" style="padding: 64px 7.5% 80px;">
+    <div class="background"></div>
+
+    <main class="dashboard-frame position-relative mx-auto" style="padding: 26px 34px 34px;">
+        
+        <!-- TOP NAVIGATION -->
+        <header class="d-flex align-items-center justify-content-between mb-5">
+            <a href="index.html" class="d-flex align-items-center text-decoration-none text-dark fw-bold gap-2">
+                <span class="brand-mark d-flex align-items-center justify-content-center"><span></span></span>
+                <span style="font-size: 18px; letter-spacing: 1px;">ECOCITY</span>
+            </a>
+
+            <nav class="d-flex align-items-center gap-2">
+                <a href="index.html" class="nav-link">Overview</a>
+                <a href="city-analytics.html" class="nav-link">City Analytics</a>
+                <a href="sustainability.html" class="nav-link active d-flex align-items-center gap-2">
+                    <span class="status-dot"></span> Sustainability
+                </a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="alerts.html" class="nav-link">Alerts</a>
+            </nav>
+
+            <div class="d-flex align-items-center gap-3">
+                <a href="alerts.html" class="notification d-flex align-items-center justify-content-center">!</a>
+                <a href="#" class="profile d-flex align-items-center justify-content-center">DH</a>
+            </div>
+        </header>
+
+        <!-- PAGE HERO -->
+        <section class="mb-5" style="max-width: 600px;">
+            <p class="eyebrow mb-3">ECOCITY SUSTAINABILITY</p>
+            <h1 class="fw-bold mb-3" style="font-size: 56px; letter-spacing: -1px; line-height: 1.1;">A greener <span style="color: var(--muted);">city.</span></h1>
+            <p class="fs-5 text-secondary" style="line-height: 1.6;">Track renewable energy, green infrastructure, carbon reduction, water efficiency, and cleaner urban development.</p>
+        </section>
+
+        <!-- CONTENT GRID -->
+        <section class="row g-4">
+            
+            <article class="col-md-6">
+                <div class="card-custom h-100">
+                    <p class="card-label mb-2">RENEWABLE ENERGY</p>
+                    <h2 class="fw-bold mb-4" style="font-size: 28px;">Energy Transition</h2>
+                    <div class="row g-3">
+                        <div class="col-12 col-xl-4">
+                            <div class="stat-box green-stat d-flex flex-column justify-content-center h-100">
+                                <strong style="font-size: 40px; line-height: 1;">72%</strong>
+                                <span class="fw-bold mt-2" style="font-size: 13px;">Renewable Share</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-4">
+                            <div class="stat-box yellow-stat d-flex flex-column justify-content-center h-100">
+                                <strong style="font-size: 40px; line-height: 1;">38%</strong>
+                                <span class="fw-bold mt-2" style="font-size: 13px;">Solar Generation</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-4">
+                            <div class="stat-box blue-stat d-flex flex-column justify-content-center h-100">
+                                <strong style="font-size: 40px; line-height: 1;">34%</strong>
+                                <span class="fw-bold mt-2" style="font-size: 13px;">Wind Generation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="col-md-6">
+                <div class="card-custom h-100">
+                    <p class="card-label mb-2">GREEN INFRASTRUCTURE</p>
+                    <h2 class="fw-bold mb-4" style="font-size: 28px;">Natural Spaces</h2>
+                    <div class="d-flex flex-column">
+                        <div class="info-list-item d-flex justify-content-between align-items-center">
+                            <strong class="fs-6">Green Coverage</strong>
+                            <span class="text-secondary fw-medium">61%</span>
+                        </div>
+                        <div class="info-list-item d-flex justify-content-between align-items-center">
+                            <strong class="fs-6">Urban Tree Health</strong>
+                            <span class="text-secondary fw-medium">88%</span>
+                        </div>
+                        <div class="info-list-item d-flex justify-content-between align-items-center">
+                            <strong class="fs-6">Public Parks</strong>
+                            <span class="text-secondary fw-medium">42 zones</span>
+                        </div>
+                        <div class="info-list-item d-flex justify-content-between align-items-center">
+                            <strong class="fs-6">New Green Projects</strong>
+                            <span class="text-secondary fw-medium">18 active</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="col-12">
+                <div class="card-custom">
+                    <p class="card-label mb-2">ENVIRONMENTAL GOALS</p>
+                    <h2 class="fw-bold mb-4" style="font-size: 28px;">Current Sustainability Priorities</h2>
+                    <div class="d-flex flex-column">
+                        <div class="info-list-item d-flex justify-content-between align-items-center">
+                            <strong class="fs-6">Carbon Reduction</strong>
+                            <span class="text-secondary fw-medium">54% progress</span>
+                        </div>
+                        <div class="info-list-item d-flex justify-content-between align-items-center">
+                            <strong class="fs-6">Water Efficiency</strong>
+                            <span class="text-secondary fw-medium">68% progress</span>
+                        </div>
+                        <div class="info-list-item d-flex justify-content-between align-items-center">
+                            <strong class="fs-6">Low-Carbon Mobility</strong>
+                            <span class="text-secondary fw-medium">76% activity</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- FLOATING DOCK -->
+    <aside class="floating-dock d-flex flex-column gap-3">
+        <a href="index.html" class="dock-item d-flex align-items-center justify-content-center">▦</a>
+        <a href="city-analytics.html" class="dock-item d-flex align-items-center justify-content-center">◉</a>
+        <a href="sustainability.html" class="dock-item dock-active d-flex align-items-center justify-content-center">♧</a>
+        <a href="alerts.html" class="dock-item d-flex align-items-center justify-content-center">⚙</a>
+    </aside>
+
+</div>
+</body>
+</html>

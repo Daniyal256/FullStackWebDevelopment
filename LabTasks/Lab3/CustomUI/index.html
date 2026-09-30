@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview | ECOCITY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --green: #4CAF50; --green-dark: #2F7D46; --green-soft: #E7F4E8; --blue: #2E8FE3; --blue-soft: #EAF4FC; --yellow: #F0B51B; --yellow-soft: #FFF5D8; --ink: #101820; --sky: #DCEAF6; --muted: #777D7D; --line: #E2E5E1; }
+        body { font-family: Arial, Helvetica, sans-serif; background: var(--sky); color: var(--ink); }
+        .background { position: fixed; top: -25px; left: -25px; width: calc(100% + 50px); height: calc(100% + 50px); z-index: -3; background: var(--sky) url("assets/background.jpg") center/cover no-repeat; filter: blur(5px); transform: scale(1.02); }
+        .page::before { content: ""; position: fixed; inset: 0; z-index: -2; background: rgba(238, 246, 241, 0.18); }
+        .dashboard-frame { background: rgba(255, 255, 255, 0.07); border: 2px solid rgba(255,255,255,0.92); border-radius: 42px; min-height: 850px; max-width: 1260px; z-index: 2; }
+        .brand-mark { width: 32px; height: 32px; border: 2px solid var(--ink); border-radius: 50%; }
+        .brand-mark span { width: 12px; height: 12px; background: var(--green); border-radius: 50%; }
+        .nav-link { color: var(--ink); font-weight: 600; font-size: 14px; text-decoration: none; padding: 8px 16px; border-radius: 20px; }
+        .nav-link.active { background: var(--ink); color: #fff; }
+        .status-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; display: inline-block; vertical-align: middle; }
+        .notification, .profile { width: 40px; height: 40px; border-radius: 50%; text-decoration: none; font-weight: bold; }
+        .notification { background: #fff; color: var(--ink); border: 1px solid rgba(0,0,0,0.1); }
+        .profile { background: var(--ink); color: #fff; font-size: 14px; }
+        .card-custom { background: #fff; border-radius: 28px; box-shadow: 0 10px 30px rgba(16,24,32,0.08); padding: 32px; }
+        .card-label { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 1px; }
+        .floating-dock { position: fixed; right: 2%; top: 50%; transform: translateY(-50%); background: #fff; padding: 12px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 100; }
+        .dock-item { width: 48px; height: 48px; border-radius: 50%; text-decoration: none; color: var(--ink); font-size: 20px; }
+        .dock-active { background: var(--green-soft); color: var(--green-dark); }
+        .eyebrow { font-size: 12px; font-weight: 700; color: var(--ink); letter-spacing: 1px; }
+        
+        /* Features */
+        .feature-item { display: flex; align-items: center; padding: 16px; border-radius: 16px; border: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: border-color 0.2s; }
+        .feature-item:hover { border-color: var(--muted); }
+        .feature-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; margin-right: 16px; flex-shrink: 0; }
+        .energy-icon { background: var(--yellow-soft); color: #9A7100; }
+        .air-icon { background: var(--blue-soft); color: #1665A8; }
+        .mobility-icon { background: var(--green-soft); color: var(--green-dark); }
+        .feature-content { flex-grow: 1; display: flex; flex-direction: column; }
+        .feature-arrow { color: var(--muted); }
+        
+        /* Line Chart */
+        .line-chart { position: relative; height: 38px; margin-top: 6px; overflow: hidden; border-bottom: 1px solid var(--line); width: 100px; }
+        .line-chart::before { content: ""; position: absolute; left: 0; right: 0; top: 18px; border-top: 1px dashed var(--line); }
+        .chart-line { position: absolute; left: 0; right: 0; top: 19px; height: 2px; background-color: var(--green); }
+        .blue-chart .chart-line { background-color: var(--blue); }
+        .chart-dot { position: absolute; width: 6px; height: 6px; border-radius: 50%; background-color: var(--green); }
+        .blue-chart .chart-dot { background-color: var(--blue); }
+        .dot-one { left: 5%; top: 25px; } .dot-two { left: 25%; top: 17px; } .dot-three { left: 48%; top: 20px; } .dot-four { left: 70%; top: 10px; } .dot-five { right: 4%; top: 6px;}
+        
+        /* Metrics Grid */
+        .metric { display: flex; align-items: center; gap: 12px; }
+        .metric-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; background: var(--yellow-soft); color: #9A7100; }
+        .blue-metric { background: var(--blue-soft); color: #1665A8; }
+        .green-metric { background: var(--green-soft); color: var(--green-dark); }
+        
+        /* Weekly Chart */
+        .weekly-chart { display: flex; align-items: flex-end; justify-content: space-between; gap: 9px; height: 105px; margin-top: 15px; padding: 0 4px; border-bottom: 1px solid var(--line); }
+        .bar-column { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 7px; width: 100%; height: 100%; }
+        .bar { display: block; width: 12px; min-height: 10px; border-radius: 7px 7px 2px 2px; }
+        .bar-light { background: #DDE1DE; }
+        .bar-green { background: var(--green); }
+        .bar-1 { height: 35px; } .bar-2 { height: 70px; } .bar-3 { height: 48px; } .bar-4 { height: 83px; } .bar-5 { height: 64px; } .bar-6 { height: 43px; } .bar-7 { height: 76px; }
+        .bar-column small { color: var(--muted); font-size: 8px; }
+        .today small { color: var(--green-dark); font-weight: 700; }
+    </style>
+</head>
+<body>
+<div class="page position-relative min-vh-100 overflow-hidden" style="padding: 64px 7.5% 80px;">
+    <div class="background"></div>
+
+    <main class="dashboard-frame position-relative mx-auto" style="padding: 26px 34px 34px;">
+        
+        <!-- TOP NAVIGATION -->
+        <header class="d-flex align-items-center justify-content-between mb-5">
+            <a href="index.html" class="d-flex align-items-center text-decoration-none text-dark fw-bold gap-2">
+                <span class="brand-mark d-flex align-items-center justify-content-center"><span></span></span>
+                <span style="font-size: 18px; letter-spacing: 1px;">ECOCITY</span>
+            </a>
+
+            <nav class="d-flex align-items-center gap-2">
+                <a href="index.html" class="nav-link active d-flex align-items-center gap-2">
+                    <span class="status-dot"></span> Overview
+                </a>
+                <a href="city-analytics.html" class="nav-link">City Analytics</a>
+                <a href="sustainability.html" class="nav-link">Sustainability</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="alerts.html" class="nav-link">Alerts</a>
+            </nav>
+
+            <div class="d-flex align-items-center gap-3">
+                <a href="alerts.html" class="notification d-flex align-items-center justify-content-center">!</a>
+                <a href="#" class="profile d-flex align-items-center justify-content-center">DH</a>
+            </div>
+        </header>
+
+        <!-- PAGE HERO -->
+        <section class="mb-5" style="max-width: 600px;">
+            <p class="eyebrow mb-3">SUSTAINABLE CITY DASHBOARD</p>
+            <h1 class="fw-bold mb-3" style="font-size: 56px; letter-spacing: -1px; line-height: 1.1;">Welcome to <span style="color: var(--muted);">ECOCITY.</span></h1>
+            <p class="fs-5 text-secondary" style="line-height: 1.6;">Hello, Daniyal. Monitor energy, mobility, water, air quality, and green infrastructure from one sustainable city dashboard.</p>
+            <p class="fw-medium mt-3" style="font-size: 14px;"><span class="status-dot" style="margin-right: 8px;"></span>City systems operational</p>
+        </section>
+
+        <!-- CONTENT GRID -->
+        <section class="row g-4">
+            
+            <article class="col-md-4">
+                <div class="card-custom h-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start mb-auto">
+                        <div>
+                            <p class="card-label mb-2">CITY STATUS</p>
+                            <h2 class="fw-bold m-0" style="font-size: 28px;">Today</h2>
+                        </div>
+                        <span style="font-size: 24px; color: var(--ink);">◉</span>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <p class="fw-bold m-0" style="font-size: 48px; line-height: 1;">11:36</p>
+                        <p class="text-secondary fw-medium m-0 mt-1" style="font-size: 14px;">September 23, 2026</p>
+                    </div>
+                    
+                    <p class="fw-medium m-0 mt-4 pt-4 border-top" style="font-size: 14px;"><span class="status-dot" style="margin-right: 8px;"></span>Sustainable systems active</p>
+                </div>
+            </article>
+
+            <article class="col-md-8">
+                <div class="card-custom h-100">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <div>
+                            <p class="card-label mb-2">CITY INTELLIGENCE</p>
+                            <h2 class="fw-bold m-0" style="font-size: 28px;">EcoAssist <span style="color: var(--green);">✦</span></h2>
+                            <p class="text-secondary mt-2 mb-0" style="font-size: 14px;">A clear view of the city's most important sustainability signals.</p>
+                        </div>
+                        <span class="d-flex align-items-center justify-content-center border rounded-circle" style="width: 40px; height: 40px; font-size: 24px;">+</span>
+                    </div>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <a href="city-analytics.html" class="feature-item h-100">
+                                <span class="feature-icon energy-icon">⚡</span>
+                                <span class="feature-content">
+                                    <strong class="fs-6 mb-1">Energy Forecasting</strong>
+                                    <small class="text-secondary" style="font-size: 11px;">Renewable generation and demand</small>
+                                </span>
+                                <span class="feature-arrow ms-2">→</span>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="city-analytics.html" class="feature-item h-100">
+                                <span class="feature-icon air-icon">○</span>
+                                <span class="feature-content">
+                                    <strong class="fs-6 mb-1">Air Quality</strong>
+                                    <small class="text-secondary" style="font-size: 11px;">Current conditions across the city</small>
+                                </span>
+                                <span class="feature-arrow ms-2">→</span>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="city-analytics.html" class="feature-item h-100">
+                                <span class="feature-icon mobility-icon">↗</span>
+                                <span class="feature-content">
+                                    <strong class="fs-6 mb-1">Green Mobility</strong>
+                                    <small class="text-secondary" style="font-size: 11px;">Public transport and low-carbon travel</small>
+                                </span>
+                                <span class="feature-arrow ms-2">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="col-md-6">
+                <div class="card-custom h-100">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <div>
+                            <p class="card-label mb-2">CITY PERFORMANCE</p>
+                            <h2 class="fw-bold m-0" style="font-size: 28px;">This month</h2>
+                        </div>
+                        <a href="city-analytics.html" class="text-decoration-none fw-semibold" style="font-size: 13px; color: var(--ink);">View report →</a>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+                        <div class="d-flex align-items-center gap-4">
+                            <div>
+                                <strong class="d-block" style="font-size: 15px;">Renewable energy</strong>
+                                <span class="text-secondary d-block mt-1" style="font-size: 12px;">Share of city generation</span>
+                            </div>
+                            <span class="fw-bold" style="font-size: 20px;">72% <small style="color: var(--green); font-size: 12px; margin-left: 4px;">+8%</small></span>
+                        </div>
+                        <div class="line-chart green-chart">
+                            <span class="chart-line"></span>
+                            <span class="chart-dot dot-one"></span>
+                            <span class="chart-dot dot-two"></span>
+                            <span class="chart-dot dot-three"></span>
+                            <span class="chart-dot dot-four"></span>
+                            <span class="chart-dot dot-five"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center pt-2">
+                        <div class="d-flex align-items-center gap-4">
+                            <div>
+                                <strong class="d-block" style="font-size: 15px;">Air quality</strong>
+                                <span class="text-secondary d-block mt-1" style="font-size: 12px;">City-wide environmental index</span>
+                            </div>
+                            <span class="fw-bold" style="font-size: 20px; color: var(--blue);">84% <small style="color: var(--blue); font-size: 12px; margin-left: 4px;">+4%</small></span>
+                        </div>
+                        <div class="line-chart blue-chart">
+                            <span class="chart-line"></span>
+                            <span class="chart-dot dot-one"></span>
+                            <span class="chart-dot dot-two"></span>
+                            <span class="chart-dot dot-three"></span>
+                            <span class="chart-dot dot-four"></span>
+                            <span class="chart-dot dot-five"></span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="col-md-6">
+                <div class="card-custom h-100">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <div>
+                            <p class="card-label mb-2">CITY METRICS</p>
+                            <h2 class="fw-bold m-0" style="font-size: 28px;">Key indicators</h2>
+                        </div>
+                        <span class="fw-bold" style="font-size: 10px; color: var(--green); letter-spacing: 1px; border: 1px solid var(--green); padding: 4px 8px; border-radius: 4px;">LIVE</span>
+                    </div>
+                    
+                    <div class="row g-4 mt-2">
+                        <div class="col-6 metric">
+                            <span class="metric-icon">⚡</span>
+                            <div>
+                                <strong class="d-block" style="font-size: 18px;">72%</strong>
+                                <span class="text-secondary" style="font-size: 12px;">Renewable energy</span>
+                            </div>
+                        </div>
+                        <div class="col-6 metric">
+                            <span class="metric-icon blue-metric">○</span>
+                            <div>
+                                <strong class="d-block" style="font-size: 18px;">84</strong>
+                                <span class="text-secondary" style="font-size: 12px;">Air quality</span>
+                            </div>
+                        </div>
+                        <div class="col-6 metric">
+                            <span class="metric-icon green-metric">↗</span>
+                            <div>
+                                <strong class="d-block" style="font-size: 18px;">76%</strong>
+                                <span class="text-secondary" style="font-size: 12px;">Green mobility</span>
+                            </div>
+                        </div>
+                        <div class="col-6 metric">
+                            <span class="metric-icon blue-metric">≋</span>
+                            <div>
+                                <strong class="d-block" style="font-size: 18px;">68%</strong>
+                                <span class="text-secondary" style="font-size: 12px;">Water efficiency</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="col-12">
+                <div class="card-custom">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div>
+                            <p class="card-label mb-2">WEEKLY PERFORMANCE</p>
+                            <h2 class="fw-bold m-0" style="font-size: 28px;">Sustainability</h2>
+                        </div>
+                        <span class="fw-bold" style="font-size: 18px; color: var(--green);">+12%</span>
+                    </div>
+                    
+                    <div class="weekly-chart mb-4">
+                        <div class="bar-column">
+                            <span class="bar bar-light bar-1"></span>
+                            <small>Mon</small>
+                        </div>
+                        <div class="bar-column">
+                            <span class="bar bar-green bar-2"></span>
+                            <small>Tue</small>
+                        </div>
+                        <div class="bar-column">
+                            <span class="bar bar-green bar-3"></span>
+                            <small>Wed</small>
+                        </div>
+                        <div class="bar-column">
+                            <span class="bar bar-green bar-4"></span>
+                            <small>Thu</small>
+                        </div>
+                        <div class="bar-column">
+                            <span class="bar bar-green bar-5"></span>
+                            <small>Fri</small>
+                        </div>
+                        <div class="bar-column">
+                            <span class="bar bar-light bar-6"></span>
+                            <small>Sat</small>
+                        </div>
+                        <div class="bar-column today">
+                            <span class="bar bar-green bar-7"></span>
+                            <small>Today</small>
+                        </div>
+                    </div>
+                    
+                    <a href="city-analytics.html" class="d-flex align-items-center justify-content-between text-decoration-none fw-semibold border-top pt-3" style="color: var(--ink); font-size: 14px;">
+                        <span>View full report</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- FLOATING DOCK -->
+    <aside class="floating-dock d-flex flex-column gap-3">
+        <a href="index.html" class="dock-item dock-active d-flex align-items-center justify-content-center">▦</a>
+        <a href="city-analytics.html" class="dock-item d-flex align-items-center justify-content-center">◉</a>
+        <a href="resources.html" class="dock-item d-flex align-items-center justify-content-center">↗</a>
+        <a href="alerts.html" class="dock-item d-flex align-items-center justify-content-center">⚙</a>
+    </aside>
+
+</div>
+</body>
+</html>

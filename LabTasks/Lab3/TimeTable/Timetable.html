@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timetable — BSCS-V-A</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    .cls:hover { background: #e4ddd0 !important; }
+    .cls.lab:hover { background: #dce1d8 !important; }
+    .cls.lab .name::after { content: ' — LAB'; font-size: 0.65rem; font-weight: 600; color: #4a7a42; }
+    .overlay { display: none; }
+    .overlay:target { display: flex !important; }
+    @media print {
+      body { background: #fff !important; padding: 0 !important; }
+      .overlay { display: none !important; }
+      .table-wrap { border: 1px solid #000; }
+      thead th { background: #333 !important; color: #fff !important; }
+      .cls { border-left-color: #333 !important; background: transparent !important; }
+    }
+  </style>
+</head>
+
+<body style="background:#f5f0e6;color:#1a1a1a;padding:30px 20px;">
+
+  <div class="mx-auto" style="max-width:1300px;">
+    <header class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h1 class="fw-bold mb-0" style="font-size:1.4rem;color:#2d5a27;">BSCS-V-A <span class="fw-normal" style="font-size:0.85rem;color:#6b7c68;margin-left:8px;">Shift-I</span></h1>
+        <p class="mb-0" style="font-size:0.82rem;color:#6b7c68;margin-top:2px;">Air University — Department of CS — 5th Semester</p>
+      </div>
+    </header>
+
+    <div class="table-wrap overflow-auto border rounded-2" style="border-color:#c8c1b4!important;background:#fdfbf7;">
+      <table class="table table-bordered mb-0 w-100" style="min-width:840px;border-collapse:collapse;">
+        <thead>
+          <tr>
+            <th class="text-center fw-semibold" style="background:#2d5a27;color:#f5f0e6;font-size:0.78rem;padding:12px 6px;border-right:1px solid #3d6e36;width:70px;">Day</th>
+            <th class="text-center fw-semibold" style="background:#2d5a27;color:#f5f0e6;font-size:0.78rem;padding:12px 6px;border-right:1px solid #3d6e36;">08 – 09</th>
+            <th class="text-center fw-semibold" style="background:#2d5a27;color:#f5f0e6;font-size:0.78rem;padding:12px 6px;border-right:1px solid #3d6e36;">09 – 10</th>
+            <th class="text-center fw-semibold" style="background:#2d5a27;color:#f5f0e6;font-size:0.78rem;padding:12px 6px;border-right:1px solid #3d6e36;">10 – 11</th>
+            <th class="text-center fw-semibold" style="background:#2d5a27;color:#f5f0e6;font-size:0.78rem;padding:12px 6px;border-right:1px solid #3d6e36;">11 – 12</th>
+            <th class="text-center fw-semibold" style="background:#2d5a27;color:#f5f0e6;font-size:0.78rem;padding:12px 6px;border-right:1px solid #3d6e36;">12 – 01</th>
+            <th class="text-center fw-semibold" style="background:#2d5a27;color:#f5f0e6;font-size:0.78rem;padding:12px 6px;border-right:1px solid #3d6e36;">01 – 02</th>
+            <th class="text-center fw-semibold" style="background:#2d5a27;color:#f5f0e6;font-size:0.78rem;padding:12px 6px;">02 – 03</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- MONDAY -->
+          <tr>
+            <td class="text-center align-middle fw-bold" style="background:#eae5da;font-size:1.1rem;color:#2d5a27;width:70px;border-right:2px solid #c8c1b4;border-color:#ddd7cc;">Mo<small class="d-block fw-medium text-uppercase" style="font-size:0.65rem;color:#6b7c68;margin-top:2px;">Monday</small></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-mo-1" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Artificial Intelligence</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Ms Maryam Wardah</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">C-205</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-mo-2" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Operating Systems</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Ms Warda Aslam / Ms Eeman Fatima</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">Lecture Hall 01</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-mo-3" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Design & Analysis of Algorithms</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Mr M. Junaid Nazar</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">C-202</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-mo-4" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Linear Algebra</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Dr Waqas Sarwar Abbasi</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">C-301</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><div class="d-flex align-items-center justify-content-center h-100" style="color:#c8c1b4;font-size:0.75rem;">—</div></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-mo-6" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Intro to Management</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Ms Ayesha Munir</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">C-303</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><div class="d-flex align-items-center justify-content-center h-100" style="color:#c8c1b4;font-size:0.75rem;">—</div></td>
+          </tr>
+
+          <!-- TUESDAY -->
+          <tr>
+            <td class="text-center align-middle fw-bold" style="background:#eae5da;font-size:1.1rem;color:#2d5a27;width:70px;border-right:2px solid #c8c1b4;border-color:#ddd7cc;">Tu<small class="d-block fw-medium text-uppercase" style="font-size:0.65rem;color:#6b7c68;margin-top:2px;">Tuesday</small></td>
+            <td colspan="3" style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-tu-1" class="cls lab d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #1a4015;background:#e7ebe3;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Artificial Intelligence</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Ms Maryam Wardah</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">Lab 5 A Block</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><div class="d-flex align-items-center justify-content-center h-100" style="color:#c8c1b4;font-size:0.75rem;">—</div></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-tu-5" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Linear Algebra</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Dr Waqas Sarwar Abbasi</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">C-203</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-tu-6" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Design & Analysis of Algorithms</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Mr M. Junaid Nazar</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">C-302</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-tu-7" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Operating Systems</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Ms Warda Aslam / Ms Eeman Fatima</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">Lecture Hall 01</span></a></td>
+          </tr>
+
+          <!-- WEDNESDAY -->
+          <tr>
+            <td class="text-center align-middle fw-bold" style="background:#eae5da;font-size:1.1rem;color:#2d5a27;width:70px;border-right:2px solid #c8c1b4;border-color:#ddd7cc;">We<small class="d-block fw-medium text-uppercase" style="font-size:0.65rem;color:#6b7c68;margin-top:2px;">Wednesday</small></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-we-1" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Design & Analysis of Algorithms</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Mr M. Junaid Nazar</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">C-302</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><div class="d-flex align-items-center justify-content-center h-100" style="color:#c8c1b4;font-size:0.75rem;">—</div></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><div class="d-flex align-items-center justify-content-center h-100" style="color:#c8c1b4;font-size:0.75rem;">—</div></td>
+            <td colspan="3" style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-we-4" class="cls lab d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #1a4015;background:#e7ebe3;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Operating Systems</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Ms Warda Aslam</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">Lab 13 C Block (3rd Floor)</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-we-7" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Full Stack Web Dev</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Mr Hafiz Obiad / Mr Asim Ali</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">Lecture Hall 01</span></a></td>
+          </tr>
+
+          <!-- THURSDAY -->
+          <tr>
+            <td class="text-center align-middle fw-bold" style="background:#eae5da;font-size:1.1rem;color:#2d5a27;width:70px;border-right:2px solid #c8c1b4;border-color:#ddd7cc;">Th<small class="d-block fw-medium text-uppercase" style="font-size:0.65rem;color:#6b7c68;margin-top:2px;">Thursday</small></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><div class="d-flex align-items-center justify-content-center h-100" style="color:#c8c1b4;font-size:0.75rem;">—</div></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-th-2" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Artificial Intelligence</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Ms Maryam Wardah</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">C-202</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><div class="d-flex align-items-center justify-content-center h-100" style="color:#c8c1b4;font-size:0.75rem;">—</div></td>
+            <td colspan="3" style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-th-4" class="cls lab d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #1a4015;background:#e7ebe3;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Full Stack Web Development</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Mr Hafiz Obiad Ullah Khan</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">Lab 5 A Block</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-th-7" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Full Stack Web Dev</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Mr Hafiz Obiad / Mr Asim Ali</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">Lecture Hall 01</span></a></td>
+          </tr>
+
+          <!-- FRIDAY -->
+          <tr>
+            <td class="text-center align-middle fw-bold" style="background:#eae5da;font-size:1.1rem;color:#2d5a27;width:70px;border-right:2px solid #c8c1b4;border-color:#ddd7cc;">Fr<small class="d-block fw-medium text-uppercase" style="font-size:0.65rem;color:#6b7c68;margin-top:2px;">Friday</small></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><div class="d-flex align-items-center justify-content-center h-100" style="color:#c8c1b4;font-size:0.75rem;">—</div></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><div class="d-flex align-items-center justify-content-center h-100" style="color:#c8c1b4;font-size:0.75rem;">—</div></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-fr-3" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Intro to Management</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Ms Ayesha Munir</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">C-302</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-fr-4" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Linear Algebra</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Dr Waqas Sarwar Abbasi</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">C-301</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><a href="#m-fr-5" class="cls d-flex flex-column justify-content-between h-100 p-2 rounded-1 text-decoration-none" style="border-left:3px solid #2d5a27;background:#f0ebe0;color:inherit;"><span class="name fw-bold" style="font-size:0.8rem;color:#2d5a27;line-height:1.2;">Advisory Class</span><span class="teacher" style="font-size:0.68rem;color:#6b7c68;margin-top:3px;line-height:1.2;">Ms Eeman Fatima</span><span class="room fw-semibold" style="font-size:0.68rem;color:#8a7e6e;margin-top:auto;padding-top:6px;">C-202</span></a></td>
+            <td style="border-color:#ddd7cc;padding:5px;vertical-align:top;height:100px;background:#fdfbf7;"><div class="d-flex align-items-center justify-content-center h-100" style="color:#c8c1b4;font-size:0.75rem;">—</div></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
