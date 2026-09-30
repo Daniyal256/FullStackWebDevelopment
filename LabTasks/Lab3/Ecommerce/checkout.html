@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopEase — Checkout</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+  :root {
+    --p: #ea580c;
+    --pl: #fff7ed;
+    --nav-border: #fed7aa;
+    --body-bg: #fafaf9;
+    --card-border: #e7e5e4;
+    --footer-bg: #f5f5f4;
+  }
+  body { background: var(--body-bg); font-family: system-ui, -apple-system, sans-serif; color: #1c1917; }
+  .btn-p, a.btn-p, button.btn-p, label.btn-p { background-color: var(--p) !important; background: var(--p) !important; border-color: var(--p) !important; color: #fff !important; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .btn-p:hover, a.btn-p:hover, button.btn-p:hover, label.btn-p:hover, .btn-p:focus, a.btn-p:focus, button.btn-p:focus, label.btn-p:focus { background-color: #c2410c !important; background: #c2410c !important; border-color: #c2410c !important; color: #fff !important; text-decoration: none; }
+  .form-control:focus, .form-select:focus { border-color: var(--p); box-shadow: 0 0 0 3px rgba(234,88,12,.12); }
+  .step-circle { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .85rem; font-weight: 700; flex-shrink: 0; }
+  .pay-opt { border: 1px solid #e7e5e4; border-radius: 10px; padding: 10px 14px; cursor: pointer; }
+  .pay-opt:has(input:checked) { border-color: var(--p); background: #fff7ed; }
+</style>
+</head>
+<body>
+
+<nav class="sticky-top py-3 bg-white shadow-sm" style="border-bottom:1px solid var(--nav-border);">
+  <div class="container d-flex align-items-center justify-content-between">
+    <a href="index.html" class="text-dark text-decoration-none fw-bold fs-5 d-flex align-items-center gap-2">
+      <i class="bi bi-bag-heart-fill" style="color:var(--p);"></i> ShopEase
+    </a>
+    <span class="text-secondary small d-flex align-items-center gap-2">
+      <i class="bi bi-shield-check text-success fs-5"></i> Secure SSL Checkout
+    </span>
+  </div>
+</nav>
+
+<main class="container py-5">
+  <div class="d-flex align-items-center justify-content-center mb-5 gap-2">
+    <div class="step-circle text-white" style="background:var(--p);">1</div>
+    <span class="fw-semibold small" style="color:var(--p);">Delivery</span>
+    <div style="width:40px;height:2px;background:#cbd5e1;" class="mx-1"></div>
+    <div class="step-circle border text-secondary" style="background:#fff;">2</div>
+    <span class="text-secondary fw-semibold small">Payment</span>
+    <div style="width:40px;height:2px;background:#cbd5e1;" class="mx-1"></div>
+    <div class="step-circle border text-secondary" style="background:#fff;">3</div>
+    <span class="text-secondary fw-semibold small">Review</span>
+  </div>
+
+  <div class="row g-4 align-items-start">
+    <div class="col-lg-7">
+      <div class="bg-white border rounded-3 shadow-sm p-4 mb-4" style="border-color:var(--card-border) !important;">
+        <h6 class="fw-bold mb-4">Delivery Information</h6>
+        <form action="review-order.html" method="GET">
+          <div class="mb-3">
+            <label class="form-label fw-semibold small" for="fn">Full Name</label>
+            <input type="text" id="fn" name="fullname" class="form-control" value="Ali Hassan" placeholder="e.g. Ali Hassan" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold small" for="ph">Phone Number</label>
+            <input type="tel" id="ph" name="phone" class="form-control" value="+92 300 0000000" placeholder="+92 300 0000000" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold small" for="ad">Delivery Address</label>
+            <input type="text" id="ad" name="address" class="form-control" value="House 12, Street 4, Sector F-7" placeholder="House / Street / Area" required>
+          </div>
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold small" for="ct">City</label>
+              <select id="ct" name="city" class="form-select" required>
+                <option value="Islamabad" selected>Islamabad</option>
+                <option value="Lahore">Lahore</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Rawalpindi">Rawalpindi</option>
+                <option value="Peshawar">Peshawar</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold small" for="pc">Postal Code (Optional)</label>
+              <input type="text" id="pc" name="postal" class="form-control" value="44000">
+            </div>
+          </div>
+
+          <h6 class="fw-bold mb-3 pt-2 border-top">Payment Option</h6>
+          <div class="row g-3 mb-4">
+            <div class="col-sm-6">
+              <label class="pay-opt d-flex align-items-center gap-2 w-100 h-100">
+                <input type="radio" name="paymethod" value="COD" checked style="accent-color:var(--p);">
+                <div>
+                  <div class="fw-semibold small"><i class="bi bi-cash me-1"></i>Cash on Delivery</div>
+                  <div class="text-secondary" style="font-size:.72rem;">Pay cash when order arrives</div>
+                </div>
+              </label>
+            </div>
+            <div class="col-sm-6">
+              <label class="pay-opt d-flex align-items-center gap-2 w-100 h-100">
+                <input type="radio" name="paymethod" value="Online" style="accent-color:var(--p);">
+                <div>
+                  <div class="fw-semibold small"><i class="bi bi-credit-card me-1"></i>Card / Wallet</div>
+                  <div class="text-secondary" style="font-size:.72rem;">JazzCash, Easypaisa, Visa</div>
+                </div>
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-p w-100 fw-semibold py-2">Continue to Review Order <i class="bi bi-arrow-right ms-1"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="bg-white border rounded-3 shadow-sm overflow-hidden mb-3" style="border-color:var(--card-border) !important;">
+        <div class="px-4 py-3 fw-semibold border-bottom small" style="background:var(--pl);">Your Order (3 items)</div>
+        <div class="p-4">
+          <div class="d-flex align-items-center gap-3 py-2 border-bottom">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80" alt="Headphones" class="rounded-2 border flex-shrink-0" style="width:46px;height:46px;object-fit:cover;">
+            <div class="flex-grow-1"><div class="fw-semibold small">Wireless Headphones</div><div class="text-secondary" style="font-size:.74rem;">x1 · Black</div></div>
+            <span class="fw-semibold small">Rs. 8,999</span>
+          </div>
+          <div class="d-flex align-items-center gap-3 py-2 border-bottom">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=100&q=80" alt="Shoes" class="rounded-2 border flex-shrink-0" style="width:46px;height:46px;object-fit:cover;">
+            <div class="flex-grow-1"><div class="fw-semibold small">Running Shoes</div><div class="text-secondary" style="font-size:.74rem;">x1 · Size 42</div></div>
+            <span class="fw-semibold small">Rs. 4,499</span>
+          </div>
+          <div class="d-flex align-items-center gap-3 py-2 border-bottom">
+            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=100&q=80" alt="Backpack" class="rounded-2 border flex-shrink-0" style="width:46px;height:46px;object-fit:cover;">
+            <div class="flex-grow-1"><div class="fw-semibold small">Travel Backpack</div><div class="text-secondary" style="font-size:.74rem;">x1 · Slate</div></div>
+            <span class="fw-semibold small">Rs. 6,999</span>
+          </div>
+          <div class="mt-3">
+            <div class="d-flex justify-content-between small mb-2"><span class="text-secondary">Subtotal</span><span class="fw-semibold">Rs. 20,497</span></div>
+            <div class="d-flex justify-content-between small mb-2"><span class="text-secondary">Delivery</span><span class="fw-semibold text-success">Free</span></div>
+            <hr class="my-2">
+            <div class="d-flex justify-content-between fw-bold"><span>Total</span><span style="color:var(--p);">Rs. 20,497</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white border rounded-3 p-3 d-flex align-items-center gap-3 small text-secondary" style="border-color:var(--card-border) !important;">
+        <i class="bi bi-truck fs-4 flex-shrink-0" style="color:var(--p);"></i>
+        <div><strong class="text-dark">Nationwide Delivery:</strong> 2–4 days across Pakistan (Karachi, Lahore, Islamabad).</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer style="background:var(--footer-bg);border-top:1px solid var(--card-border);" class="pt-4 pb-3 mt-5 text-secondary">
+  <div class="container">
+    <div class="row g-4 mb-3">
+      <div class="col-lg-4 col-md-6">
+        <a href="index.html" class="text-dark text-decoration-none fw-bold fs-5 d-flex align-items-center gap-2 mb-2">
+          <i class="bi bi-bag-heart-fill" style="color:var(--p);"></i> ShopEase
+        </a>
+        <p class="small mb-2">Pakistan's preferred online store. Authentic products &amp; fast nationwide delivery.</p>
+        <span class="small text-dark fw-semibold"><i class="bi bi-shield-check text-success me-1"></i>100% Authentic Guarantee</span>
+      </div>
+      <div class="col-6 col-lg-2 col-md-3">
+        <h6 class="fw-bold text-dark text-uppercase small mb-2">Quick Links</h6>
+        <ul class="list-unstyled small d-flex flex-column gap-1 mb-0">
+          <li><a href="index.html" class="text-secondary text-decoration-none">Home</a></li>
+          <li><a href="index.html#popular" class="text-secondary text-decoration-none">Shop Products</a></li>
+          <li><a href="cart.html" class="text-secondary text-decoration-none">My Cart (3)</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-3 col-md-3">
+        <h6 class="fw-bold text-dark text-uppercase small mb-2">Customer Care</h6>
+        <ul class="list-unstyled small d-flex flex-column gap-1 mb-0">
+          <li><a href="checkout.html" class="text-secondary text-decoration-none">Checkout / Track</a></li>
+          <li><span class="text-secondary">Cash on Delivery (COD)</span></li>
+          <li><span class="text-secondary">7-Day Easy Returns</span></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="fw-bold text-dark text-uppercase small mb-2">Contact &amp; Support</h6>
+        <div class="small d-flex flex-column gap-1">
+          <div><i class="bi bi-whatsapp me-2" style="color:var(--p);"></i>+92 300 1234567</div>
+          <div><i class="bi bi-envelope me-2" style="color:var(--p);"></i>support@shopease.pk</div>
+          <div><i class="bi bi-geo-alt me-2" style="color:var(--p);"></i>Islamabad &amp; Karachi, Pakistan</div>
+        </div>
+      </div>
+    </div>
+    <hr style="border-color:#cbd5e1;" class="my-2">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 small">
+      <div>&copy; 2026 ShopEase Pakistan. All rights reserved.</div>
+      <div class="d-flex gap-2">
+        <span class="badge bg-white text-secondary border">COD</span>
+        <span class="badge bg-white text-secondary border">JazzCash</span>
+        <span class="badge bg-white text-secondary border">Easypaisa</span>
+        <span class="badge bg-white text-secondary border">Card</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

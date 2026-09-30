@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopEase — Modern Lifestyle Store Pakistan</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+  :root {
+    --p: #ea580c;
+    --pl: #fff7ed;
+    --nav-border: #fed7aa;
+    --body-bg: #fafaf9;
+    --card-border: #e7e5e4;
+    --footer-bg: #f5f5f4;
+  }
+  body { background: var(--body-bg); font-family: system-ui, -apple-system, sans-serif; color: #1c1917; }
+  .btn-p, a.btn-p, button.btn-p, label.btn-p { background-color: var(--p) !important; background: var(--p) !important; border-color: var(--p) !important; color: #fff !important; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .btn-p:hover, a.btn-p:hover, button.btn-p:hover, label.btn-p:hover, .btn-p:focus, a.btn-p:focus, button.btn-p:focus, label.btn-p:focus { background-color: #c2410c !important; background: #c2410c !important; border-color: #c2410c !important; color: #fff !important; text-decoration: none; }
+  .btn-op, a.btn-op, button.btn-op, label.btn-op { border: 1.5px solid var(--p) !important; color: var(--p) !important; background-color: transparent !important; border-radius: 8px; font-weight: 600; text-decoration: none; }
+  .btn-op:hover, a.btn-op:hover, button.btn-op:hover, label.btn-op:hover, .btn-op:focus, a.btn-op:focus, button.btn-op:focus, label.btn-op:focus { background-color: var(--pl) !important; background: var(--pl) !important; border-color: var(--p) !important; color: var(--p) !important; text-decoration: none; }
+  .pcard { background: #fff; border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
+  .pcard:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.07); }
+  .pcard-img-wrap { overflow: hidden; position: relative; background: #f5f5f4; }
+  .pcard img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .pcard:hover img { transform: scale(1.07); }
+  .badge-tag { position: absolute; top: 10px; left: 10px; font-size: 0.7rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; text-transform: uppercase; }
+  .cat-card { border-radius: 14px; overflow: hidden; border: 1px solid var(--card-border); background: #fff; transition: transform 0.2s; }
+  .cat-card:hover { transform: translateY(-3px); }
+  .cat-card img { width: 100%; height: 150px; object-fit: cover; }
+  .popup-overlay { display: none; position: fixed; inset: 0; background: rgba(15,23,42,.5); z-index: 1060; place-items: center; }
+  body:has(#c1:checked) #pop1, body:has(#c2:checked) #pop2 { display: grid; }
+  .popup-box { background: #fff; border-radius: 14px; padding: 24px; max-width: 360px; width: 92%; position: relative; }
+  .stars { color: #f59e0b; }
+  .rev-card { background: #fff; border: 1px solid var(--card-border); border-radius: 14px; padding: 20px; }
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="c1" class="visually-hidden">
+<input type="checkbox" id="c2" class="visually-hidden">
+
+<div class="py-2 text-center small fw-semibold text-white" style="background:#c2410c;font-size:0.78rem;">
+  <i class="bi bi-truck me-1"></i> Free Shipping on orders over Rs. 2,000 across Pakistan &nbsp;|&nbsp; Cash on Delivery Available
+</div>
+
+<nav class="sticky-top py-3 bg-white shadow-sm" style="border-bottom:1px solid var(--nav-border);">
+  <div class="container d-flex align-items-center gap-3">
+    <a href="index.html" class="text-dark text-decoration-none fw-bold fs-5 me-auto d-flex align-items-center gap-2">
+      <i class="bi bi-bag-heart-fill" style="color:var(--p);"></i> ShopEase
+    </a>
+    <div class="d-none d-lg-flex gap-4">
+      <a href="#hero" class="text-dark text-decoration-none small fw-semibold">Home</a>
+      <a href="#categories" class="text-secondary text-decoration-none small fw-medium">Collections</a>
+      <a href="#featured-deal" class="text-secondary text-decoration-none small fw-medium">Deal of Week</a>
+      <a href="#popular" class="text-secondary text-decoration-none small fw-medium">Products</a>
+      <a href="#story" class="text-secondary text-decoration-none small fw-medium">Our Story</a>
+      <a href="#reviews" class="text-secondary text-decoration-none small fw-medium">Reviews</a>
+    </div>
+    <input type="text" class="form-control form-control-sm d-none d-md-block bg-light" placeholder="Search gear, gadgets…" style="width:180px;border-color:var(--nav-border);">
+    <a href="cart.html" class="text-dark text-decoration-none position-relative me-1" title="View Cart">
+      <i class="bi bi-bag fs-5"></i>
+      <span class="position-absolute translate-middle badge rounded-pill text-white" style="background:var(--p);font-size:.55rem;top:0;left:100%;">3</span>
+    </a>
+    <a href="login.html" class="text-secondary text-decoration-none fs-5"><i class="bi bi-person-circle"></i></a>
+  </div>
+</nav>
+
+<section id="hero" class="py-5" style="background:linear-gradient(180deg,var(--pl) 0%,var(--body-bg) 100%);">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill mb-3 border bg-white shadow-sm">
+          <i class="bi bi-award-fill" style="color:var(--p);"></i>
+          <span class="small fw-bold text-dark">Designed for Everyday Living in Pakistan</span>
+        </div>
+        <h1 class="fw-extrabold display-5 mb-3" style="font-weight:800;line-height:1.15;letter-spacing:-0.5px;">
+          Curated Essentials.<br><span style="color:var(--p);">Zero Compromise.</span>
+        </h1>
+        <p class="text-secondary lead fs-6 mb-4 pe-lg-3">
+          High-performance electronics, active footwear, and weather-resistant travel gear without inflated import markups. Lab-tested and shipped directly across Pakistan with Cash on Delivery.
+        </p>
+        <div class="d-flex gap-3 flex-wrap mb-4">
+          <a href="#popular" class="btn btn-p px-4 py-2.5 shadow-sm">Explore Collection <i class="bi bi-arrow-down-short ms-1"></i></a>
+          <a href="#story" class="btn btn-op px-4 py-2.5">Read Our Story</a>
+        </div>
+        <div class="row g-3 pt-3 border-top" style="border-color:#e7e5e4;">
+          <div class="col-4"><div class="fw-bold fs-5 text-dark">50,000+</div><div class="text-secondary" style="font-size:0.75rem;">Orders Delivered</div></div>
+          <div class="col-4 border-start ps-3" style="border-color:#e7e5e4;"><div class="fw-bold fs-5 text-dark">4.8 / 5.0</div><div class="text-secondary" style="font-size:0.75rem;">Verified Rating</div></div>
+          <div class="col-4 border-start ps-3" style="border-color:#e7e5e4;"><div class="fw-bold fs-5 text-dark">Free COD</div><div class="text-secondary" style="font-size:0.75rem;">Nationwide Delivery</div></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="position-relative">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&q=80" alt="Showcase" class="img-fluid rounded-4 shadow-lg w-100" style="max-height:400px;object-fit:cover;">
+          <div class="position-absolute bottom-0 start-0 m-3 p-3 bg-white rounded-3 shadow-lg border d-none d-sm-flex align-items-center gap-3" style="max-width:260px;">
+            <div class="rounded-circle d-flex align-items-center justify-content-center text-white" style="width:40px;height:40px;background:var(--p);flex-shrink:0;">
+              <i class="bi bi-lightning-charge-fill"></i>
+            </div>
+            <div class="small"><div class="fw-bold text-dark">2–3 Days Fast Dispatch</div><div class="text-secondary" style="font-size:0.74rem;">Karachi, Lahore, Islamabad &amp; all cities</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-4 bg-white border-top border-bottom">
+  <div class="container">
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3"><i class="bi bi-shield-check fs-3 d-block mb-1" style="color:var(--p);"></i><h6 class="fw-bold mb-1 text-dark">100% Genuine</h6><p class="text-secondary small mb-0">Certified makers</p></div>
+      <div class="col-6 col-md-3"><i class="bi bi-cash-stack fs-3 d-block mb-1" style="color:var(--p);"></i><h6 class="fw-bold mb-1 text-dark">Cash on Delivery</h6><p class="text-secondary small mb-0">Pay at doorstep</p></div>
+      <div class="col-6 col-md-3"><i class="bi bi-arrow-repeat fs-3 d-block mb-1" style="color:var(--p);"></i><h6 class="fw-bold mb-1 text-dark">7-Day Returns</h6><p class="text-secondary small mb-0">Hassle-free policy</p></div>
+      <div class="col-6 col-md-3"><i class="bi bi-whatsapp fs-3 d-block mb-1" style="color:var(--p);"></i><h6 class="fw-bold mb-1 text-dark">WhatsApp Support</h6><p class="text-secondary small mb-0">+92 300 1234567</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="categories" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="fw-bold small text-uppercase" style="color:var(--p);letter-spacing:0.8px;">Curated Collections</span>
+      <h2 class="fw-bold fs-3 text-dark">Shop by Lifestyle</h2>
+      <p class="text-secondary small">Engineered gear designed specifically for your routine.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="cat-card h-100 p-3">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80" alt="Audio" class="rounded-3 mb-3">
+          <h6 class="fw-bold text-dark mb-1">Studio &amp; Audio</h6>
+          <p class="text-secondary small mb-2">Noise-cancelling headphones &amp; earbuds</p>
+          <a href="#popular" class="small fw-semibold text-decoration-none" style="color:var(--p);">Browse Audio &rarr;</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="cat-card h-100 p-3">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" alt="Wearables" class="rounded-3 mb-3">
+          <h6 class="fw-bold text-dark mb-1">Smart Wearables</h6>
+          <p class="text-secondary small mb-2">Health tracking &amp; AMOLED displays</p>
+          <a href="#popular" class="small fw-semibold text-decoration-none" style="color:var(--p);">Browse Watches &rarr;</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="cat-card h-100 p-3">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80" alt="Footwear" class="rounded-3 mb-3">
+          <h6 class="fw-bold text-dark mb-1">Active Footwear</h6>
+          <p class="text-secondary small mb-2">Breathable running sneakers</p>
+          <a href="#popular" class="small fw-semibold text-decoration-none" style="color:var(--p);">Browse Footwear &rarr;</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="cat-card h-100 p-3">
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80" alt="Travel" class="rounded-3 mb-3">
+          <h6 class="fw-bold text-dark mb-1">Urban Travel</h6>
+          <p class="text-secondary small mb-2">Water-resistant packs &amp; accessories</p>
+          <a href="#popular" class="small fw-semibold text-decoration-none" style="color:var(--p);">Browse Gear &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="featured-deal" class="py-5 bg-white border-top border-bottom">
+  <div class="container">
+    <div class="p-4 p-lg-5 rounded-4 border shadow-sm" style="background:var(--pl);border-color:var(--nav-border);">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <span class="badge px-3 py-1.5 rounded-pill mb-2 fw-bold text-uppercase" style="background:var(--p);color:#fff;font-size:0.7rem;">
+            Deal of the Week &middot; 25% Off
+          </span>
+          <h2 class="fw-bold text-dark mb-2">Wireless Noise-Cancelling Headphones</h2>
+          <p class="text-secondary small mb-3">Dual-mic Active Noise Cancellation, 40-hour playtime, and ultra-soft memory foam ear cushions.</p>
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <span class="fs-3 fw-bold" style="color:var(--p);">Rs. 8,999</span>
+            <span class="text-secondary text-decoration-line-through small">Rs. 11,999</span>
+            <span class="badge bg-success small">Save Rs. 3,000</span>
+          </div>
+          <div class="d-flex gap-3 flex-wrap">
+            <label for="c1" class="btn btn-p px-4 py-2" style="cursor:pointer;">Claim Deal &amp; Add to Cart</label>
+            <a href="cart.html" class="btn btn-op px-4 py-2">Go to Cart</a>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700&q=80" alt="Spotlight" class="img-fluid rounded-4 shadow" style="max-height:340px;object-fit:cover;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="popular" class="py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2">
+      <div>
+        <span class="fw-bold small text-uppercase" style="color:var(--p);letter-spacing:0.8px;">Trending This Week</span>
+        <h2 class="fw-bold fs-3 mb-0 text-dark">Popular Products</h2>
+      </div>
+      <a href="cart.html" class="btn btn-op btn-sm px-3">View Cart (3)</a>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="pcard h-100 d-flex flex-column justify-content-between">
+          <div class="pcard-img-wrap"><span class="badge-tag bg-dark text-white">Best Seller</span><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&q=80" alt="Headphones"></div>
+          <div class="p-3">
+            <div class="fw-bold small text-dark mb-1">Wireless Headphones</div>
+            <div class="text-secondary" style="font-size:0.75rem;">Studio sound &middot; 40h battery</div>
+            <div class="stars small my-2">★★★★★ <span class="text-secondary" style="font-size:0.72rem;">(48)</span></div>
+            <div class="pt-2 border-top d-flex align-items-center justify-content-between">
+              <span class="fw-bold" style="color:var(--p);">Rs. 8,999</span>
+              <label for="c1" class="btn btn-p btn-sm px-3" style="cursor:pointer;">Add</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="pcard h-100 d-flex flex-column justify-content-between">
+          <div class="pcard-img-wrap"><span class="badge-tag text-white" style="background:var(--p);">Featured</span><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&q=80" alt="Watch"></div>
+          <div class="p-3">
+            <div class="fw-bold small text-dark mb-1">Smart Watch Pro</div>
+            <div class="text-secondary" style="font-size:0.75rem;">AMOLED &middot; Heart sensor</div>
+            <div class="stars small my-2">★★★★☆ <span class="text-secondary" style="font-size:0.72rem;">(32)</span></div>
+            <div class="pt-2 border-top d-flex align-items-center justify-content-between">
+              <span class="fw-bold" style="color:var(--p);">Rs. 13,500</span>
+              <label for="c2" class="btn btn-p btn-sm px-3" style="cursor:pointer;">Add</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="pcard h-100 d-flex flex-column justify-content-between">
+          <div class="pcard-img-wrap"><span class="badge-tag bg-success text-white">Popular</span><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80" alt="Shoes"></div>
+          <div class="p-3">
+            <div class="fw-bold small text-dark mb-1">Running Shoes Pro</div>
+            <div class="text-secondary" style="font-size:0.75rem;">Breathable mesh &middot; Cushioned</div>
+            <div class="stars small my-2">★★★★★ <span class="text-secondary" style="font-size:0.72rem;">(67)</span></div>
+            <div class="pt-2 border-top d-flex align-items-center justify-content-between">
+              <span class="fw-bold" style="color:var(--p);">Rs. 4,499</span>
+              <a href="cart.html" class="btn btn-p btn-sm px-3">Add</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="pcard h-100 d-flex flex-column justify-content-between">
+          <div class="pcard-img-wrap"><span class="badge-tag bg-dark text-white">Travel</span><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80" alt="Backpack"></div>
+          <div class="p-3">
+            <div class="fw-bold small text-dark mb-1">Travel Backpack 35L</div>
+            <div class="text-secondary" style="font-size:0.75rem;">Waterproof nylon &middot; USB port</div>
+            <div class="stars small my-2">★★★★★ <span class="text-secondary" style="font-size:0.72rem;">(55)</span></div>
+            <div class="pt-2 border-top d-flex align-items-center justify-content-between">
+              <span class="fw-bold" style="color:var(--p);">Rs. 6,999</span>
+              <a href="cart.html" class="btn btn-p btn-sm px-3">Add</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="pcard h-100 d-flex flex-column justify-content-between">
+          <div class="pcard-img-wrap"><img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&q=80" alt="Glasses"></div>
+          <div class="p-3">
+            <div class="fw-bold small text-dark mb-1">Polarized Sunglasses</div>
+            <div class="text-secondary" style="font-size:0.75rem;">UV400 &middot; Metal frame</div>
+            <div class="stars small my-2">★★★★☆ <span class="text-secondary" style="font-size:0.72rem;">(28)</span></div>
+            <div class="pt-2 border-top d-flex align-items-center justify-content-between">
+              <span class="fw-bold" style="color:var(--p);">Rs. 2,499</span>
+              <a href="cart.html" class="btn btn-p btn-sm px-3">Add</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="pcard h-100 d-flex flex-column justify-content-between">
+          <div class="pcard-img-wrap"><img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&q=80" alt="Perfume"></div>
+          <div class="p-3">
+            <div class="fw-bold small text-dark mb-1">Luxury Eau De Parfum</div>
+            <div class="text-secondary" style="font-size:0.75rem;">French essence &middot; 10h hold</div>
+            <div class="stars small my-2">★★★★★ <span class="text-secondary" style="font-size:0.72rem;">(41)</span></div>
+            <div class="pt-2 border-top d-flex align-items-center justify-content-between">
+              <span class="fw-bold" style="color:var(--p);">Rs. 3,999</span>
+              <a href="cart.html" class="btn btn-p btn-sm px-3">Add</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="pcard h-100 d-flex flex-column justify-content-between">
+          <div class="pcard-img-wrap"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500&q=80" alt="Sneakers"></div>
+          <div class="p-3">
+            <div class="fw-bold small text-dark mb-1">Urban Casual Sneakers</div>
+            <div class="text-secondary" style="font-size:0.75rem;">Ergonomic sole &middot; Daily wear</div>
+            <div class="stars small my-2">★★★★★ <span class="text-secondary" style="font-size:0.72rem;">(73)</span></div>
+            <div class="pt-2 border-top d-flex align-items-center justify-content-between">
+              <span class="fw-bold" style="color:var(--p);">Rs. 5,999</span>
+              <a href="cart.html" class="btn btn-p btn-sm px-3">Add</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="pcard h-100 d-flex flex-column justify-content-between">
+          <div class="pcard-img-wrap"><img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&q=80" alt="Earbuds"></div>
+          <div class="p-3">
+            <div class="fw-bold small text-dark mb-1">Wireless Earbuds Air</div>
+            <div class="text-secondary" style="font-size:0.75rem;">IPX5 sweatproof &middot; Touch</div>
+            <div class="stars small my-2">★★★★☆ <span class="text-secondary" style="font-size:0.72rem;">(19)</span></div>
+            <div class="pt-2 border-top d-flex align-items-center justify-content-between">
+              <span class="fw-bold" style="color:var(--p);">Rs. 3,299</span>
+              <a href="cart.html" class="btn btn-p btn-sm px-3">Add</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="story" class="py-5 bg-white border-top border-bottom">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="badge px-3 py-1.5 rounded-pill mb-2 fw-bold text-uppercase" style="background:var(--pl);color:var(--p);border:1px solid var(--p);font-size:0.7rem;">
+          Our Transparent Promise
+        </span>
+        <h2 class="fw-bold text-dark mb-3">Why Over 50,000 Pakistanis Shop With Us</h2>
+        <p class="text-secondary small mb-3" style="line-height:1.7;">
+          Shopping online shouldn't feel like a gamble. We partner directly with ISO-certified makers, verify every piece through our 8-point physical check, and dispatch directly from Karachi and Islamabad warehouses.
+        </p>
+        <div class="row g-3 pt-2">
+          <div class="col-sm-6"><div class="p-3 rounded-3 border bg-light"><div class="fw-bold small text-dark mb-1"><i class="bi bi-truck text-success me-1"></i>Tracked Dispatch</div><div class="text-secondary" style="font-size:0.75rem;">Courier tracking SMS on shipment</div></div></div>
+          <div class="col-sm-6"><div class="p-3 rounded-3 border bg-light"><div class="fw-bold small text-dark mb-1"><i class="bi bi-shield-check me-1" style="color:var(--p);"></i>Real 7-Day Returns</div><div class="text-secondary" style="font-size:0.75rem;">Easy return without disputes</div></div></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="p-4 rounded-4 shadow-sm border" style="background:var(--pl);border-color:var(--nav-border);">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="rounded-circle d-flex align-items-center justify-content-center text-white" style="width:44px;height:44px;background:var(--p);"><i class="bi bi-quote fs-4"></i></div>
+            <div><div class="fw-bold text-dark">Our Mission Statement</div><div class="text-secondary small">Authentic. Affordable. Accessible.</div></div>
+          </div>
+          <p class="text-secondary small fst-italic mb-3">"We founded ShopEase to deliver premium-grade lifestyle products at fair Pakistani prices without cutting corners on durability or customer care."</p>
+          <div class="fw-bold small text-dark">— Founders &amp; Quality Team, ShopEase</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span class="fw-bold small text-uppercase" style="color:var(--p);letter-spacing:0.8px;">Verified Feedback</span>
+      <h2 class="fw-bold fs-3 text-dark">Trusted Across Every City in Pakistan</h2>
+      <p class="text-secondary small">Real buyer stories from Karachi, Lahore, and Islamabad.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="rev-card h-100">
+          <div class="stars small mb-2">★★★★★</div>
+          <p class="text-secondary small mb-3">"Headphones arrived in Karachi within 48h. Crystal clear sound and battery lasts 3 work days. Impressed with the packaging!"</p>
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle text-white fw-bold d-flex align-items-center justify-content-center small" style="width:34px;height:34px;background:var(--p);">A</div>
+            <div><div class="fw-semibold small text-dark">Ahmed Raza</div><div class="text-secondary" style="font-size:0.72rem;">Karachi &middot; Verified Buyer</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="rev-card h-100">
+          <div class="stars small mb-2">★★★★★</div>
+          <p class="text-secondary small mb-3">"Smart watch syncs instantly with Android and iPhone. Looks like a 30k device for less than half. Very happy with Lahore delivery."</p>
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle text-white fw-bold d-flex align-items-center justify-content-center small" style="width:34px;height:34px;background:var(--p);">S</div>
+            <div><div class="fw-semibold small text-dark">Sara Khan</div><div class="text-secondary" style="font-size:0.72rem;">Lahore &middot; Verified Buyer</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="rev-card h-100">
+          <div class="stars small mb-2">★★★★★</div>
+          <p class="text-secondary small mb-3">"Running shoes are lightweight and cushioned for morning jogs in F-9 Islamabad. Cash on delivery was seamless."</p>
+          <div class="d-flex align-items-center gap-2">
+            <div class="rounded-circle text-white fw-bold d-flex align-items-center justify-content-center small" style="width:34px;height:34px;background:var(--p);">U</div>
+            <div><div class="fw-semibold small text-dark">Usman Malik</div><div class="text-secondary" style="font-size:0.72rem;">Islamabad &middot; Verified Buyer</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-white border-top border-bottom">
+  <div class="container text-center" style="max-width:580px;">
+    <div class="d-inline-flex p-3 rounded-circle mb-3" style="background:var(--pl);"><i class="bi bi-envelope-paper-heart fs-2" style="color:var(--p);"></i></div>
+    <h3 class="fw-bold text-dark mb-2">Join the ShopEase VIP Circle</h3>
+    <p class="text-secondary small mb-4">Subscribe for flash sale alerts and receive an instant Rs. 500 voucher on your next order.</p>
+    <div class="d-flex gap-2 justify-content-center">
+      <input type="email" class="form-control" placeholder="Enter your email address…" style="max-width:300px;border-color:var(--card-border);">
+      <button class="btn btn-p px-4">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<footer style="background:var(--footer-bg);border-top:1px solid var(--card-border);" class="pt-5 pb-3 text-secondary">
+  <div class="container">
+    <div class="row g-4 mb-4">
+      <div class="col-lg-4 col-md-6">
+        <a href="index.html" class="text-dark text-decoration-none fw-bold fs-5 d-flex align-items-center gap-2 mb-2">
+          <i class="bi bi-bag-heart-fill" style="color:var(--p);"></i> ShopEase
+        </a>
+        <p class="small mb-3">Pakistan's modern lifestyle store. Authentic electronics, functional travel gear, and active footwear delivered fast nationwide.</p>
+        <span class="small text-dark fw-semibold"><i class="bi bi-shield-check text-success me-1"></i>100% Genuine Guarantee</span>
+      </div>
+      <div class="col-6 col-lg-2 col-md-3">
+        <h6 class="fw-bold text-dark text-uppercase small mb-2">Collections</h6>
+        <ul class="list-unstyled small d-flex flex-column gap-1 mb-0">
+          <li><a href="#popular" class="text-secondary text-decoration-none">Audio &amp; Sound</a></li>
+          <li><a href="#popular" class="text-secondary text-decoration-none">Smart Watches</a></li>
+          <li><a href="#popular" class="text-secondary text-decoration-none">Running Shoes</a></li>
+          <li><a href="#popular" class="text-secondary text-decoration-none">Travel Backpacks</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-3 col-md-3">
+        <h6 class="fw-bold text-dark text-uppercase small mb-2">Customer Care</h6>
+        <ul class="list-unstyled small d-flex flex-column gap-1 mb-0">
+          <li><a href="cart.html" class="text-secondary text-decoration-none">View Cart (3)</a></li>
+          <li><a href="checkout.html" class="text-secondary text-decoration-none">Track Order</a></li>
+          <li><span class="text-secondary">Cash on Delivery (COD)</span></li>
+          <li><span class="text-secondary">7-Day Easy Returns</span></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h6 class="fw-bold text-dark text-uppercase small mb-2">Contact &amp; Support</h6>
+        <div class="small d-flex flex-column gap-1">
+          <div><i class="bi bi-whatsapp me-2" style="color:var(--p);"></i>+92 300 1234567</div>
+          <div><i class="bi bi-envelope me-2" style="color:var(--p);"></i>support@shopease.pk</div>
+          <div><i class="bi bi-geo-alt me-2" style="color:var(--p);"></i>Islamabad &amp; Karachi, Pakistan</div>
+        </div>
+      </div>
+    </div>
+    <hr style="border-color:#cbd5e1;" class="my-2">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 small">
+      <div>&copy; 2026 ShopEase Pakistan. All rights reserved.</div>
+      <div class="d-flex gap-2">
+        <span class="badge bg-white text-secondary border">Cash on Delivery</span>
+        <span class="badge bg-white text-secondary border">JazzCash</span>
+        <span class="badge bg-white text-secondary border">Easypaisa</span>
+        <span class="badge bg-white text-secondary border">Visa / Mastercard</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="popup-overlay" id="pop1">
+  <div class="popup-box shadow-lg">
+    <label for="c1" class="position-absolute top-0 end-0 m-3 text-secondary lh-1" style="cursor:pointer;font-size:1.5rem;">&times;</label>
+    <div class="d-flex align-items-center gap-2 mb-3"><i class="bi bi-check-circle-fill text-success fs-5"></i><span class="fw-semibold">Added to Cart!</span></div>
+    <div class="d-flex gap-3 align-items-center p-2 rounded-3 mb-3 border bg-light">
+      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&q=80" alt="Headphones" class="rounded-2" style="width:50px;height:50px;object-fit:cover;">
+      <div><div class="fw-semibold small">Wireless Headphones</div><div class="fw-bold small" style="color:var(--p);">Rs. 8,999</div></div>
+    </div>
+    <div class="d-grid gap-2">
+      <a href="cart.html" class="btn btn-p btn-sm">View Cart <i class="bi bi-arrow-right ms-1"></i></a>
+      <label for="c1" class="btn btn-op btn-sm" style="cursor:pointer;">Continue Shopping</label>
+    </div>
+  </div>
+</div>
+
+<div class="popup-overlay" id="pop2">
+  <div class="popup-box shadow-lg">
+    <label for="c2" class="position-absolute top-0 end-0 m-3 text-secondary lh-1" style="cursor:pointer;font-size:1.5rem;">&times;</label>
+    <div class="d-flex align-items-center gap-2 mb-3"><i class="bi bi-check-circle-fill text-success fs-5"></i><span class="fw-semibold">Added to Cart!</span></div>
+    <div class="d-flex gap-3 align-items-center p-2 rounded-3 mb-3 border bg-light">
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80" alt="Watch" class="rounded-2" style="width:50px;height:50px;object-fit:cover;">
+      <div><div class="fw-semibold small">Smart Watch Pro</div><div class="fw-bold small" style="color:var(--p);">Rs. 13,500</div></div>
+    </div>
+    <div class="d-grid gap-2">
+      <a href="cart.html" class="btn btn-p btn-sm">View Cart <i class="bi bi-arrow-right ms-1"></i></a>
+      <label for="c2" class="btn btn-op btn-sm" style="cursor:pointer;">Continue Shopping</label>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
