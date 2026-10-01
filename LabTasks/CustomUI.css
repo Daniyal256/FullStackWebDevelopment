@@ -1,0 +1,1672 @@
+/* =========================================================
+   ORBIT — MARS COLONY MISSION CONTROL
+   GLOBAL STYLES
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #07090d;
+    color: #e8edf3;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+::selection {
+    background: #ff4d24;
+    color: #fff;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+    --bg: #07090d;
+    --bg-soft: #0c1016;
+    --panel: #10151c;
+    --panel-light: #151b23;
+
+    --text: #e8edf3;
+    --muted: #7e8997;
+    --dim: #4c5663;
+
+    --orange: #ff5429;
+    --orange-light: #ff7652;
+
+    --green: #55d68a;
+    --blue: #55b8ff;
+
+    --border: rgba(255, 255, 255, 0.08);
+
+    --mono: "Space Mono", monospace;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.top-bar {
+    height: 32px;
+
+    padding: 0 4vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #05070a;
+
+    border-bottom: 1px solid var(--border);
+
+    color: var(--muted);
+
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.status-left,
+.status-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-center {
+    color: #66717e;
+}
+
+.divider {
+    margin: 0 8px;
+    color: #303741;
+}
+
+.live-dot,
+.status-indicator {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow: 0 0 10px var(--green);
+}
+
+.signal-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.signal-bars i {
+    width: 3px;
+    background: var(--green);
+}
+
+.signal-bars i:nth-child(1) {
+    height: 4px;
+}
+
+.signal-bars i:nth-child(2) {
+    height: 6px;
+}
+
+.signal-bars i:nth-child(3) {
+    height: 8px;
+}
+
+.signal-bars i:nth-child(4) {
+    height: 10px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar {
+    height: 82px;
+
+    padding: 0 5vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--border);
+
+    background: rgba(7, 9, 13, 0.9);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+
+    backdrop-filter: blur(15px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-mark {
+    width: 35px;
+    height: 35px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid var(--orange);
+
+    color: var(--orange);
+
+    font-family: var(--mono);
+    font-weight: bold;
+
+    transform: rotate(45deg);
+}
+
+.logo-mark::first-letter {
+    transform: rotate(-45deg);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.logo-text small {
+    margin-top: 2px;
+
+    font-family: var(--mono);
+    font-size: 7px;
+    font-weight: 400;
+
+    color: var(--muted);
+
+    letter-spacing: 1px;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 35px;
+}
+
+.navbar nav a {
+    position: relative;
+
+    color: var(--muted);
+
+    font-family: var(--mono);
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.navbar nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -9px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--orange);
+
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #fff;
+}
+
+.navbar nav a:hover::after {
+    width: 100%;
+}
+
+.nav-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    font-family: var(--mono);
+    font-size: 9px;
+
+    color: var(--green);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 780px;
+
+    padding: 100px 8vw;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(255, 84, 41, 0.08),
+            transparent 35%
+        );
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.02) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.02) 1px,
+            transparent 1px
+        );
+
+    background-size: 80px 80px;
+
+    mask-image: linear-gradient(
+        to right,
+        black,
+        transparent
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 650px;
+}
+
+.eyebrow,
+.section-number {
+    font-family: var(--mono);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: var(--orange);
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+.eyebrow span {
+    width: 30px;
+    height: 1px;
+
+    background: var(--orange);
+}
+
+.hero h1 {
+    font-size: clamp(50px, 6vw, 88px);
+
+    line-height: 0.92;
+
+    letter-spacing: -4px;
+
+    font-weight: 700;
+}
+
+.hero h1 strong {
+    display: block;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px #68717c;
+}
+
+.hero-description {
+    max-width: 520px;
+
+    margin-top: 35px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+
+    margin-top: 35px;
+}
+
+.btn {
+    padding: 15px 21px;
+
+    font-family: var(--mono);
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: var(--orange);
+
+    color: #fff;
+}
+
+.btn-primary span {
+    margin-left: 15px;
+}
+
+.btn-primary:hover {
+    background: var(--orange-light);
+
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    border: 1px solid var(--border);
+
+    color: var(--muted);
+}
+
+.btn-secondary:hover {
+    border-color: var(--orange);
+
+    color: #fff;
+}
+
+.mission-meta {
+    display: flex;
+
+    gap: 45px;
+
+    margin-top: 60px;
+}
+
+.mission-meta div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.mission-meta span {
+    color: var(--dim);
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+.mission-meta strong {
+    font-family: var(--mono);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   ORBIT VISUALIZATION
+========================================================= */
+
+.orbit-system {
+    height: 600px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orbit {
+    position: absolute;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 50%;
+}
+
+.earth-orbit {
+    width: 270px;
+    height: 270px;
+}
+
+.mars-orbit {
+    width: 520px;
+    height: 330px;
+
+    transform: rotate(-18deg);
+
+    border-color: rgba(255,84,41,0.12);
+}
+
+.earth {
+    width: 72px;
+    height: 72px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #76d6ff,
+            #15537d 55%,
+            #07131d
+        );
+
+    box-shadow:
+        0 0 45px rgba(50,160,255,0.3);
+
+    position: absolute;
+
+    left: 19%;
+    top: 38%;
+}
+
+.earth span {
+    position: absolute;
+
+    width: 25px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.25);
+
+    left: 20px;
+    top: 20px;
+
+    transform: rotate(-20deg);
+}
+
+.mars {
+    width: 88px;
+    height: 88px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ff9b70,
+            #9c301d 55%,
+            #35100a
+        );
+
+    box-shadow:
+        0 0 55px rgba(255,84,41,0.3);
+
+    position: absolute;
+
+    right: 13%;
+    top: 45%;
+}
+
+.mars span {
+    position: absolute;
+
+    width: 30px;
+    height: 10px;
+
+    background: rgba(50,10,5,0.4);
+
+    border-radius: 50%;
+
+    top: 35px;
+    left: 20px;
+
+    transform: rotate(25deg);
+}
+
+.spacecraft {
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow:
+        0 0 10px #fff,
+        0 0 25px var(--orange);
+
+    animation: spacecraftMove 8s linear infinite;
+}
+
+@keyframes spacecraftMove {
+
+    0% {
+        left: 28%;
+        top: 38%;
+    }
+
+    50% {
+        left: 53%;
+        top: 25%;
+    }
+
+    100% {
+        left: 74%;
+        top: 45%;
+    }
+}
+
+.craft-core {
+    display: block;
+}
+
+.trajectory-line {
+    width: 340px;
+    height: 130px;
+
+    position: absolute;
+
+    border-top: 1px dashed rgba(255,255,255,0.2);
+
+    transform: rotate(-17deg);
+}
+
+.distance-label {
+    position: absolute;
+
+    bottom: 70px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #fff;
+
+    font-family: var(--mono);
+    font-size: 13px;
+
+    text-align: center;
+}
+
+.distance-label small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--dim);
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+.orbit-label {
+    position: absolute;
+
+    font-family: var(--mono);
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+.earth-label {
+    top: 23%;
+    left: 16%;
+
+    color: var(--blue);
+}
+
+.mars-label {
+    right: 9%;
+    bottom: 31%;
+
+    color: var(--orange);
+}
+
+
+/* =========================================================
+   MISSION STRIP
+========================================================= */
+
+.mission-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    background: #090c11;
+}
+
+.strip-item {
+    padding: 25px 30px;
+
+    border-right: 1px solid var(--border);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.strip-item:last-child {
+    border-right: none;
+}
+
+.strip-item span {
+    color: var(--dim);
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+.strip-item strong {
+    font-family: var(--mono);
+
+    font-size: 12px;
+}
+
+.green-text {
+    color: var(--green) !important;
+}
+
+
+/* =========================================================
+   GENERAL SECTION
+========================================================= */
+
+.systems-section,
+.communications-section,
+.timeline-section {
+    padding: 130px 8vw;
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    margin-bottom: 60px;
+}
+
+.section-heading h2,
+.habitat-info h2 {
+    margin-top: 12px;
+
+    font-size: clamp(38px, 5vw, 65px);
+
+    line-height: 0.95;
+
+    letter-spacing: -3px;
+}
+
+.section-heading h2 span,
+.habitat-info h2 span {
+    color: transparent;
+
+    -webkit-text-stroke: 1px #69727d;
+}
+
+.section-heading > p {
+    color: var(--dim);
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   TELEMETRY
+========================================================= */
+
+.telemetry-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.telemetry-card {
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #11161d,
+            #0b0f14
+        );
+
+    border: 1px solid var(--border);
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.telemetry-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--orange);
+
+    transition: 0.4s;
+}
+
+.telemetry-card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(255,84,41,0.3);
+}
+
+.telemetry-card:hover::before {
+    width: 100%;
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+
+    font-family: var(--mono);
+    font-size: 8px;
+
+    color: var(--muted);
+}
+
+.card-status {
+    color: var(--green);
+}
+
+.card-icon {
+    margin-top: 45px;
+
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(255,84,41,0.3);
+
+    color: var(--orange);
+
+    font-size: 18px;
+}
+
+.metric {
+    margin-top: 20px;
+
+    font-size: 48px;
+
+    font-family: var(--mono);
+
+    letter-spacing: -4px;
+}
+
+.metric span {
+    font-size: 17px;
+
+    color: var(--orange);
+
+    margin-left: 4px;
+}
+
+.telemetry-card p {
+    margin-top: 3px;
+
+    color: var(--dim);
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+.progress {
+    height: 2px;
+
+    margin-top: 30px;
+
+    background: #202731;
+}
+
+.progress span {
+    display: block;
+
+    height: 100%;
+
+    background: var(--orange);
+
+    box-shadow: 0 0 8px rgba(255,84,41,0.5);
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 20px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid var(--border);
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+}
+
+.card-footer span {
+    color: var(--dim);
+}
+
+.card-footer strong {
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   HABITAT
+========================================================= */
+
+.habitat-section {
+    min-height: 700px;
+
+    padding: 100px 8vw;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 100px;
+
+    align-items: center;
+
+    background: #090c11;
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.habitat-visual {
+    height: 500px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 40px 40px;
+}
+
+.habitat-ring {
+    position: absolute;
+
+    border: 1px solid rgba(255,84,41,0.25);
+
+    border-radius: 50%;
+}
+
+.ring-one {
+    width: 280px;
+    height: 280px;
+}
+
+.ring-two {
+    width: 390px;
+    height: 390px;
+
+    border-style: dashed;
+
+    animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.habitat-core {
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    background:
+        radial-gradient(
+            circle,
+            #ff7652,
+            #7f2618
+        );
+
+    border: 2px solid rgba(255,255,255,0.5);
+
+    box-shadow:
+        0 0 60px rgba(255,84,41,0.35);
+
+    font-family: var(--mono);
+
+    font-size: 35px;
+}
+
+.habitat-node {
+    width: 35px;
+    height: 35px;
+
+    position: absolute;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid var(--orange);
+
+    background: #090c11;
+
+    color: var(--orange);
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+}
+
+.node-one {
+    top: 20%;
+    left: 25%;
+}
+
+.node-two {
+    top: 25%;
+    right: 20%;
+}
+
+.node-three {
+    bottom: 18%;
+    left: 48%;
+}
+
+.scan-line {
+    position: absolute;
+
+    width: 100%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--orange),
+        transparent
+    );
+
+    opacity: 0.5;
+
+    animation: scan 5s linear infinite;
+}
+
+@keyframes scan {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+.habitat-info > p {
+    max-width: 520px;
+
+    margin-top: 30px;
+
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    font-size: 14px;
+}
+
+.habitat-stats {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+
+    margin-top: 40px;
+}
+
+.habitat-stats div {
+    padding: 15px 0;
+
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.habitat-stats span {
+    font-family: var(--mono);
+
+    color: var(--dim);
+
+    font-size: 8px;
+}
+
+.habitat-stats strong {
+    font-family: var(--mono);
+
+    font-size: 11px;
+}
+
+.alert-box {
+    display: flex;
+    gap: 15px;
+
+    margin-top: 40px;
+
+    padding: 17px;
+
+    border: 1px solid rgba(255,84,41,0.25);
+
+    background: rgba(255,84,41,0.04);
+}
+
+.alert-icon {
+    width: 25px;
+    height: 25px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--orange);
+
+    color: #fff;
+
+    font-family: var(--mono);
+    font-weight: bold;
+}
+
+.alert-box strong {
+    font-family: var(--mono);
+
+    font-size: 9px;
+
+    color: var(--orange);
+}
+
+.alert-box p {
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   COMMUNICATIONS
+========================================================= */
+
+.comms-panel {
+    min-height: 300px;
+
+    padding: 60px;
+
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+
+    align-items: center;
+
+    position: relative;
+
+    border: 1px solid var(--border);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,84,41,0.04),
+            transparent 45%
+        );
+}
+
+.planet {
+    width: 80px;
+    height: 80px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    font-family: var(--mono);
+
+    font-size: 20px;
+}
+
+.earth-small {
+    background:
+        radial-gradient(
+            circle,
+            #3287bd,
+            #092133
+        );
+
+    box-shadow: 0 0 35px rgba(50,150,255,0.25);
+}
+
+.mars-small {
+    background:
+        radial-gradient(
+            circle,
+            #bd4a30,
+            #361009
+        );
+
+    box-shadow: 0 0 35px rgba(255,84,41,0.25);
+}
+
+.comms-line {
+    height: 1px;
+
+    position: relative;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            var(--orange) 0,
+            var(--orange) 4px,
+            transparent 4px,
+            transparent 10px
+        );
+}
+
+.signal-pulse {
+    width: 8px;
+    height: 8px;
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    box-shadow: 0 0 15px var(--orange);
+
+    animation: signal 4s linear infinite;
+}
+
+.delay-one {
+    animation-delay: 1.3s;
+}
+
+.delay-two {
+    animation-delay: 2.6s;
+}
+
+@keyframes signal {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+.comms-info {
+    position: absolute;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 50px;
+
+    white-space: nowrap;
+}
+
+.comms-info div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    text-align: center;
+}
+
+.comms-info span {
+    font-family: var(--mono);
+
+    color: var(--dim);
+
+    font-size: 7px;
+}
+
+.comms-info strong {
+    font-family: var(--mono);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.timeline {
+    max-width: 900px;
+
+    margin: auto;
+
+    position: relative;
+}
+
+.timeline::before {
+    content: "";
+
+    position: absolute;
+
+    left: 8px;
+    top: 0;
+    bottom: 0;
+
+    width: 1px;
+
+    background: var(--border);
+}
+
+.timeline-item {
+    display: grid;
+
+    grid-template-columns: 20px 1fr;
+
+    gap: 30px;
+
+    padding-bottom: 50px;
+
+    position: relative;
+}
+
+.timeline-marker {
+    width: 17px;
+    height: 17px;
+
+    margin-top: 3px;
+
+    border: 1px solid var(--dim);
+
+    background: var(--bg);
+
+    border-radius: 50%;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.timeline-item.completed .timeline-marker {
+    background: var(--green);
+
+    border-color: var(--green);
+
+    box-shadow: 0 0 15px rgba(85,214,138,0.4);
+}
+
+.timeline-item.active .timeline-marker {
+    background: var(--orange);
+
+    border-color: var(--orange);
+
+    box-shadow: 0 0 20px rgba(255,84,41,0.5);
+}
+
+.timeline-item span {
+    color: var(--dim);
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+.timeline-item h3 {
+    margin-top: 8px;
+
+    font-size: 17px;
+
+    letter-spacing: 0.5px;
+}
+
+.timeline-item p {
+    max-width: 600px;
+
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 60px 8vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-top: 1px solid var(--border);
+
+    background: #05070a;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.footer-logo span {
+    margin-top: 5px;
+
+    color: var(--dim);
+
+    font-family: var(--mono);
+
+    font-size: 7px;
+
+    font-weight: 400;
+}
+
+footer p,
+.footer-code {
+    color: var(--dim);
+
+    font-family: var(--mono);
+
+    font-size: 7px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .navbar nav {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        padding-top: 70px;
+    }
+
+    .orbit-system {
+        height: 500px;
+    }
+
+    .telemetry-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .habitat-section {
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+    }
+
+    .mission-strip {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .strip-item:nth-child(4),
+    .strip-item:nth-child(5) {
+        display: none;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .top-bar {
+        padding: 0 15px;
+    }
+
+    .status-center {
+        display: none;
+    }
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .nav-status {
+        display: none;
+    }
+
+    .hero {
+        padding: 70px 25px;
+
+        min-height: auto;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+    }
+
+    .mission-meta {
+        gap: 20px;
+
+        flex-wrap: wrap;
+    }
+
+    .orbit-system {
+        height: 400px;
+    }
+
+    .earth-orbit {
+        width: 200px;
+        height: 200px;
+    }
+
+    .mars-orbit {
+        width: 360px;
+        height: 230px;
+    }
+
+    .earth {
+        left: 14%;
+    }
+
+    .mars {
+        right: 5%;
+    }
+
+    .mission-strip {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .strip-item:nth-child(3) {
+        display: none;
+    }
+
+    .systems-section,
+    .communications-section,
+    .timeline-section {
+        padding: 90px 25px;
+    }
+
+    .section-heading {
+        display: block;
+    }
+
+    .section-heading > p {
+        margin-top: 20px;
+    }
+
+    .telemetry-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .habitat-section {
+        padding: 70px 25px;
+    }
+
+    .habitat-visual {
+        height: 350px;
+    }
+
+    .habitat-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .comms-panel {
+        padding: 35px 20px;
+
+        grid-template-columns: 60px 1fr 60px;
+    }
+
+    .planet {
+        width: 55px;
+        height: 55px;
+    }
+
+    .comms-info {
+        gap: 15px;
+
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .comms-info div:nth-child(3),
+    .comms-info div:nth-child(4) {
+        display: none;
+    }
+
+    footer {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 25px;
+    }
+}

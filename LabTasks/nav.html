@@ -1,0 +1,268 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .custom-navbar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 260px;
+            height: 100vh;
+
+            background: linear-gradient(
+                180deg,
+                #141e30,
+                #243b55,
+                #0f2027
+            );
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 25px 15px;
+            z-index: 1000;
+        }
+
+.custom-navbar .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.custom-navbar .navbar-brand {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.custom-navbar .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+}
+
+.custom-navbar .nav-link {
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.custom-navbar .nav-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #00e5ff;
+}
+
+.custom-navbar .nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: #00e5ff;
+}
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar ">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-code"></i> Bootstrap Tutorial
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#grid">
+                        Grid System
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#flexbox">
+                        Flexbox
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#components">
+                        Components
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link dropdown-toggle"
+                       href="#"
+                       role="button"
+                       data-bs-toggle="dropdown">
+                        More
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a class="dropdown-item" href="#buttons">
+                                Buttons
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="#cards">
+                                Cards
+                            </a>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="#media-queries">
+                                Media Queries
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bootstrap Sidebar</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark position-fixed top-0 start-0 vh-100 p-3"
+     style="
+        width: 260px;
+        background: linear-gradient(180deg, #141e30, #243b55, #0f2027);
+        z-index: 1000;
+     ">
+
+    <div class="container-fluid d-flex flex-column align-items-start p-0">
+
+        <!-- Logo -->
+        <a class="navbar-brand text-white fw-bold fs-5 mb-4" href="#">
+            <i class="fas fa-code"></i>
+            Bootstrap Tutorial
+        </a>
+
+        <!-- Navigation -->
+        <div class="w-100">
+
+            <ul class="navbar-nav d-flex flex-column gap-2 w-100">
+
+                <li class="nav-item">
+                    <a class="nav-link active px-3 py-2 rounded" href="#grid">
+                        Grid System
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link px-3 py-2 rounded" href="#flexbox">
+                        Flexbox
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link px-3 py-2 rounded" href="#components">
+                        Components
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link dropdown-toggle px-3 py-2 rounded"
+                       href="#"
+                       role="button"
+                       data-bs-toggle="dropdown">
+
+                        More
+
+                    </a>
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a class="dropdown-item" href="#buttons">
+                                Buttons
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="#cards">
+                                Cards
+                            </a>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="#media-queries">
+                                Media Queries
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
