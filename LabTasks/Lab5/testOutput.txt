@@ -1,0 +1,644 @@
+
+======== task1.js ========
+Processed applicants: [
+  {
+    id: 'A101',
+    name: 'Sara Khan',
+    program: 'BSCS',
+    age: 19,
+    merit: 83.3,
+    feePaid: true,
+    status: 'SELECTED',
+    errors: []
+  },
+  {
+    id: 'A102',
+    name: 'Ahmed Ali',
+    program: 'BSSE',
+    merit: null,
+    status: 'INVALID DATA',
+    errors: [ 'age is not a valid number', 'intermediateMarks is missing' ]
+  },
+  {
+    id: 'A103',
+    name: 'Hassan',
+    program: 'BSAI',
+    age: 18,
+    merit: 85.6,
+    feePaid: true,
+    status: 'SELECTED',
+    errors: []
+  },
+  {
+    id: 'A104',
+    name: 'Boundary',
+    program: 'BSSE',
+    age: 17,
+    merit: 70,
+    feePaid: false,
+    status: 'WAITING',
+    errors: []
+  },
+  {
+    id: 'A105',
+    name: 'Low Marks',
+    program: 'BSCS',
+    age: 30,
+    merit: 53.5,
+    feePaid: true,
+    status: 'REJECTED',
+    errors: []
+  },
+  {
+    id: 'A106',
+    name: 'Bad Program',
+    program: 'UNKNOWN',
+    merit: null,
+    status: 'INVALID DATA',
+    errors: [ 'Unsupported program' ]
+  }
+]
+Summary: {
+  validApplicants: 4,
+  invalidApplicants: 2,
+  highestMeritApplicant: {
+    id: 'A103',
+    name: 'Hassan',
+    program: 'BSAI',
+    age: 18,
+    merit: 85.6,
+    feePaid: true,
+    status: 'SELECTED',
+    errors: []
+  },
+  lowestMeritApplicant: {
+    id: 'A105',
+    name: 'Low Marks',
+    program: 'BSCS',
+    age: 30,
+    merit: 53.5,
+    feePaid: true,
+    status: 'REJECTED',
+    errors: []
+  },
+  averageMerit: 73.1,
+  programCounts: { BSCS: 2, BSSE: 2, BSAI: 1 }
+}
+Empty summary: {
+  validApplicants: 0,
+  invalidApplicants: 0,
+  highestMeritApplicant: null,
+  lowestMeritApplicant: null,
+  averageMerit: null,
+  programCounts: { BSCS: 0, BSSE: 0, BSAI: 0 }
+}
+
+
+======== task2.js ========
+Normal: {
+  processed: [
+    {
+      id: 1,
+      name: 'Ali',
+      department: 'CS',
+      course: 'FSWD',
+      marks: 82,
+      grade: 'A-',
+      status: 'PASS',
+      gradePoints: 3.7
+    },
+    {
+      id: 2,
+      name: 'Sara',
+      department: 'CS',
+      course: 'FSWD',
+      marks: 91,
+      grade: 'A',
+      status: 'PASS',
+      gradePoints: 4
+    },
+    {
+      id: 3,
+      name: 'Usman',
+      department: 'SE',
+      course: 'FSWD',
+      marks: 47,
+      grade: 'F',
+      status: 'FAIL',
+      gradePoints: 0
+    },
+    {
+      id: 4,
+      name: 'Hina',
+      department: 'AI',
+      course: 'FSWD',
+      marks: 73,
+      grade: 'B',
+      status: 'PASS',
+      gradePoints: 3
+    },
+    {
+      id: 5,
+      name: 'Ahmed',
+      department: 'SE',
+      course: 'FSWD',
+      marks: 64,
+      grade: 'C+',
+      status: 'PASS',
+      gradePoints: 2.3
+    },
+    {
+      id: 6,
+      name: 'Zoya',
+      department: 'AI',
+      course: 'FSWD',
+      marks: 91,
+      grade: 'A',
+      status: 'PASS',
+      gradePoints: 4
+    }
+  ],
+  ranked: [
+    {
+      id: 2,
+      name: 'Sara',
+      department: 'CS',
+      course: 'FSWD',
+      marks: 91,
+      grade: 'A',
+      status: 'PASS',
+      gradePoints: 4
+    },
+    {
+      id: 6,
+      name: 'Zoya',
+      department: 'AI',
+      course: 'FSWD',
+      marks: 91,
+      grade: 'A',
+      status: 'PASS',
+      gradePoints: 4
+    },
+    {
+      id: 1,
+      name: 'Ali',
+      department: 'CS',
+      course: 'FSWD',
+      marks: 82,
+      grade: 'A-',
+      status: 'PASS',
+      gradePoints: 3.7
+    },
+    {
+      id: 4,
+      name: 'Hina',
+      department: 'AI',
+      course: 'FSWD',
+      marks: 73,
+      grade: 'B',
+      status: 'PASS',
+      gradePoints: 3
+    },
+    {
+      id: 5,
+      name: 'Ahmed',
+      department: 'SE',
+      course: 'FSWD',
+      marks: 64,
+      grade: 'C+',
+      status: 'PASS',
+      gradePoints: 2.3
+    },
+    {
+      id: 3,
+      name: 'Usman',
+      department: 'SE',
+      course: 'FSWD',
+      marks: 47,
+      grade: 'F',
+      status: 'FAIL',
+      gradePoints: 0
+    }
+  ],
+  departmentStats: {
+    CS: { students: 2, average: 86.5, highest: 91, passed: 2 },
+    SE: { students: 2, average: 55.5, highest: 64, passed: 1 },
+    AI: { students: 2, average: 82, highest: 91, passed: 2 }
+  },
+  queries: {
+    firstAbove85: {
+      id: 2,
+      name: 'Sara',
+      department: 'CS',
+      course: 'FSWD',
+      marks: 91,
+      grade: 'A',
+      status: 'PASS',
+      gradePoints: 4
+    },
+    firstFailedIndex: 2,
+    hasFailure: true,
+    everyMarkValid: true,
+    aboveAverage: [ [Object], [Object], [Object] ],
+    topThreeNames: [ 'Sara', 'Zoya', 'Ali' ]
+  },
+  overallAverage: 74.66666666666667,
+  invalidCount: 0
+}
+Boundary/new department: {
+  processed: [
+    {
+      id: 1,
+      name: 'Ali',
+      department: 'CS',
+      course: 'FSWD',
+      marks: 82,
+      grade: 'A-',
+      status: 'PASS',
+      gradePoints: 3.7
+    },
+    {
+      id: 2,
+      name: 'Sara',
+      department: 'CS',
+      course: 'FSWD',
+      marks: 91,
+      grade: 'A',
+      status: 'PASS',
+      gradePoints: 4
+    },
+    {
+      id: 3,
+      name: 'Usman',
+      department: 'SE',
+      course: 'FSWD',
+      marks: 47,
+      grade: 'F',
+      status: 'FAIL',
+      gradePoints: 0
+    },
+    {
+      id: 4,
+      name: 'Hina',
+      department: 'AI',
+      course: 'FSWD',
+      marks: 73,
+      grade: 'B',
+      status: 'PASS',
+      gradePoints: 3
+    },
+    {
+      id: 5,
+      name: 'Ahmed',
+      department: 'SE',
+      course: 'FSWD',
+      marks: 64,
+      grade: 'C+',
+      status: 'PASS',
+      gradePoints: 2.3
+    },
+    {
+      id: 6,
+      name: 'Zoya',
+      department: 'AI',
+      course: 'FSWD',
+      marks: 91,
+      grade: 'A',
+      status: 'PASS',
+      gradePoints: 4
+    },
+    {
+      id: 7,
+      name: 'Areeba',
+      department: 'DS',
+      course: 'FSWD',
+      marks: 0,
+      grade: 'F',
+      status: 'FAIL',
+      gradePoints: 0
+    },
+    {
+      id: 8,
+      name: 'Bilal',
+      department: 'DS',
+      course: 'FSWD',
+      marks: 100,
+      grade: 'A',
+      status: 'PASS',
+      gradePoints: 4
+    }
+  ],
+  ranked: [
+    {
+      id: 8,
+      name: 'Bilal',
+      department: 'DS',
+      course: 'FSWD',
+      marks: 100,
+      grade: 'A',
+      status: 'PASS',
+      gradePoints: 4
+    },
+    {
+      id: 2,
+      name: 'Sara',
+      department: 'CS',
+      course: 'FSWD',
+      marks: 91,
+      grade: 'A',
+      status: 'PASS',
+      gradePoints: 4
+    },
+    {
+      id: 6,
+      name: 'Zoya',
+      department: 'AI',
+      course: 'FSWD',
+      marks: 91,
+      grade: 'A',
+      status: 'PASS',
+      gradePoints: 4
+    },
+    {
+      id: 1,
+      name: 'Ali',
+      department: 'CS',
+      course: 'FSWD',
+      marks: 82,
+      grade: 'A-',
+      status: 'PASS',
+      gradePoints: 3.7
+    },
+    {
+      id: 4,
+      name: 'Hina',
+      department: 'AI',
+      course: 'FSWD',
+      marks: 73,
+      grade: 'B',
+      status: 'PASS',
+      gradePoints: 3
+    },
+    {
+      id: 5,
+      name: 'Ahmed',
+      department: 'SE',
+      course: 'FSWD',
+      marks: 64,
+      grade: 'C+',
+      status: 'PASS',
+      gradePoints: 2.3
+    },
+    {
+      id: 3,
+      name: 'Usman',
+      department: 'SE',
+      course: 'FSWD',
+      marks: 47,
+      grade: 'F',
+      status: 'FAIL',
+      gradePoints: 0
+    },
+    {
+      id: 7,
+      name: 'Areeba',
+      department: 'DS',
+      course: 'FSWD',
+      marks: 0,
+      grade: 'F',
+      status: 'FAIL',
+      gradePoints: 0
+    }
+  ],
+  departmentStats: {
+    CS: { students: 2, average: 86.5, highest: 91, passed: 2 },
+    SE: { students: 2, average: 55.5, highest: 64, passed: 1 },
+    AI: { students: 2, average: 82, highest: 91, passed: 2 },
+    DS: { students: 2, average: 50, highest: 100, passed: 1 }
+  },
+  queries: {
+    firstAbove85: {
+      id: 2,
+      name: 'Sara',
+      department: 'CS',
+      course: 'FSWD',
+      marks: 91,
+      grade: 'A',
+      status: 'PASS',
+      gradePoints: 4
+    },
+    firstFailedIndex: 2,
+    hasFailure: true,
+    everyMarkValid: true,
+    aboveAverage: [ [Object], [Object], [Object], [Object], [Object] ],
+    topThreeNames: [ 'Bilal', 'Sara', 'Zoya' ]
+  },
+  overallAverage: 68.5,
+  invalidCount: 0
+}
+Invalid: {
+  processed: [
+    {
+      id: 9,
+      name: 'Bad',
+      department: 'CS',
+      marks: 101,
+      grade: null,
+      status: 'INVALID DATA',
+      gradePoints: null
+    }
+  ],
+  ranked: [],
+  departmentStats: {},
+  queries: {
+    firstAbove85: null,
+    firstFailedIndex: -1,
+    hasFailure: false,
+    everyMarkValid: false,
+    aboveAverage: [],
+    topThreeNames: []
+  },
+  overallAverage: null,
+  invalidCount: 1
+}
+Original remains unchanged: { id: 1, name: 'Ali', department: 'CS', course: 'FSWD', marks: 82 }
+
+
+======== task3.js ========
+Original: {
+  id: 101,
+  name: 'Ali',
+  marks: 0,
+  scholarship: false,
+  address: { city: 'Islamabad', sector: 'F-10' },
+  contact: { email: 'ali@university.edu' }
+}
+Updated: {
+  id: 101,
+  name: 'Ali Khan',
+  marks: 0,
+  scholarship: false,
+  address: { city: 'Rawalpindi', sector: 'F-10' },
+  contact: { email: 'ali@university.edu', phone: '03001234567' }
+}
+Destructuring: {
+  firstLabel: 'Profile',
+  studentName: 'Ali Khan',
+  homeCity: 'Rawalpindi',
+  sector: 'F-10'
+}
+Reference checks: { rootSame: false, addressSame: false, contactSame: false }
+Boundary (preserve 0, false, empty string): {
+  id: 101,
+  name: '',
+  marks: 0,
+  scholarship: false,
+  address: { city: 'Islamabad', sector: 'F-10' },
+  contact: { email: 'ali@university.edu' }
+}
+Invalid: marks must be 0-100
+
+
+======== task4.js ========
+I am Ali (ali@uni.edu). Student roll no: AU101.
+I am Dr. Hina (hina@uni.edu). Faculty member in CS (ID E12).
+I am Sara (sara@uni.edu). Student roll no: AU102.
+Results: PASS FAIL
+instanceof: true true false
+call: I am Dr. Ahmed (ahmed@example.com).
+Detached fails: Cannot read properties of undefined (reading 'name')
+Bound: I am Ali (ali@uni.edu). Student roll no: AU101.
+Invalid: Invalid marks
+
+
+======== task5/main.js ========
+Direct module usage: Demo A 50 2
+Normal {
+  report: { totalStudents: 1, students: [ [Object] ] },
+  json: '{\n' +
+    '  "totalStudents": 1,\n' +
+    '  "students": [\n' +
+    '    {\n' +
+    '      "id": 101,\n' +
+    '      "name": "Ali",\n' +
+    '      "courses": [\n' +
+    '        {\n' +
+    '          "code": "CS301",\n' +
+    '          "marks": 81,\n' +
+    '          "grade": "A-"\n' +
+    '        },\n' +
+    '        {\n' +
+    '          "code": "CS302",\n' +
+    '          "marks": 74,\n' +
+    '          "grade": "B"\n' +
+    '        }\n' +
+    '      ],\n' +
+    '      "average": 77.5,\n' +
+    '      "gpa": 3.35\n' +
+    '    }\n' +
+    '  ]\n' +
+    '}'
+}
+Finished Normal
+Boundary {
+  report: { totalStudents: 1, students: [ [Object] ] },
+  json: '{\n' +
+    '  "totalStudents": 1,\n' +
+    '  "students": [\n' +
+    '    {\n' +
+    '      "id": 102,\n' +
+    '      "name": "Sara",\n' +
+    '      "courses": [\n' +
+    '        {\n' +
+    '          "code": "CS101",\n' +
+    '          "marks": 0,\n' +
+    '          "grade": "F"\n' +
+    '        },\n' +
+    '        {\n' +
+    '          "code": "CS102",\n' +
+    '          "marks": 100,\n' +
+    '          "grade": "A"\n' +
+    '        }\n' +
+    '      ],\n' +
+    '      "average": 50,\n' +
+    '      "gpa": 2\n' +
+    '    }\n' +
+    '  ]\n' +
+    '}'
+}
+Finished Boundary
+Invalid 1 SyntaxError: Malformed JSON transcript
+Finished Invalid 1
+Invalid 2 TypeError: Missing or invalid student ID
+Finished Invalid 2
+Invalid 3 Error: Duplicate student ID: 1
+Finished Invalid 3
+Invalid 4 TypeError: Missing course code
+Finished Invalid 4
+Invalid 5 RangeError: Invalid marks for CS
+Finished Invalid 5
+
+
+======== task6.js ========
+Missing student Student does not exist
+Missing prerequisite Prerequisite not completed
+Full course Course is full
+Normal { studentId: 101, course: 'CS401', status: 'REGISTERED' }
+Already registered Student already registered
+
+
+======== task7.js ========
+Registration attempt finished
+Normal + service failure: {
+  confirmation: { studentId: 101, course: 'CS401', status: 'REGISTERED' },
+  services: [
+    { service: 'Email', status: 'fulfilled' },
+    {
+      service: 'SMS',
+      status: 'rejected',
+      error: 'SMS gateway unavailable'
+    },
+    { service: 'Audit', status: 'fulfilled' }
+  ]
+}
+Registration attempt finished
+Duplicate: { error: 'Already registered', status: 'FAILED' }
+Registration attempt finished
+Prerequisite missing: { error: 'Prerequisite missing', status: 'FAILED' }
+Registration attempt finished
+Missing student: { error: 'Student not found', status: 'FAILED' }
+First successful server (Promise.any): { code: 'CS401', source: 'B' }
+
+
+======== task8.js ========
+Dashboard: {
+  totalStudents: 3,
+  totalCourses: 2,
+  overallAverageMarks: 74,
+  highestPerformingStudent: { id: 3, name: 'Hina', marks: 95 },
+  failedStudents: 1,
+  departmentStats: {
+    CS: { students: 2, examined: 2, average: 63.5, passed: 1, failed: 1 },
+    AI: { students: 1, examined: 1, average: 95, passed: 1, failed: 0 }
+  }
+}
+Boundary (empty): {
+  totalStudents: 0,
+  totalCourses: 0,
+  overallAverageMarks: null,
+  highestPerformingStudent: null,
+  failedStudents: 0,
+  departmentStats: {}
+}
+Invalid marks: RangeError Invalid marks or student ID
+/missing HttpError HTTP 404
+/server-error HttpError HTTP 500
+/network TypeError Network failure
+/invalid-json SyntaxError Invalid JSON
+Timeout test: TimeoutError Request timed out / aborted
+Successful request before timeout: [
+  { id: 1, name: 'Ali', department: 'CS' },
+  { id: 2, name: 'Sara', department: 'CS' },
+  { id: 3, name: 'Hina', department: 'AI' }
+]
+
