@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timetable — BSCS-V-A</title>
+  <link rel="stylesheet" href="Timetable.css">
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <div>
+        <h1>BSCS-V-A <span>Shift-I</span></h1>
+        <p>Air University — Department of CS — 5th Semester</p>
+      </div>
+    </header>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>08 – 09</th>
+            <th>09 – 10</th>
+            <th>10 – 11</th>
+            <th>11 – 12</th>
+            <th>12 – 01</th>
+            <th>01 – 02</th>
+            <th>02 – 03</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td class="day-col">Mo<small>Monday</small></td>
+            <td><a href="#m-mo-1" class="cls"><span class="name">Artificial Intelligence</span><span class="teacher">Ms
+                  Maryam Wardah</span><span class="room">C-205</span></a></td>
+            <td><a href="#m-mo-2" class="cls"><span class="name">Operating Systems</span><span class="teacher">Ms Warda
+                  Aslam / Ms Eeman Fatima</span><span class="room">Lecture Hall 01</span></a></td>
+            <td><a href="#m-mo-3" class="cls"><span class="name">Design & Analysis of Algorithms</span><span
+                  class="teacher">Mr M. Junaid Nazar</span><span class="room">C-202</span></a></td>
+            <td><a href="#m-mo-4" class="cls"><span class="name">Linear Algebra</span><span class="teacher">Dr Waqas
+                  Sarwar Abbasi</span><span class="room">C-301</span></a></td>
+            <td>
+              <div class="free">—</div>
+            </td>
+            <td><a href="#m-mo-6" class="cls"><span class="name">Intro to Management</span><span class="teacher">Ms
+                  Ayesha Munir</span><span class="room">C-303</span></a></td>
+            <td>
+              <div class="free">—</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="day-col">Tu<small>Tuesday</small></td>
+            <td colspan="3"><a href="#m-tu-1" class="cls lab"><span class="name">Artificial Intelligence</span><span
+                  class="teacher">Ms Maryam Wardah</span><span class="room">Lab 5 A Block</span></a></td>
+            <td>
+              <div class="free">—</div>
+            </td>
+            <td><a href="#m-tu-5" class="cls"><span class="name">Linear Algebra</span><span class="teacher">Dr Waqas
+                  Sarwar Abbasi</span><span class="room">C-203</span></a></td>
+            <td><a href="#m-tu-6" class="cls"><span class="name">Design & Analysis of Algorithms</span><span
+                  class="teacher">Mr M. Junaid Nazar</span><span class="room">C-302</span></a></td>
+            <td><a href="#m-tu-7" class="cls"><span class="name">Operating Systems</span><span class="teacher">Ms Warda
+                  Aslam / Ms Eeman Fatima</span><span class="room">Lecture Hall 01</span></a></td>
+          </tr>
+
+          <tr>
+            <td class="day-col">We<small>Wednesday</small></td>
+            <td><a href="#m-we-1" class="cls"><span class="name">Design & Analysis of Algorithms</span><span
+                  class="teacher">Mr M. Junaid Nazar</span><span class="room">C-302</span></a></td>
+            <td>
+              <div class="free">—</div>
+            </td>
+            <td>
+              <div class="free">—</div>
+            </td>
+            <td colspan="3"><a href="#m-we-4" class="cls lab"><span class="name">Operating Systems</span><span
+                  class="teacher">Ms Warda Aslam</span><span class="room">Lab 13 C Block (3rd Floor)</span></a></td>
+            <td><a href="#m-we-7" class="cls"><span class="name">Full Stack Web Dev</span><span class="teacher">Mr Hafiz
+                  Obiad / Mr Asim Ali</span><span class="room">Lecture Hall 01</span></a></td>
+          </tr>
+
+          <tr>
+            <td class="day-col">Th<small>Thursday</small></td>
+            <td>
+              <div class="free">—</div>
+            </td>
+            <td><a href="#m-th-2" class="cls"><span class="name">Artificial Intelligence</span><span class="teacher">Ms
+                  Maryam Wardah</span><span class="room">C-202</span></a></td>
+            <td>
+              <div class="free">—</div>
+            </td>
+            <td colspan="3"><a href="#m-th-4" class="cls lab"><span class="name">Full Stack Web Development</span><span
+                  class="teacher">Mr Hafiz Obiad Ullah Khan</span><span class="room">Lab 5 A Block</span></a></td>
+            <td><a href="#m-th-7" class="cls"><span class="name">Full Stack Web Dev</span><span class="teacher">Mr Hafiz
+                  Obiad / Mr Asim Ali</span><span class="room">Lecture Hall 01</span></a></td>
+          </tr>
+
+          <tr>
+            <td class="day-col">Fr<small>Friday</small></td>
+            <td>
+              <div class="free">—</div>
+            </td>
+            <td>
+              <div class="free">—</div>
+            </td>
+            <td><a href="#m-fr-3" class="cls"><span class="name">Intro to Management</span><span class="teacher">Ms
+                  Ayesha Munir</span><span class="room">C-302</span></a></td>
+            <td><a href="#m-fr-4" class="cls"><span class="name">Linear Algebra</span><span class="teacher">Dr Waqas
+                  Sarwar Abbasi</span><span class="room">C-301</span></a></td>
+            <td><a href="#m-fr-5" class="cls"><span class="name">Advisory Class</span><span class="teacher">Ms Eeman
+                  Fatima</span><span class="room">C-202</span></a></td>
+            <td>
+              <div class="free">—</div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-mo-1">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Artificial Intelligence</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">CS-Ms Maryam Wardah</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">C-205 (Shift-I)</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">08:00 – 09:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Monday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-mo-2">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Operating Systems</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">CS-Ms Warda Aslam / CS-Ms Eeman
+            Fatima</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">Lecture Hall 01</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">09:00 – 10:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Monday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-mo-3">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Design & Analysis of Algorithms</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">CS-Mr Muhammad Junaid Nazar</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">C-202 (Shift-I)</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">10:00 – 11:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Monday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-mo-4">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Linear Algebra</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">Maths-Dr Waqas Sarwar Abbasi</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">C-301 (Shift-I)</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">11:00 – 12:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Monday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-mo-6">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Introduction to Management</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">AUSOM-Ms Ayesha Munir-VFM</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">C-303 (Shift-I)</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">01:00 – 02:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Monday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-tu-1">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Artificial Intelligence Lab</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lab (3 Hrs)</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">CS-Ms Maryam Wardah</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">Lab 5 A Block (Shift-I)</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">08:00 – 11:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Tuesday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-tu-5">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Linear Algebra</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">Maths-Dr Waqas Sarwar Abbasi</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">C-203 (Shift-I)</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">12:00 – 01:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Tuesday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-tu-6">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Design & Analysis of Algorithms</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">CS-Mr Muhammad Junaid Nazar</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">C-302 (Shift-I)</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">01:00 – 02:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Tuesday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-tu-7">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Operating Systems</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">CS-Ms Warda Aslam / CS-Ms Eeman
+            Fatima</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">Lecture Hall 01</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">02:00 – 03:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Tuesday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-we-1">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Design & Analysis of Algorithms</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">CS-Mr Muhammad Junaid Nazar</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">C-302 (Shift-I)</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">08:00 – 09:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Wednesday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-we-4">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Operating Systems Lab</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lab (3 Hrs)</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">CS-Ms Warda Aslam</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">Lab 13 C Block (3rd Floor) (Shift-I)</span>
+        </div>
+        <div class="row"><span class="lbl">Time</span><span class="val">11:00 – 02:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Wednesday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-we-7">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Full Stack Web Development</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">CS-Mr Hafiz Obiad Ullah Khan / CS-Mr Asim
+            Ali Fayyaz</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">Lecture Hall 01</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">02:00 – 03:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Wednesday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-th-2">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Artificial Intelligence</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">CS-Ms Maryam Wardah</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">C-202 (Shift-I)</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">09:00 – 10:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Thursday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-th-4">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Full Stack Web Development Lab</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lab (3 Hrs)</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">CS-Mr Hafiz Obiad Ullah Khan</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">Lab 5 A Block (Shift-I)</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">11:00 – 02:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Thursday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-th-7">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Full Stack Web Development</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">CS-Mr Hafiz Obiad Ullah Khan / CS-Mr Asim
+            Ali Fayyaz</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">Lecture Hall 01</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">02:00 – 03:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Thursday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-fr-3">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Introduction to Management</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">AUSOM-Ms Ayesha Munir-VFM</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">C-302 (Shift-I)</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">10:00 – 11:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Friday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-fr-4">
+    <a href="#" class="overlay-close"></a>
+    <div class="modal">
+      <div class="modal-head">
+        <h3>Linear Algebra</h3><a href="#" class="close-btn">&times;</a>
+      </div>
+      <div class="modal-body">
+        <div class="row"><span class="lbl">Type</span><span class="val">Lecture</span></div>
+        <div class="row"><span class="lbl">Instructor</span><span class="val">Maths-Dr Waqas Sarwar Abbasi</span></div>
+        <div class="row"><span class="lbl">Room</span><span class="val">C-301 (Shift-I)</span></div>
+        <div class="row"><span class="lbl">Time</span><span class="val">11:00 – 12:00</span></div>
+        <div class="row"><span class="lbl">Day</span><span class="val">Friday</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="m-fr-5">
+    <a href="#" class="overlay-close"></a>
+</body>
+
+</html>

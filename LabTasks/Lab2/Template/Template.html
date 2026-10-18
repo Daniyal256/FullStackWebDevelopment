@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Human Pose Estimation and Kinematic Form Evaluation for Edge-Deployed Fitness Analytics</title>
+    <link rel="stylesheet" href="Template.css">
+</head>
+<body>
+    <main class="paper">
+
+        <div class="copyright">
+            979-8-3503-4567-8/24/$31.00 ©2024 IEEE
+        </div>
+
+        <header class="paper-header">
+            <h1>Real-Time Human Pose Estimation and Kinematic Form Evaluation for Edge-Deployed Fitness Analytics</h1>
+
+            <section class="authors">
+                <div class="author">
+                    <strong>Daniyal Haider</strong>
+                    <span>Dept. of Computer Science</span>
+                    <span>Air University</span>
+                    <span>Islamabad, Pakistan</span>
+                    <span>danihaider256@gmail.com</span>
+                </div>
+                <div class="author">
+                    <strong>Sheikh Abdullah</strong>
+                    <span>Dept. of Computer Science</span>
+                    <span>Air University</span>
+                    <span>Islamabad, Pakistan</span>
+                    <span>sheikh.abdullah@mail.au.edu.pk</span>
+                </div>
+                <div class="author">
+                    <strong>Wasif Mughal</strong>
+                    <span>Dept. of Computer Science</span>
+                    <span>Air University</span>
+                    <span>Islamabad, Pakistan</span>
+                    <span>wasif.mughal@mail.au.edu.pk</span>
+                </div>
+                <div class="author">
+                    <strong>Moeed Raza</strong>
+                    <span>Dept. of Computer Science</span>
+                    <span>Air University</span>
+                    <span>Islamabad, Pakistan</span>
+                    <span>moeed.raza@mail.au.edu.pk</span>
+                </div>
+                <div class="author">
+                    <strong>Maryam Wardah</strong>
+                    <span>Dept. of Computer Science</span>
+                    <span>Air University</span>
+                    <span>Islamabad, Pakistan</span>
+                    <span>maryam.wardah@mail.au.edu.pk</span>
+                </div>
+                <div class="author">
+                    <strong>Muhammad Junaid Nazar</strong>
+                    <span>Dept. of Computer Science</span>
+                    <span>Air University</span>
+                    <span>Islamabad, Pakistan</span>
+                    <span>junaid.nazar@mail.au.edu.pk</span>
+                </div>
+            </section>
+        </header>
+
+        <section class="abstract">
+            <p><strong>Abstract—</strong>Accurate automated assessment of physical exercise form is vital for preventing musculoskeletal injuries and ensuring progressive biomechanical adaptation. Although optical motion capture and wearable inertial sensors offer high measurement fidelity, their practical deployment remains severely hindered by prohibitive hardware expenses and user discomfort. Monocular vision alternatives executable on commodity mobile hardware offer an accessible alternative but face constrained compute, memory, and thermal envelopes. In this work, we propose a lightweight, end-to-end framework for real-time human pose tracking and biomechanical form evaluation on resource-constrained edge devices. The architecture combines an inverted residual backbone utilizing depthwise separable convolutions with a spatial-temporal kinematic evaluator to track anatomical joint vectors. Through 8-bit integer post-training quantization and hardware-delegated inference, our pipeline achieves 38.4 frames per second at an average latency of 23.6 ms on smartphone processors. Comprehensive evaluations across compound movements—squat, deadlift, and overhead press—reveal a 94.2% repetition identification accuracy and a mean joint angle error below 3.4 degrees relative to marker-based ground truth. The system provides an effective, non-invasive paradigm for autonomous physical conditioning and telehealth rehabilitation.</p>
+            <p><strong>Keywords—</strong>Human Pose Estimation, Edge AI, Biomechanical Form Evaluation, Mobile Computing, Angular Kinematics, Lightweight Deep Learning</p>
+        </section>
+
+        <section class="two-column-content">
+            <div class="column">
+
+                <h2>I. INTRODUCTION</h2>
+                <p>Musculoskeletal rehabilitation and resistance training rely fundamentally on consistent adherence to biomechanically sound movement patterns. Improper execution during compound resistance exercises places non-physiological sheer and torque loads upon spinal discs and connective joint structures, precipitating chronic orthopedic pathologies [1]. While certified personal trainers provide corrective real-time feedback, accessibility is constrained by financial expense and geographical availability. Recent computer vision advancements provide promising pathways toward democratizing exercise telemetry through standard mobile RGB cameras.</p>
+
+                <p>Deploying computer vision on edge devices introduces distinct algorithmic hurdles. Top-performing multi-person pose estimators, such as OpenPose [2] and HRNet [3], incorporate heavy convolutional topologies that demand high-wattage desktop GPUs, rendering them incompatible with battery-powered mobile architectures. Conversely, heavily pruned mobile detectors frequently suffer from jitter, temporal instability, and boundary occlusion during rapid movement phases. Furthermore, converting raw Cartesian joint coordinates into actionable corrective feedback requires robust temporal segmenting capable of filtering out non-exercise motion.</p>
+
+                <p>To overcome these challenges, this paper presents an optimized, edge-native framework that unifies real-time 2D skeletal tracking, kinematic joint angle calculation, and automated repetition segmentation. By incorporating inverted bottleneck operators, coordinate attention modules, and INT8 quantization, the proposed model achieves continuous real-time execution with negligible battery consumption and zero remote cloud dependence.</p>
+
+                <h2>II. RELATED WORK</h2>
+
+                <h3>A. Vision-Based Human Pose Estimation</h3>
+                <p>Human pose estimation (HPE) has advanced from early pictorial structures to deep convolutional regression and heatmap architectures. Two-stage top-down approaches first isolate individual bounding boxes before inferring anatomical keypoints, whereas bottom-up architectures detect keypoints across the global frame prior to affinity grouping [2]. While bottom-up methods scale effectively with crowd density, top-down approaches offer superior localization precision for single-subject scenarios characteristic of personal fitness tracking.</p>
+
+                <p>Recent mobile-targeted frameworks, such as BlazePose [4] and MobileNetV3 [5], demonstrate that depthwise separable convolutions combined with squeeze-and-excitation blocks substantially decrease parameter volume without catastrophic fidelity degradation. However, translating raw 2D coordinate streams into reliable clinical joint trajectories requires temporal filtering to mitigate inter-frame jitter caused by camera sensor noise.</p>
+
+                <h3>B. Automated Exercise Assessment</h3>
+                <p>Early automated form evaluation frameworks relied primarily on body-worn Inertial Measurement Units (IMUs). Despite their sampling rate, sensor drift and the burden of securing multiple straps impede everyday adoption. Recent vision-based systems employ Dynamic Time Warping (DTW) [6] or Spatial-Temporal Graph Convolutional Networks (ST-GCN) [7] to contrast user trajectories against golden reference repetitions. Nonetheless, prevailing literature primarily evaluates offline server-side processing rather than instantaneous on-device feedback pipelines.</p>
+
+                <h2>III. METHODOLOGY</h2>
+
+                <h3>A. Edge Backbone and Feature Extraction</h3>
+                <p>Our keypoint detector employs an optimized inverted residual backbone with a width multiplier of 0.75. Given an input frame <i>I ∈ ℝ<sup>H×W×3</sup></i>, multi-scale features are extracted and routed through a coordinate attention mechanism that independently aggregates spatial representations along horizontal and vertical axes. This prevents localization dispersion when limbs occlude during sagittal plane viewing.</p>
+
+                <h3>B. Biomechanical Angular Formulation</h3>
+                <p>Exercise validity is determined via instantaneous articulation angles computed across adjacent anatomical links. For three contiguous keypoints <i>P<sub>j</sub></i>, <i>P<sub>k</sub></i>, and <i>P<sub>m</sub></i> (e.g., hip, knee, and ankle for knee flexion), directed displacement vectors are formed: <b>v</b><sub>jk</sub> = <i>P<sub>k</sub> - P<sub>j</sub></i> and <b>v</b><sub>jm</sub> = <i>P<sub>m</sub> - P<sub>j</sub></i>. The interior joint articulation angle <i>θ<sub>j</sub>(t)</i> at timestamp <i>t</i> is calculated as:</p>
+
+                <div class="equation">
+                    <span><i>θ<sub>j</sub>(t) = arccos((<b>v</b><sub>jk</sub> · <b>v</b><sub>jm</sub>) / (‖<b>v</b><sub>jk</sub>‖ ‖<b>v</b><sub>jm</sub>‖))</i></span>
+                    <span>(1)</span>
+                </div>
+
+                <p>To eliminate high-frequency jitter, computed angular trajectories pass through an adaptive one-euro filter, which adjusts cutoff frequencies dynamically according to movement velocity.</p>
+
+            </div>
+
+            <div class="column">
+
+                <h3>C. Phase Segmentation and Repetition Logic</h3>
+                <p>Exercise repetitions are partitioned into eccentric, inflection, and concentric phases using finite state machine (FSM) thresholding coupled with zero-crossing velocity analysis on the primary articulation angle. Form adherence is verified against kinematic boundaries established by the National Strength and Conditioning Association (NSCA), penalizing valgus knee collapse, excessive lumbar flexion, and asymmetrical bar displacement.</p>
+
+                <h2>IV. EXPERIMENTAL EVALUATION</h2>
+
+                <h3>A. Experimental Setup and Dataset</h3>
+                <p>The system was evaluated on a curated benchmark dataset comprising 1,200 exercise repetitions across 24 human subjects performing squats, deadlifts, and overhead presses under varying illumination and viewing orientations. Ground-truth joint angles were captured synchronously via a 10-camera Vicon optical motion capture system operating at 100 Hz. Mobile inference was benchmarked across three hardware tiers: Qualcomm Snapdragon 8 Gen 2, MediaTek Dimensity 9200, and Apple A16 Bionic.</p>
+
+                <table class="ieee-table">
+                    <caption>TABLE I. COMPARATIVE PERFORMANCE ON MOBILE HARDWARE</caption>
+                    <thead>
+                        <tr>
+                            <th>Architecture</th>
+                            <th>Params (M)</th>
+                            <th>Latency (ms)</th>
+                            <th>FPS</th>
+                            <th>mAP (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>OpenPose (Mobile)</td>
+                            <td>6.3</td>
+                            <td>78.4</td>
+                            <td>12.7</td>
+                            <td>65.3</td>
+                        </tr>
+                        <tr>
+                            <td>MoveNet Thunder</td>
+                            <td>4.2</td>
+                            <td>42.1</td>
+                            <td>23.7</td>
+                            <td>71.8</td>
+                        </tr>
+                        <tr>
+                            <td>BlazePose (Full)</td>
+                            <td>3.5</td>
+                            <td>31.2</td>
+                            <td>32.0</td>
+                            <td>73.4</td>
+                        </tr>
+                        <tr>
+                            <td>Proposed Edge-Fit</td>
+                            <td>2.4</td>
+                            <td>23.6</td>
+                            <td>38.4</td>
+                            <td>76.1</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="table-footnote">a. Latency and frame rates measured on Snapdragon 8 Gen 2 NPU delegate at 256x256 resolution.</p>
+
+                <figure class="figure-placeholder">
+                    <div>[ INPUT FRAME ] → [ RESIDUAL BACKBONE ] → [ KEYPOINTS ] → [ KINEMATICS & FSM ] → [ FEEDBACK ]</div>
+                    <figcaption>Fig. 1. End-to-end processing pipeline for edge pose estimation and real-time form scoring.</figcaption>
+                </figure>
+
+                <p>As documented in Table I, the proposed architecture delivers a 24.3% latency reduction compared to BlazePose while improving keypoint Mean Average Precision (mAP) on the exercise validation set by 2.7%. The model sustains over 38 FPS with an average device power draw under 1.8 Watts, precluding thermal throttling during prolonged 30-minute workout trials.</p>
+
+                <h3>B. Kinematic Accuracy and Repetition Counting</h3>
+                <p>Evaluation against the optical ground-truth baseline revealed a mean absolute angular error of 3.2° for knee flexion, 3.4° for hip angle, and 2.9° for elbow extension during overhead press movements. Across all evaluated sets, repetition counting accuracy reached 94.2%, with false positives occurring primarily during abrupt pauses between sets.</p>
+
+                <h2>V. CONCLUSION</h2>
+                <p>This paper presented a lightweight, edge-compatible deep learning pipeline for real-time human pose tracking and automated exercise form assessment. By pairing inverted bottleneck feature extractors with coordinate attention mechanisms, INT8 quantization, and continuous angular kinematics, the framework achieves sub-24 ms latencies and 94.2% repetition accuracy on commodity mobile chipsets without remote servers. Future efforts will extend this pipeline to multi-view 3D reconstruction and temporal transformers for complex Olympic lifting analysis.</p>
+
+                <h4>ACKNOWLEDGMENT</h4>
+                <p>The authors thank the faculty and laboratory staff of the Department of Computer Science at Air University, Islamabad, for facilitating access to high-performance computing resources and optical motion capture hardware throughout this investigation.</p>
+
+                <h4>REFERENCES</h4>
+                <ol class="references">
+                    <li>D. G. Behm, A. J. Blazevich, A. D. Kay, and M. McHugh, “Acute effects of muscle stretching on physical performance, range of motion, and injury incidence,” <i>Sports Med.</i>, vol. 46, no. 1, pp. 131–145, 2016.</li>
+                    <li>Z. Cao, G. Hidalgo, T. Simon, S.-E. Wei, and Y. Sheikh, “OpenPose: Realtime multi-person 2D pose estimation using Part Affinity Fields,” <i>IEEE Trans. Pattern Anal. Mach. Intell.</i>, vol. 43, no. 1, pp. 172–186, 2021.</li>
+                    <li>K. Sun, B. Xiao, D. Liu, and J. Wang, “Deep high-resolution representation learning for human pose estimation,” in <i>Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit. (CVPR)</i>, 2019, pp. 5693–5702.</li>
+                    <li>V. Bazarevsky, I. Grishchenko, K. Raveendran, T. Zhu, F. Zhang, and M. Grundmann, “BlazePose: On-device real-time body pose tracking,” <i>arXiv preprint arXiv:2006.10204</i>, 2020.</li>
+                    <li>A. Howard et al., “Searching for MobileNetV3,” in <i>Proc. IEEE/CVF Int. Conf. Comput. Vis. (ICCV)</i>, 2019, pp. 1314–1324.</li>
+                    <li>S. Salvador and P. Chan, “Toward accurate dynamic time warping in linear time and space,” <i>Intell. Data Anal.</i>, vol. 11, no. 5, pp. 561–580, 2007.</li>
+                    <li>S. Yan, Y. Xiong, and D. Lin, “Spatial temporal graph convolutional networks for skeleton-based action recognition,” in <i>Proc. AAAI Conf. Artif. Intell.</i>, vol. 32, no. 1, 2018.</li>
+                    <li>B. Jacob et al., “Quantization and training of neural networks for efficient integer-arithmetic-only inference,” in <i>Proc. IEEE Conf. Comput. Vis. Pattern Recognit. (CVPR)</i>, 2018, pp. 2704–2713.</li>
+                    <li>G. Casiez, N. Roussel, and D. Vogel, “1€ filter: A simple speed-and-lag-sensitive low-pass filter for noisy input,” in <i>Proc. ACM Conf. Hum. Factors Comput. Syst. (CHI)</i>, 2012, pp. 2527–2530.</li>
+                    <li>G. G. Haff and N. T. Triplett, <i>Essentials of Strength Training and Conditioning</i>, 4th ed. Champaign, IL: Human Kinetics, 2015.</li>
+                </ol>
+
+            </div>
+        </section>
+    </main>
+</body>
+</html>

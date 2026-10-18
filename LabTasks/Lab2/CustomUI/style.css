@@ -1,0 +1,1700 @@
+/* =========================================================
+   ECOCITY
+   Designed for: Daniyal Haider
+
+   HTML + CSS ONLY
+   Concepts 01 - 35
+========================================================= */
+
+
+/* =========================================================
+   01. DESIGN TOKENS
+========================================================= */
+
+:root {
+    --green: #4CAF50;
+    --green-dark: #2F7D46;
+    --green-soft: #E7F4E8;
+
+    --blue: #2E8FE3;
+    --blue-soft: #EAF4FC;
+
+    --yellow: #F0B51B;
+    --yellow-soft: #FFF5D8;
+
+    --ink: #101820;
+    --navy: #12304A;
+    --text: #202020;
+    --muted: #777D7D;
+
+    --white: #FFFFFF;
+    --panel: #F8F8F6;
+    --line: #E2E5E1;
+
+    --sky: #DCEAF6;
+
+    --radius-large: 28px;
+    --radius-medium: 20px;
+    --radius-small: 14px;
+
+    --space-1: 8px;
+    --space-2: 12px;
+    --space-3: 16px;
+    --space-4: 24px;
+    --space-5: 32px;
+    --space-6: 40px;
+
+    --soft-shadow: 0 10px 30px rgba(16, 24, 32, 0.08);
+}
+
+
+/* =========================================================
+   02. RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: var(--text);
+
+    background: var(--sky);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   03. PAGE
+========================================================= */
+
+.page {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 64px 7.5% 80px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   04. BLURRED ENVIRONMENT BACKGROUND
+========================================================= */
+
+.background {
+    position: fixed;
+
+    top: -25px;
+    left: -25px;
+
+    width: calc(100% + 50px);
+    height: calc(100% + 50px);
+
+    z-index: -3;
+
+    background-color: var(--sky);
+
+    background-image: url("assets/background.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    /*
+       The environmental photograph is intentionally
+       softened so the dashboard feels layered above it.
+    */
+    filter: blur(5px);
+
+    transform: scale(1.02);
+}
+
+
+/*
+   Soft atmospheric layer above the photograph.
+   This keeps the background visible but reduces
+   visual competition with the dashboard.
+*/
+
+.page::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    background: rgba(238, 246, 241, 0.18);
+}
+
+
+/* =========================================================
+   05. OUTER DASHBOARD FRAME
+========================================================= */
+
+.dashboard-frame {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 1260px;
+
+    min-height: 850px;
+
+    margin: 0 auto;
+
+    padding: 26px 34px 34px;
+
+    border: 2px solid rgba(255, 255, 255, 0.92);
+
+    border-radius: 42px;
+
+    /*
+       Transparent enough to show the blurred landscape.
+    */
+    background: rgba(255, 255, 255, 0.07);
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   06. TOP NAVIGATION
+========================================================= */
+
+.topbar {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    min-height: 52px;
+
+    margin-bottom: 32px;
+}
+
+
+/* Logo */
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    min-width: 160px;
+
+    color: var(--navy);
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.brand-mark {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 31px;
+    height: 31px;
+
+    border: 3px solid var(--green-dark);
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.brand-mark::before {
+    content: "";
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50% 50% 50% 0;
+
+    background: var(--green);
+}
+
+.brand-mark span {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: var(--navy);
+}
+
+
+/* Main navigation */
+
+.main-nav {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 4px;
+
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 9px 13px;
+
+    border-radius: 20px;
+
+    color: var(--navy);
+
+    font-size: 12px;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--green-dark);
+
+    background-color: rgba(255, 255, 255, 0.58);
+}
+
+.nav-link:focus-visible {
+    outline: 2px solid var(--green);
+
+    outline-offset: 2px;
+}
+
+.nav-link.active {
+    color: var(--text);
+
+    background-color: rgba(255, 255, 255, 0.96);
+
+    box-shadow: 0 5px 16px rgba(16, 24, 32, 0.06);
+}
+
+.status-dot,
+.online-dot {
+    display: inline-block;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background-color: var(--green);
+}
+
+
+/* Top-right controls */
+
+.top-actions {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 9px;
+
+    min-width: 76px;
+}
+
+.notification,
+.profile {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+}
+
+.notification {
+    color: var(--white);
+
+    background-color: var(--green);
+}
+
+.notification:hover {
+    background-color: var(--green-dark);
+}
+
+.profile {
+    color: var(--navy);
+
+    background-color: rgba(255, 255, 255, 0.95);
+
+    font-weight: 700;
+}
+
+.notification:focus-visible,
+.profile:focus-visible {
+    outline: 2px solid var(--green);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   07. HERO
+========================================================= */
+
+.hero {
+    max-width: 610px;
+
+    margin: 24px 0 35px;
+
+    padding: 4px 0;
+}
+
+.eyebrow,
+.card-label {
+    color: var(--green-dark);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+}
+
+.hero h1 {
+    margin-top: 10px;
+
+    color: var(--ink);
+
+    font-size: clamp(42px, 4vw, 58px);
+
+    line-height: 1.02;
+
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    color: var(--green);
+}
+
+.hero-text {
+    max-width: 560px;
+
+    margin-top: 18px;
+
+    color: #17242B;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+}
+
+.hero-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 18px;
+
+    color: var(--green-dark);
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   08. MAIN GRID
+========================================================= */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1.15fr;
+
+    grid-template-areas:
+        "status assistant"
+        "comparison assistant"
+        "metrics weekly"
+        "environment environment";
+
+    gap: 18px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   09. GLASS CARDS
+========================================================= */
+
+.card {
+    border: 1px solid rgba(255, 255, 255, 0.72);
+
+    border-radius: var(--radius-large);
+
+    /*
+       More transparent than before.
+       The blurred photograph can now be felt underneath.
+    */
+    background: rgba(255, 255, 255, 0.76);
+
+    box-shadow: var(--soft-shadow);
+
+    padding: 24px;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.card:hover {
+    border-color: rgba(76, 175, 80, 0.42);
+
+    background: rgba(255, 255, 255, 0.84);
+
+    box-shadow: 0 12px 32px rgba(16, 24, 32, 0.10);
+}
+
+.card-heading {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 16px;
+}
+
+.card h2 {
+    margin-top: 6px;
+
+    color: var(--ink);
+
+    font-size: 20px;
+
+    line-height: 1.15;
+}
+
+.card-description {
+    margin-top: 8px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   10. STATUS
+========================================================= */
+
+.status-card {
+    grid-area: status;
+
+    min-height: 215px;
+}
+
+.card-icon {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+
+    color: var(--green-dark);
+
+    background: rgba(231, 244, 232, 0.82);
+}
+
+.status-time {
+    margin-top: 26px;
+
+    color: var(--ink);
+
+    font-size: 51px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+}
+
+.status-date {
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.status-bottom {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 25px;
+
+    color: var(--green-dark);
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   11. ECOASSIST
+========================================================= */
+
+.assistant-card {
+    grid-area: assistant;
+
+    min-height: 450px;
+
+    padding: 28px;
+}
+
+.assistant-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.assistant-card h2 {
+    font-size: 28px;
+}
+
+.assistant-card h2 span {
+    color: var(--green);
+
+    font-size: 19px;
+}
+
+.assistant-icon {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 39px;
+    height: 39px;
+
+    border-radius: 50%;
+
+    color: var(--green-dark);
+
+    background: rgba(231, 244, 232, 0.82);
+
+    font-size: 18px;
+}
+
+.assistant-description {
+    max-width: 410px;
+
+    margin-top: 10px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.assistant-grid {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 13px;
+
+    margin-top: 25px;
+}
+
+.feature-item {
+    display: grid;
+
+    grid-template-columns: auto 1fr auto;
+
+    align-items: center;
+
+    gap: 13px;
+
+    min-height: 100px;
+
+    padding: 16px;
+
+    border: 1px solid rgba(220, 224, 221, 0.85);
+
+    border-radius: var(--radius-medium);
+
+    background: rgba(255, 255, 255, 0.68);
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.feature-item:hover {
+    border-color: rgba(76, 175, 80, 0.48);
+
+    background: rgba(255, 255, 255, 0.88);
+}
+
+.feature-item:focus-visible {
+    outline: 2px solid var(--green);
+
+    outline-offset: 2px;
+}
+
+.feature-icon {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+
+    font-size: 12px;
+}
+
+.energy-icon {
+    color: #A77700;
+
+    background: var(--yellow-soft);
+}
+
+.air-icon {
+    color: var(--blue);
+
+    background: var(--blue-soft);
+}
+
+.mobility-icon {
+    color: var(--green-dark);
+
+    background: var(--green-soft);
+}
+
+.feature-content {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.feature-content strong {
+    color: var(--ink);
+
+    font-size: 12px;
+}
+
+.feature-content small {
+    color: var(--muted);
+
+    font-size: 9px;
+
+    line-height: 1.4;
+}
+
+.feature-arrow {
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   12. COMPARISON
+========================================================= */
+
+.comparison-card {
+    grid-area: comparison;
+
+    min-height: 235px;
+}
+
+.small-link {
+    color: var(--green-dark);
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+.small-link:hover {
+    color: var(--green);
+}
+
+.small-link:focus-visible {
+    outline: 2px solid var(--green);
+
+    outline-offset: 3px;
+}
+
+.comparison-row {
+    margin-top: 20px;
+}
+
+.comparison-info {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.comparison-info > div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.comparison-info strong {
+    color: var(--ink);
+
+    font-size: 11px;
+}
+
+.comparison-info span {
+    color: var(--muted);
+
+    font-size: 9px;
+}
+
+.comparison-number {
+    color: var(--green-dark) !important;
+
+    font-size: 21px !important;
+}
+
+.comparison-number small {
+    color: var(--green);
+
+    font-size: 11px;
+}
+
+.blue-number {
+    color: var(--blue) !important;
+}
+
+
+/* =========================================================
+   13. CSS LINE CHARTS
+========================================================= */
+
+.line-chart {
+    position: relative;
+
+    height: 38px;
+
+    margin-top: 6px;
+
+    overflow: hidden;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.line-chart::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 18px;
+
+    border-top: 1px dashed var(--line);
+}
+
+.chart-line {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 19px;
+
+    height: 2px;
+
+    background-color: var(--green);
+}
+
+.green-chart .chart-line {
+    top: 13px;
+}
+
+.blue-chart .chart-line {
+    top: 22px;
+
+    background-color: var(--blue);
+}
+
+.chart-dot {
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background-color: var(--green);
+}
+
+.blue-chart .chart-dot {
+    background-color: var(--blue);
+}
+
+.dot-one {
+    left: 5%;
+    top: 25px;
+}
+
+.dot-two {
+    left: 25%;
+    top: 17px;
+}
+
+.dot-three {
+    left: 48%;
+    top: 20px;
+}
+
+.dot-four {
+    left: 70%;
+    top: 10px;
+}
+
+.dot-five {
+    right: 4%;
+    top: 14px;
+}
+
+
+/* =========================================================
+   14. METRICS
+========================================================= */
+
+.metrics-card {
+    grid-area: metrics;
+
+    min-height: 230px;
+}
+
+.metric-status {
+    padding: 5px 8px;
+
+    border-radius: 12px;
+
+    color: var(--green-dark);
+
+    background: rgba(231, 244, 232, 0.82);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+}
+
+.metrics-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    margin-top: 22px;
+}
+
+.metric {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding: 14px 12px;
+
+    border-right: 1px solid rgba(220, 224, 221, 0.75);
+
+    border-bottom: 1px solid rgba(220, 224, 221, 0.75);
+}
+
+.metric:nth-child(2n) {
+    border-right: none;
+}
+
+.metric:nth-child(3),
+.metric:nth-child(4) {
+    border-bottom: none;
+}
+
+.metric-icon {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 24px;
+    height: 24px;
+
+    border-radius: 50%;
+
+    color: #A77700;
+
+    background: var(--yellow-soft);
+
+    font-size: 10px;
+}
+
+.blue-metric {
+    color: var(--blue);
+
+    background: var(--blue-soft);
+}
+
+.green-metric {
+    color: var(--green-dark);
+
+    background: var(--green-soft);
+}
+
+.metric strong {
+    color: var(--ink);
+
+    font-size: 19px;
+}
+
+.metric > span:last-child {
+    color: var(--muted);
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   15. WEEKLY
+========================================================= */
+
+.weekly-card {
+    grid-area: weekly;
+
+    min-height: 230px;
+}
+
+.weekly-value {
+    color: var(--green-dark);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.weekly-chart {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 9px;
+
+    height: 105px;
+
+    margin-top: 15px;
+
+    padding: 0 4px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.bar-column {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 7px;
+
+    width: 100%;
+
+    height: 100%;
+}
+
+.bar {
+    display: block;
+
+    width: 12px;
+
+    min-height: 10px;
+
+    border-radius: 7px 7px 2px 2px;
+}
+
+.bar-light {
+    background: #DDE1DE;
+}
+
+.bar-green {
+    background: var(--green);
+}
+
+.bar-1 {
+    height: 35px;
+}
+
+.bar-2 {
+    height: 70px;
+}
+
+.bar-3 {
+    height: 48px;
+}
+
+.bar-4 {
+    height: 83px;
+}
+
+.bar-5 {
+    height: 64px;
+}
+
+.bar-6 {
+    height: 43px;
+}
+
+.bar-7 {
+    height: 76px;
+}
+
+.bar-column small {
+    color: var(--muted);
+
+    font-size: 8px;
+}
+
+.today small {
+    color: var(--green-dark);
+
+    font-weight: 700;
+}
+
+.report-link {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 15px;
+
+    color: var(--green-dark);
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+.report-link:hover {
+    color: var(--green);
+}
+
+.report-link:focus-visible {
+    outline: 2px solid var(--green);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   16. ENVIRONMENT IMAGE
+========================================================= */
+
+.environment-card {
+    grid-area: environment;
+
+    position: relative;
+
+    min-height: 175px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+
+    border-radius: var(--radius-large);
+
+    background: var(--sky);
+
+    box-shadow: var(--soft-shadow);
+}
+
+.environment-card img {
+    width: 100%;
+    height: 100%;
+
+    min-height: 175px;
+
+    object-fit: cover;
+}
+
+.environment-overlay {
+    position: absolute;
+
+    left: 22px;
+    bottom: 20px;
+
+    padding: 12px 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.65);
+
+    border-radius: var(--radius-small);
+
+    color: var(--white);
+
+    background: rgba(16, 24, 32, 0.28);
+}
+
+.environment-label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 11px;
+}
+
+.environment-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #BFE5A8;
+}
+
+.environment-overlay p {
+    margin-top: 5px;
+
+    font-size: 9px;
+}
+
+.image-controls {
+    position: absolute;
+
+    right: 20px;
+    bottom: 20px;
+
+    display: flex;
+
+    gap: 8px;
+}
+
+.image-control {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 8px 11px;
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    border-radius: 18px;
+
+    color: var(--white);
+
+    background: rgba(255, 255, 255, 0.18);
+
+    font-size: 9px;
+}
+
+.image-control:hover {
+    background: rgba(255, 255, 255, 0.32);
+}
+
+.image-control:focus-visible {
+    outline: 2px solid var(--white);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   17. FLOATING DOCK
+========================================================= */
+
+.floating-dock {
+    position: fixed;
+
+    left: 24px;
+    top: 50%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 7px;
+
+    width: 48px;
+
+    padding: 9px 6px;
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    box-shadow: var(--soft-shadow);
+
+    z-index: 10;
+}
+
+.dock-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+.dock-item:hover {
+    color: var(--green-dark);
+
+    background: var(--green-soft);
+}
+
+.dock-item:focus-visible {
+    outline: 2px solid var(--green);
+
+    outline-offset: 2px;
+}
+
+.dock-item.dock-active {
+    color: var(--white);
+
+    background: var(--green);
+}
+
+
+/* =========================================================
+   18. SECONDARY PAGE HERO
+========================================================= */
+
+.page-hero {
+    max-width: 720px;
+
+    margin: 30px 0 30px;
+}
+
+.page-hero h1 {
+    margin-top: 10px;
+
+    color: var(--ink);
+
+    font-size: clamp(38px, 4vw, 52px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+}
+
+.page-hero h1 span {
+    color: var(--green);
+}
+
+.page-hero p {
+    max-width: 600px;
+
+    margin-top: 15px;
+
+    color: #26353A;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   19. SECONDARY CONTENT GRID
+========================================================= */
+
+.content-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+}
+
+.large-card {
+    min-height: 250px;
+}
+
+.full-card {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   20. ANALYTIC STAT ROW
+========================================================= */
+
+.stat-row {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+.stat-box {
+    padding: 18px;
+
+    border: 1px solid rgba(220, 224, 221, 0.8);
+
+    border-radius: var(--radius-medium);
+
+    background: rgba(255, 255, 255, 0.62);
+}
+
+.stat-box strong {
+    display: block;
+
+    color: var(--ink);
+
+    font-size: 25px;
+}
+
+.stat-box span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+.stat-box.green-stat strong {
+    color: var(--green-dark);
+}
+
+.stat-box.blue-stat strong {
+    color: var(--blue);
+}
+
+.stat-box.yellow-stat strong {
+    color: #A77700;
+}
+
+
+/* =========================================================
+   21. LIST ITEMS
+========================================================= */
+
+.info-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.info-list-item {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 14px 16px;
+
+    border: 1px solid rgba(220, 224, 221, 0.8);
+
+    border-radius: var(--radius-small);
+
+    background: rgba(255, 255, 255, 0.58);
+}
+
+.info-list-item:hover {
+    border-color: rgba(76, 175, 80, 0.42);
+
+    background: rgba(255, 255, 255, 0.78);
+}
+
+.info-list-item strong {
+    color: var(--ink);
+
+    font-size: 11px;
+}
+
+.info-list-item span {
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   22. RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .page {
+        padding: 40px 5% 60px;
+    }
+
+    .dashboard-frame {
+        padding: 24px;
+    }
+
+    .topbar {
+        flex-wrap: wrap;
+    }
+
+    .main-nav {
+        order: 3;
+
+        width: 100%;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+
+        grid-template-areas:
+            "status assistant"
+            "comparison assistant"
+            "metrics weekly"
+            "environment environment";
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+            "status"
+            "assistant"
+            "comparison"
+            "metrics"
+            "weekly"
+            "environment";
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full-card {
+        grid-column: auto;
+    }
+
+    .assistant-card {
+        min-height: auto;
+    }
+
+    .floating-dock {
+        position: fixed;
+
+        left: 50%;
+        top: auto;
+        bottom: 18px;
+
+        flex-direction: row;
+
+        width: auto;
+
+        transform: translateX(-50%);
+
+        border-radius: 25px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .page {
+        padding: 20px 14px 85px;
+    }
+
+    .dashboard-frame {
+        padding: 18px;
+
+        border-radius: 30px;
+    }
+
+    .topbar {
+        gap: 15px;
+
+        margin-bottom: 25px;
+    }
+
+    .main-nav {
+        justify-content: flex-start;
+
+        overflow: hidden;
+
+        flex-wrap: nowrap;
+    }
+
+    .nav-link {
+        padding: 8px 10px;
+
+        font-size: 10px;
+    }
+
+    .hero {
+        margin-top: 5px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .card {
+        padding: 20px;
+
+        border-radius: 23px;
+    }
+
+    .stat-row {
+        grid-template-columns: 1fr;
+    }
+
+    .image-controls {
+        left: 15px;
+
+        right: auto;
+
+        bottom: 15px;
+    }
+
+    .environment-overlay {
+        left: 15px;
+
+        top: 15px;
+
+        bottom: auto;
+    }
+}
+
+
+@media (max-width: 430px) {
+
+    .main-nav {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .assistant-card h2 {
+        font-size: 23px;
+    }
+}
