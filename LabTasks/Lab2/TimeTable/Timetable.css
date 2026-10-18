@@ -1,0 +1,258 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #f5f0e6;
+  color: #1a1a1a;
+  padding: 30px 20px;
+}
+
+.wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d5a27;
+}
+
+header h1 span {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #6b7c68;
+  margin-left: 8px;
+}
+
+header p {
+  font-size: 0.82rem;
+  color: #6b7c68;
+  margin-top: 2px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid #c8c1b4;
+  border-radius: 8px;
+  background: #fdfbf7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 840px;
+}
+
+thead th {
+  background: #2d5a27;
+  color: #f5f0e6;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 12px 6px;
+  text-align: center;
+  border-right: 1px solid #3d6e36;
+}
+
+thead th:first-child {
+  width: 70px;
+  border-right: 1px solid #3d6e36;
+}
+
+thead th:last-child {
+  border-right: none;
+}
+
+tbody td {
+  border: 1px solid #ddd7cc;
+  padding: 5px;
+  vertical-align: top;
+  height: 100px;
+  background: #fdfbf7;
+}
+
+.day-col {
+  text-align: center;
+  vertical-align: middle;
+  background: #eae5da;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #2d5a27;
+  width: 70px;
+  border-right: 2px solid #c8c1b4;
+}
+
+.day-col small {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: #6b7c68;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.cls {
+  height: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border-left: 3px solid #2d5a27;
+  background: #f0ebe0;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cls:hover {
+  background: #e4ddd0;
+}
+
+.cls .name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #2d5a27;
+  line-height: 1.2;
+}
+
+.cls .teacher {
+  font-size: 0.68rem;
+  color: #6b7c68;
+  margin-top: 3px;
+  line-height: 1.2;
+}
+
+.cls .room {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #8a7e6e;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.cls.lab {
+  border-left-color: #1a4015;
+  background: #e7ebe3;
+}
+
+.cls.lab:hover {
+  background: #dce1d8;
+}
+
+.cls.lab .name::after {
+  content: ' — LAB';
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #4a7a42;
+}
+
+.free {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c8c1b4;
+  font-size: 0.75rem;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+}
+
+.overlay:target {
+  display: flex;
+}
+
+.overlay-close {
+  position: absolute;
+  inset: 0;
+  cursor: default;
+}
+
+.modal {
+  position: relative;
+  z-index: 101;
+  background: #fdfbf7;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #c8c1b4;
+  overflow: hidden;
+}
+
+.modal-head {
+  background: #2d5a27;
+  color: #f5f0e6;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.modal-head h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.modal-head .close-btn {
+  color: #f5f0e6;
+  text-decoration: none;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-body .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eae5da;
+  font-size: 0.88rem;
+}
+
+.modal-body .row:last-child {
+  border-bottom: none;
+}
+
+.modal-body .lbl {
+  color: #6b7c68;
+  font-weight: 500;
+}
+
+.modal-body .val {
+  color: #1a1a1a;
+  font-weight: 600;
+  text-align: right;
+  max-width: 60%;
+}
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .overlay { display: none !important; }
+  .table-wrap { border: 1px solid #000; }
+  thead th { background: #333; color: #fff; }
+  .cls { border-left-color: #333; background: transparent; }
+}
